@@ -79,9 +79,9 @@ Each role is documented in `/roles/`. Load the relevant role file when starting 
 
 | Role | Persona | File | Status |
 |------|---------|------|--------|
-| Art Direction & Visual Identity | WAVEJUMPER | `roles/art-direction.md` | ✅ Active |
-| A&R / Music Curation | HYDRO THEORY | `roles/anr-curation.md` | ✅ Active |
-| Social Media / Content | STORM SURGE | `roles/social-media.md` | ✅ Active |
+| Art Direction & Visual Identity | WAVEJUMPER | [`roles/art-direction.md`](roles/art-direction.md) | ✅ Active |
+| A&R / Music Curation | HYDRO THEORY | [`roles/anr-curation.md`](roles/anr-curation.md) | ✅ Active |
+| Social Media / Content | STORM SURGE | [`roles/social-media.md`](roles/social-media.md) | ✅ Active |
 
 ---
 
