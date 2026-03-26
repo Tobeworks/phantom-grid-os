@@ -7,10 +7,11 @@ Phantom Grid exists in Cyberspace. These are its coordinates.
 ## REPOSITORY
 
 ```
-https://github.com/[to-be-set]
+https://github.com/Tobeworks/phantom-grid-os
 ```
 
 Primary location of the label's infrastructure. The repo IS the label.
+Open source — MIT License. Fork it. Build your own.
 
 ---
 

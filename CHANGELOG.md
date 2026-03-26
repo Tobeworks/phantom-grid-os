@@ -6,6 +6,21 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.0.6] — 2026-03-26 — Open source / PG-001 initiated
+
+### Added
+
+- `LICENSE` — MIT License
+- `web/layout-spec.md` — Astro site layout briefing; section specs, component structure, what's inherited from HTML prototype
+- `releases/pg-001-input-null-vector-field-signals/` — PG-001 initiated: Input Null, "Vector Field Signals"
+
+### Changed
+
+- `COORDINATES.md` — repo URL set: github.com/Tobeworks/phantom-grid-os; open source note added
+- `README.md` — license and repo URL added; version bump
+
+---
+
 ## [0.0.5] — 2026-03-26 — Cyberspace identity
 
 ### Changed
