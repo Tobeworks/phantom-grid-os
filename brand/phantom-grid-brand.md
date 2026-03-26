@@ -1,5 +1,5 @@
 # Phantom Grid — Brand Reference Document
-## Living Document — maintained by Vera Cross
+## Living Document — maintained by WAVEJUMPER
 
 ---
 
@@ -70,31 +70,56 @@ Depth is created through tonal layering, not shadows. The UI reads as a series o
 
 | Role | Font | Weight | Size | Tracking |
 |---|---|---|---|---|
-| Hero / Display | Space Grotesk | 900 (Black) | 3.5rem+ | Tight (`-0.05em`) |
-| Headline | Space Grotesk | 700 (Bold) | 1.5rem–2.5rem | Tight |
-| Label / Navigation | Space Grotesk | 400 | 0.6875rem–0.875rem | Wide (`0.2em–0.5em`) |
+| Hero / Display | Eurostile Extended | 700 (Bold) | 3.5rem+ | Tight (`-0.03em`) |
+| Headline | Eurostile | 700 (Bold) | 1.5rem–2.5rem | Tight (`-0.02em`) |
+| Label / Navigation | Eurostile | 400 (Regular) | 0.6875rem–0.875rem | Wide (`0.2em–0.5em`) |
 | Body / Data | Inter | 400 / 700 | 0.875rem–1rem | Normal |
 
 ### Font Sources
 
 ```
-Space Grotesk: weights 300, 400, 700, 900
+Eurostile / Eurostile Extended: Adobe Fonts (Typekit) or licensed web font
+— Weights: Regular (400), Bold (700)
+— Extended variant for hero/display use
+
 Inter: weights 400, 700
-Google Fonts CDN
+— Google Fonts CDN or self-hosted
 ```
+
+> **Note:** Eurostile is a commercial typeface (Linotype/Monotype). Requires Adobe Fonts subscription or individual license for web embedding. Do not substitute with free alternatives — the letterform geometry is non-negotiable.
 
 ### Typography Rules
 
-**Space Grotesk is the label font** — all display, headline, navigation, and label text. Wide letterforms mimic stamped serial numbers on hardware. Always uppercase in UI context.
+**Eurostile is the label font** — all display, headline, navigation, and label text. The squared-off letterforms carry the weight of industrial production: stamped metal, machine-tooled precision. Eurostile Extended at hero scale reads like a control panel from a decommissioned facility. Always uppercase in UI context.
 
-**Inter is data font** — high-density information, body text, technical metadata. Creates functional contrast between "Artistic Labeling" and "Technical Data."
+**Eurostile Extended** is reserved for hero/display use only — its horizontal mass demands space. At smaller sizes, use standard Eurostile.
+
+**Inter is data font** — high-density information, body text, technical metadata. Creates functional contrast between "Label System" and "Technical Data."
 
 **Tracking discipline:**
-- Hero titles: tight (`-0.05em`) — mass through compression
+- Hero titles: tight (`-0.03em`) — compressed weight, not airy
 - Navigation / labels: wide (`0.2em–0.5em`) — legibility through spacing
 - Never decorative — tracking serves a structural function
 
 **Numbers and metadata (BPM, dates, coordinates, timestamps):** monospaced treatment, rendered as technical data points, not editorial text.
+
+### Typographic Lineage
+
+Eurostile is not a neutral choice. It carries a specific historical load that maps directly onto the label's sound genealogy.
+
+**Microgramma → Eurostile (1952–1962)**
+Designed by Alessandro Butti and Aldo Novarese. Microgramma (capitals only) became the visual language of engineered futures — NASA documentation, science fiction, industrial manuals. Eurostile extended it into a full typeface. Both share the same formal logic: squared apertures, horizontal emphasis, letterforms that read like machine-stamped metal. This is the visual grammar of "a future imagined by people who understood machines."
+
+**Kraftwerk → Detroit (1978–1985)**
+Kraftwerk's *The Man-Machine* (1978) embedded this squared, industrial type aesthetic into electronic music. Juan Atkins cited Kraftwerk directly as the blueprint for Detroit Electro. The typographic language travels with the music: Düsseldorf 1978 → Detroit 1985 → Frankfurt 1992 → Mainz 2026. Using Eurostile is not nostalgia — it is tracing the wire back to the source.
+
+**Eye Q / Frankfurt (1991–1996)**
+The Eye Q Records visual identity — Frankfurt, the label home of Sven Väth, Rolf Ellmer, Hardfloor — operated in exactly this squared, technical register. Print materials read like industrial documentation. HYDRO THEORY grew up with these sleeves. The Frankfurt formation is present in the type.
+
+**Neptune's Lair (Drexciya, 1999)**
+The album from which HYDRO THEORY takes its name uses schematic, circuit-diagram visual language throughout. Eurostile sits natively in that world — it is the font of the classified document, the decommissioned facility, the underwater transmission station.
+
+**The rule:** Every typographic decision on a Phantom Grid asset should feel like it could have appeared on a piece of documentation from this lineage. If it couldn't, it doesn't belong.
 
 ---
 
