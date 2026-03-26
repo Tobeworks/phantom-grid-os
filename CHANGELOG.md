@@ -6,6 +6,15 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.0.7] — 2026-03-26 — Manifesto: open source claim / Sonic Brief
+
+### Added
+
+- `brand/sonic-brief.md` — positive sonic definition: tempo, drum architecture, bass, synthesis, arrangement; HYDRO THEORY's core question
+- `brand/manifesto.md`: open source paragraph added — the fork argument: structure is copyable, transmission is not; parallels the Fluency vs. Voice distinction
+
+---
+
 ## [0.0.6] — 2026-03-26 — Open source / PG-001 initiated
 
 ### Added

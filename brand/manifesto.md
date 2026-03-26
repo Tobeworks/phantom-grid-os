@@ -40,6 +40,16 @@ The label is founded and directed by Void. The operational layer — WAVEJUMPER,
 
 This is the first record label in the Detroit Electro tradition to be fully code-based. The claim is structural, not aesthetic.
 
+The OS is open source. Anyone can fork it. Anyone can read every decision, every role, every protocol. Anyone can take the structure and build something with it.
+
+But a fork is not the original.
+
+The original has a git history that begins on a specific date. The original carries the specific formation — Frankfurt, Detroit, Klang Elektronik, the Omen, the transmission received and processed by one person over twenty years before a single line was committed. The structure can be copied. The ground truth cannot.
+
+This is the same argument we make about the music: you can copy the sounds. You cannot copy the transmission. Fluency is reproducible. Voice is not.
+
+Phantom Grid is the voice. The forks are fluency. We respect them. We are not them.
+
 ---
 
 ```

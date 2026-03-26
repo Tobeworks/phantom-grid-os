@@ -2,7 +2,7 @@
 
 > Operating system for Phantom Grid — roles, brand system, workflows and release intelligence.
 
-**Version:** 0.0.6 — see [CHANGELOG.md](CHANGELOG.md)
+**Version:** 0.0.7 — see [CHANGELOG.md](CHANGELOG.md)
 
 **License:** MIT — open source. Fork it. Build your own label OS.
 ---
@@ -52,6 +52,7 @@ phantom-grid-os/
 ├── brand/
 │   ├── phantom-grid-brand.md        ← living brand reference document
 │   ├── manifesto.md                 ← label manifesto — internal and public-facing
+│   ├── sonic-brief.md               ← positive sonic definition; what PG releases sound like
 │   └── not-phantom-grid.md          ← musical exclusion document
 ├── workflows/
 │   └── handoffs.md                  ← inter-persona handoff protocols
