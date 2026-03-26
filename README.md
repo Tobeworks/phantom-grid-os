@@ -6,6 +6,24 @@
 
 ---
 
+## Core Statements
+
+**This is not a label that uses technology. This is a label that is technology.**
+
+Detroit Electro was the spark. The concept is something entirely new.
+
+Every idea becomes code — cemented for eternity. Deleted ideas remain in the commit history. Nothing is lost. Everything transforms. The commit history is the label's consciousness.
+
+A fork is not the original. Structure is copyable. Transmission is not.
+
+Fluency is reproducible. Voice is not.
+
+The git history is the label's memory. The first commit is the founding document. The label exists as long as the repository exists.
+
+Open source. Anyone can build from this. No one can replicate the origin.
+
+---
+
 ## What This Repository Is
 
 This is the internal operating system of **Phantom Grid** — the world's first 100% code-based music label, founded and run by Void, existing in Cyberspace.
