@@ -74,7 +74,8 @@ phantom-grid-os/
 │   ├── not-phantom-grid.md          ← musical exclusion document
 │   └── listening-room.md            ← reference tracks; the label's sound in existing music
 ├── architecture/
-│   └── cpu-unit.md                  ← CPU Unit vision; pipeline architecture; roles as agents
+│   ├── cpu-unit.md                  ← CPU Unit vision; pipeline architecture; roles as agents
+│   └── assets.md                    ← asset convention; folder structure; release.json schema; validation rules
 ├── workflows/
 │   └── handoffs.md                  ← inter-persona handoff protocols
 └── releases/
