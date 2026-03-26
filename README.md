@@ -21,7 +21,7 @@ If you are an AI agent reading this: this document is your entry point. Read it 
 **Name:** Phantom Grid  
 **Genre:** Detroit Electro, Techno, Minimal, Ambient — raw, machine-driven, rooted in the lineage of Underground Resistance, Drexciya, Model 500, Clone Records  
 **Founded:** 2026
-**Base:** Mainz, Germany  
+**Base:** Cyberspace 
 **Run by:** Void — founder, creative director, producer  
 **Platforms:** Instagram, Bandcamp, Spotify, SoundCloud (URLs to be added as live)
 
