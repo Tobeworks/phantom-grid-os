@@ -55,38 +55,49 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 
 ---
 
-## Repository Structure
+## Sitemap
 
-```
-phantom-grid-os/
-├── README.md                        ← this file — load first
-├── CHANGELOG.md                     ← full version history
-├── COORDINATES.md                   ← label location in cyberspace; platform URLs
-├── transmission-log.md              ← running log of all label events
-├── roles/
-│   ├── art-direction.md             ← WAVEJUMPER — Visual Identity & Art Direction
-│   ├── anr-curation.md              ← HYDRO THEORY — A&R / Music Curation
-│   └── social-media.md              ← STORM SURGE — Social Media & Content
-├── brand/
-│   ├── phantom-grid-brand.md        ← living brand reference; color, type, LED circle, cursor specs
-│   ├── manifesto.md                 ← label manifesto — internal and public-facing
-│   ├── sonic-brief.md               ← positive sonic definition; genres, BPM, drum architecture
-│   ├── not-phantom-grid.md          ← musical exclusion document
-│   └── listening-room.md            ← reference tracks; the label's sound in existing music
-├── architecture/
-│   ├── cpu-unit.md                  ← CPU Unit vision; pipeline architecture; roles as agents
-│   └── assets.md                    ← asset convention; folder structure; release.json schema; validation rules
-├── workflows/
-│   └── handoffs.md                  ← inter-persona handoff protocols
-└── releases/
-    ├── README.md                    ← release system documentation
-    ├── _template/                   ← copy for every new release
-    │   ├── release.md
-    │   ├── anr-decision.md
-    │   ├── artwork-brief.md
-    │   └── promo-arc.md
-    └── pg-001-input-null-vector-field-signals/  ← PG-001 — active
-```
+**Core**
+| File | Description |
+|---|---|
+| [README.md](README.md) | Entry point — load first |
+| [CHANGELOG.md](CHANGELOG.md) | Full version history |
+| [COORDINATES.md](COORDINATES.md) | Label location in cyberspace; platform URLs |
+| [transmission-log.md](transmission-log.md) | Running log of all label events |
+
+**Roles**
+| File | Persona | Domain |
+|---|---|---|
+| [roles/art-direction.md](roles/art-direction.md) | WAVEJUMPER | Visual Identity & Art Direction |
+| [roles/anr-curation.md](roles/anr-curation.md) | HYDRO THEORY | A&R / Music Curation |
+| [roles/social-media.md](roles/social-media.md) | STORM SURGE | Social Media & Content |
+
+**Brand**
+| File | Description |
+|---|---|
+| [brand/manifesto.md](brand/manifesto.md) | Label manifesto — internal and public-facing |
+| [brand/phantom-grid-brand.md](brand/phantom-grid-brand.md) | Living brand reference; color, type, LED circle, cursor specs |
+| [brand/sonic-brief.md](brand/sonic-brief.md) | Positive sonic definition; genres, BPM, drum architecture |
+| [brand/listening-room.md](brand/listening-room.md) | Reference tracks; the label's sound in existing music |
+| [brand/not-phantom-grid.md](brand/not-phantom-grid.md) | Musical exclusion document |
+
+**Architecture**
+| File | Description |
+|---|---|
+| [architecture/cpu-unit.md](architecture/cpu-unit.md) | CPU Unit vision; pipeline architecture; roles as agents |
+| [architecture/assets.md](architecture/assets.md) | Asset convention; release.json schema; validation rules |
+
+**Workflows**
+| File | Description |
+|---|---|
+| [workflows/handoffs.md](workflows/handoffs.md) | Inter-persona handoff protocols |
+
+**Releases**
+| File | Description |
+|---|---|
+| [releases/README.md](releases/README.md) | Release system documentation |
+| [releases/_template/](releases/_template/) | Template — copy for every new release |
+| [releases/pg-001-input-null-vector-field-signals/](releases/pg-001-input-null-vector-field-signals/) | PG-001 — Input Null — Vector Field Signals — active |
 
 ---
 
