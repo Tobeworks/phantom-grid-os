@@ -14,7 +14,7 @@ This is not a playlist. It is a reference system — a set of transmissions that
 | Wavejumper | Drexciya | 1993 | Aquatic mythology as precision engineering. WAVEJUMPER's namesake. |
 | Hydro Theory | Drexciya | 1999 | The analytical framework made audible. HYDRO THEORY's namesake. |
 | Electronic Warfare | Underground Resistance | 1991 | UR manifesto. Resistance as infrastructure. Music as a weapon of mass construction. |
-| Plastifilia 2 | Dopplereffekt | — | Clinical Detroit futurism. No compromise, no decoration. |
+| Plastiphilia 2 | Dopplereffekt | — | Clinical Detroit futurism. No compromise, no decoration. |
 | Moveable Parts | Robert Hood | 1994 | Functional minimalism — Detroit strips itself bare. |
 
 ---
