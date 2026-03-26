@@ -3,9 +3,8 @@
 > Operating system for Phantom Grid — roles, brand system, workflows and release intelligence.
 
 **Version:** 0.0.6 — see [CHANGELOG.md](CHANGELOG.md)
-**License:** MIT — open source. Fork it. Build your own label OS.
-**Repo:** https://github.com/Tobeworks/phantom-grid-os
 
+**License:** MIT — open source. Fork it. Build your own label OS.
 ---
 
 ## What This Repository Is
