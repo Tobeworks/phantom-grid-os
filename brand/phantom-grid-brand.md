@@ -11,11 +11,44 @@ The Phantom Grid visual system evokes the atmosphere of a redacted government tr
 
 The aesthetic operates on intentional asymmetry: heavy information clusters balanced against vast, deep black negative space. Vector-line ornamentation and "data-leak" aesthetics create a sense of mechanical precision that is gritty, rhythmic, and uncompromising.
 
+---
+
+### Terminal Glow
+
+**Terminal Glow** is the defining atmospheric quality of the system. It refers to the specific visual behavior of CRT monitors, LED arrays, and vintage hardware displays — light that does not illuminate cleanly but bleeds, blooms, and burns through its medium.
+
+Key properties of Terminal Glow:
+- **Bloom:** light sources are never sharp — they carry a soft halo of their own color. Red bleeds red. White bleeds warm.
+- **Phosphor persistence:** CRT screens hold an image for a fraction of a second after it changes. In the visual system, this translates to glow states that feel like they're still fading.
+- **Screen grain:** the surface is never clean. A CRT tube, an LED matrix, an old photocopy — all carry material texture. The background in Phantom Grid assets is not pure digital black. It is worn, slightly grained, as if the surface has a history.
+
+**Terminal Glow is not a decoration.** It is the light condition under which this label exists.
+
+---
+
+### Hardware Aesthetic — The LED Circle Motif
+
+The hollow circle is the label's primary graphic atom. It references:
+- **TR-808 / TR-909 pad arrays** — the LED rings of drum machine interfaces; on and off states; binary rhythm as visual language
+- **Step sequencer grids** — patterns that read as music before they are heard
+- **Vintage LED indicators** — the status light on a piece of hardware that has been running for 40 years
+
+Rules for the circle motif:
+- **Hollow only** — a thin stroke circle with Terminal Glow. Never filled.
+- **Glow on the stroke** — the line itself carries the red bloom, as if lit from within.
+- **Grid logic** — circles appear in structured arrays, not scattered. The pattern should be readable as a sequence.
+- **Worn surfaces** — the background behind any circle array should carry analog texture. Film grain, paper texture, subtle noise. Never clean.
+
+This motif is WAVEJUMPER's signature element. It can appear in cover art, web assets, and UI components — never as decoration, always as a statement about the machine nature of the label.
+
+---
+
 **This system rejects:**
 - Rounded corners
 - Soft color palettes
 - Decorative elements without function
 - Templates that could belong to any label
+- Clean digital backgrounds — the surface must have a material quality
 
 ---
 
@@ -119,7 +152,7 @@ The Eye Q Records visual identity — Frankfurt, the label home of Sven Väth, R
 **Neptune's Lair (Drexciya, 1999)**
 The album from which HYDRO THEORY takes its name uses schematic, circuit-diagram visual language throughout. Eurostile sits natively in that world — it is the font of the classified document, the decommissioned facility, the underwater transmission station.
 
-**The rule:** Every typographic decision on a Phantom Grid asset should feel like it could have appeared on a piece of documentation from this lineage. If it couldn't, it doesn't belong.
+**The rule:** Every typographic decision on a Phantom Grid asset should feel like it could have appeared on a piece of documentation from this lineage — or on the faceplate of a machine that was built to last. If it couldn't, it doesn't belong.
 
 ---
 
@@ -269,3 +302,6 @@ Before any visual asset is released, verify:
 - [ ] No rounded corners
 - [ ] Typography is structural, not decorative
 - [ ] Every element has a reason to be where it is
+- [ ] Background has material quality — grain, texture, worn surface. Not clean digital black.
+- [ ] If circles are used: hollow, glowing stroke, grid-logic array
+- [ ] Terminal Glow is present — the asset feels lit, not printed

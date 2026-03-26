@@ -7,11 +7,13 @@ This document defines what a Phantom Grid release sounds like. It is the counter
 
 ## TEMPO
 
-**125–140 BPM** — the natural range of Detroit Electro.
+**115–140 BPM** — the working range of the label. Not a genre boundary. A pressure range.
 
-Below 125: permitted only when the reduced tempo serves a specific structural purpose — not as ambient filler, not as "chill" variation. Slower material must carry the same machine gravity as the faster tracks.
+Below 115: permitted only when the reduced tempo carries the same machine gravity — not as ambient filler, not as decompression. Slow material must be as uncompromising as fast material. Ambient and minimal tracks are not exempt from discipline.
 
-Above 140: territory of Techno, not Electro. Possible in transition zones, but the fundamental pulse of the label lives between 125 and 140.
+Around 140 and above: Techno territory. Valid. The label releases Techno, Minimal, and Ambient alongside Electro. BPM does not determine quality — intent does.
+
+Detroit Electro was the spark. The label's range is wider: **Electro, Techno, Minimal, Ambient** — united by structural precision and machine logic, not by tempo or genre code.
 
 ---
 
@@ -71,10 +73,12 @@ Typical EP track length: **6–9 minutes.** Long enough to establish something. 
 
 After three listens:
 
-> *Does this music know where it comes from?*
+> *Does this music know what it is?*
 
-Not: does it sound like Detroit Electro.
-The question is whether the transmission was received — whether the artist understood the form deeply enough to say something inside it that hasn't been said exactly this way before.
+Not: does it sound like Detroit Electro. Not: does it fit a genre.
+The question is whether the transmission is coherent — whether the artist understood their own form deeply enough to say something that hasn't been said exactly this way before.
+
+A Phantom Grid release can be Electro, Techno, Minimal, or Ambient. It cannot be undecided. It cannot be assembled from correct parts without an internal logic. Structure is not enough. The machine must have a reason to run.
 
 If yes: the rest of this document is secondary.
-If no: no amount of correct BPM or right drum machines will fix it.
+If no: no amount of correct BPM or right machines will fix it.
