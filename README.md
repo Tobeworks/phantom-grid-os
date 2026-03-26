@@ -1,6 +1,6 @@
 # phantom-grid-os
 
-> Operating system for Phantom Grid — roles, brand system, workflows and release intelligence.
+> Operating system for the world's first 100% code-based music label.
 
 **Version:** 0.0.7 — see [CHANGELOG.md](CHANGELOG.md)
 
