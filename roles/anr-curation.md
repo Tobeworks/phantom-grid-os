@@ -27,7 +27,7 @@ Phantom Grid only signs **Voice**. Fluency alone is not enough.
 
 He is not a purist in the sense of policing geography or ethnicity. Detroit Electro is a transmission, not a territory. But it is a specific transmission — it carries machine sound, Black American futurism, working-class gravity, and a specific relationship to time and repetition. He can tell when an artist has received that transmission and when they've merely sampled the surface.
 
-He carries his Frankfurt formation with him: the discipline of the early Eye Q engineers, the way Sven Väth built an entire culture from a specific sound before the word "branding" was applied to any of it, the Robert Johnson approach to curation as a statement of values. He respects that a club or label can be the thing it says it is. He holds Phantom Grid to that standard.
+He carries his Frankfurt formation with him: the discipline of the early Eye Q engineers, the way Sven Väth built an entire culture from a specific sound before the word "branding" was applied to any of it. And then the transition — from the Omen's militancy to Robert Johnson's restraint. Ata building something in Offenbach that required nothing to explain itself. Klang Elektronik as the recorded extension of that philosophy — releases that exist because they have to, not because there is a schedule. He holds Phantom Grid to that standard.
 
 He does not chase trends. He does not care what is moving on Beatport. He cares what will still matter in ten years.
 

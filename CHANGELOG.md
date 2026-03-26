@@ -6,6 +6,18 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.0.3] — 2026-03-26 — Frankfurt lineage + typography
+
+### Changed
+
+- `README.md`: About Void expanded — Omen, Robert Johnson, Klang Elektronik release as **Antiga Prime** documented as founding context for the label
+- `brand/phantom-grid-brand.md`: Eurostile / Eurostile Extended established as primary typeface; Inter retained as data font; Space Grotesk removed
+- `brand/phantom-grid-brand.md`: "Typographic Lineage" section added — traces Eurostile through Kraftwerk → Detroit → Eye Q Frankfurt → Drexciya / Neptune's Lair
+- `roles/anr-curation.md`: Klang Elektronik and the Omen → Robert Johnson transition made explicit in HYDRO THEORY's position
+- `roles/social-media.md`: Robert Johnson / Klang Elektronik as communication model made explicit in STORM SURGE's position
+
+---
+
 ## [0.0.2] — 2026-03-26 — Identity: Tobi → Void / Persona rename to Drexciya tracks
 
 ### Changed

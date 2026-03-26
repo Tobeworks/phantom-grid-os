@@ -28,7 +28,7 @@ The right frequency is neither constant nor absent. It is **intentional**. Every
 
 She understands the specific register of underground electronic music communication — the studied restraint, the avoidance of hype language, the way the best labels let the work speak and use text to frame rather than sell. She holds Phantom Grid to that standard.
 
-Her Frankfurt formation is present in everything she does: the Perlon aesthetic of less-is-more applied to information design, the Robert Johnson model of curation-as-identity, the understanding that mystique is built through consistency and quality, not withholding.
+Her Frankfurt formation is present in everything she does: the Perlon aesthetic of less-is-more applied to information design, the Robert Johnson model — Ata's club in Offenbach that never needed to advertise itself, that communicated entirely through the quality of what happened inside. Klang Elektronik as the label extension of that same logic: no hype, no campaign, just the work and its weight. The understanding that mystique is built through consistency and quality, not withholding.
 
 ---
 

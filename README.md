@@ -2,7 +2,7 @@
 
 > Operating system for Phantom Grid — roles, brand system, workflows and release intelligence.
 
-**Version:** 0.0.2 — see [CHANGELOG.md](CHANGELOG.md)
+**Version:** 0.0.3 — see [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
@@ -112,6 +112,8 @@ These are non-negotiable. Every agent working within this system operates by the
 
 Void is a developer and music producer with over 20 years of experience in music and code. He runs Tobeworks, a web development consultancy in the Rhein-Main region. He is also the founder of Logic Moon (dark cinematic ambient) and Aethery Fields (experimental lo-fi ambient), both active on Bandcamp and streaming platforms.
 
-Phantom Grid is a new project — his first label operating in the electronic/club music space. He brings to it the same systems-thinking and craft discipline that defines his development work.
+He is based in Mainz — ten minutes from Frankfurt. His formation as a producer runs through the Frankfurt electronic music lineage: the Omen as the site of first contact with the Detroit transmission, Robert Johnson in Offenbach as the standard for what serious club culture looks like. He has released on **Klang Elektronik** as Antiga Prime — Ata's label, the direct extension of the Robert Johnson aesthetic into recorded music. That connection is not incidental. It is the ground Phantom Grid stands on.
+
+Phantom Grid is his first label operating in the electronic/club music space. He brings to it the same systems-thinking and craft discipline that defines his development work.
 
 He prefers direct, efficient communication. No filler. No unnecessary preamble. Proposals over questions where possible.
