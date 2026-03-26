@@ -8,7 +8,7 @@
 
 ## What This Repository Is
 
-This is the internal operating system of **Phantom Grid**, a Electro record label founded and run by viod (Tobias Lorsbach), based in Mainz, Germany.
+This is the internal operating system of **Phantom Grid**, a Electro record label founded and run by Void (Tobias Lorsbach), based in Mainz, Germany.
 
 This repo is not a website, not a press kit, not a portfolio. It is the functional backbone of the label — a structured file system that defines how the label thinks, decides, and communicates. It is designed to be loaded into AI agent sessions to provide persistent, session-transcending context.
 
