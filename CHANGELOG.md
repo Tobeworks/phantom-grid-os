@@ -6,6 +6,56 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.1.3] — 2026-03-26 — CPU Unit + Eternal Cycle + README sync
+
+### Added
+
+- `architecture/cpu-unit.md` — CPU Unit vision: pipeline architecture, roles as Claude agents, eternal cycle cosmology, implementation phases
+- `README.md`: Core Statements section added — distilled key positions; Principles updated with principle 6 (Everything becomes code); repository structure synced; About Void expanded with all music projects
+
+---
+
+## [0.1.2] — 2026-03-26 — Blinking Cursor spec
+
+### Added
+
+- `brand/phantom-grid-brand.md`: Section 2.2 — The Blinking Cursor: Technical Specification — construction rules, CSS animation (`step-end` only), usage contexts, what the cursor communicates, what it is not
+
+---
+
+## [0.1.1] — 2026-03-26 — LED Circle Array spec
+
+### Added
+
+- `brand/phantom-grid-brand.md`: Section 2.1 — The LED Circle Array: Technical Specification — construction rules, grid logic, surface requirement, states (active/inactive/hover/animated), usage contexts, what the circle is not
+
+---
+
+## [0.1.0] — 2026-03-26 — Terminal Glow / Hardware Aesthetic / BPM range
+
+### Changed
+
+- `brand/phantom-grid-brand.md`: Terminal Glow established as core aesthetic; Hardware Aesthetic section expanded — worn surface, film grain, CRT/LED references, retro-futurist characteristics documented from Cortexia artwork reference
+- `brand/sonic-brief.md`: BPM range corrected to 115–140; Detroit Techno emphasis reduced — Detroit as spark, not center; genre scope expanded across Electro, Techno, Minimal, Ambient
+
+---
+
+## [0.0.9] — 2026-03-26 — Manifesto rewrite: code first, Detroit as spark
+
+### Changed
+
+- `brand/manifesto.md`: Structural rewrite — cyberspace/code-based existence as primary claim; Detroit reduced to spark/origin; eternal cycle paragraph added; modern genre scope reflected; `CYBERSPACE / DETROIT` → `CYBERSPACE / EST. 2026`
+
+---
+
+## [0.0.8] — 2026-03-26 — Listening Room
+
+### Added
+
+- `brand/listening-room.md` — reference track list: Detroit core (Cybotron, Drexciya, UR, Dopplereffekt, Robert Hood, Aux 88), Frankfurt lineage (Acid Jesus, Hardfloor), bridges (Basic Channel); maintained by HYDRO THEORY
+
+---
+
 ## [0.0.7] — 2026-03-26 — Manifesto: open source claim / Sonic Brief
 
 ### Added
