@@ -104,6 +104,60 @@ In all contexts: the array is a statement about the machine nature of the label,
 
 ---
 
+### Section 2.2 — The Blinking Cursor: Terminal Presence Indicator
+
+#### Definition
+
+The blinking cursor is a single rectangular block — or underscore — that pulses on and off at a fixed interval. It references the text cursor of a CRT terminal: the system waiting for input, the machine alive but idle. In the Phantom Grid visual system it functions as a **presence signal** — proof that the terminal is running.
+
+#### Construction Rules
+
+- **Form:** A rectangular block character `█` or an underscore `_` placed immediately after text. Never an animated line, never a soft fade. The cursor is a hard-edged rectangle — zero border-radius, like everything else in the system.
+- **Color:** `#CC2222` with full Neon Bloom — `text-shadow: 0 0 10px rgba(204, 34, 34, 0.7)`. The cursor glows. It does not merely blink — it burns on and fades to nothing.
+- **Timing:** `step-end` animation only. No easing, no fade transition between states. On — then off — then on. A switch engaging, not a breath.
+- **Interval:** 1.0–1.2 seconds. Slower than a nervous blink. The rhythm of a machine waiting, not a machine panicking.
+
+```css
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.cursor {
+  animation: blink 1.2s step-end infinite;
+  color: #CC2222;
+  text-shadow: 0 0 10px rgba(204, 34, 34, 0.7);
+}
+```
+
+#### Usage Contexts
+
+The cursor appears **only at the end of a text element** — never mid-word, never standalone. It attaches to:
+
+- **Hero headlines** — after the final word of a display title, marking it as a live terminal output
+- **Section labels and eyebrows** — `// LATEST_SIGNALS_` — the cursor signals the line is a system prompt, not an editorial header
+- **Input fields** — in the active state of a terminal-style input, replacing the browser default caret where possible
+- **Status readouts** — `SYSTEM_ONLINE_` — the cursor confirms the value is live, not static
+
+#### What the Cursor Communicates
+
+The cursor does not decorate. It shifts the register of the text it follows from **editorial** to **operational**. A headline with a blinking cursor is not a title — it is a command waiting to execute. A status label with a cursor is not a label — it is a live readout. This distinction is the entire point of the element.
+
+Used correctly: once per screen section, attached to the most structurally significant text element in that zone.
+
+Used incorrectly: on multiple elements simultaneously, or on body copy, or as ambient decoration. More than one blinking cursor on screen at a time is noise, not signal.
+
+#### What the Cursor Is Not
+
+- It does not fade in or out — `step-end` only
+- It does not change size or weight
+- It does not appear in a color other than `#CC2222`
+- It does not appear without its bloom
+- It is not a loading spinner
+- It is never centered — it trails the last character of left-aligned text
+
+---
+
 **This system rejects:**
 - Rounded corners
 - Soft color palettes
