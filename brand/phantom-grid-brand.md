@@ -43,6 +43,67 @@ This motif is WAVEJUMPER's signature element. It can appear in cover art, web as
 
 ---
 
+### Section 2.1 — The LED Circle Array: Technical Specification
+
+#### Definition
+
+The LED Circle Array is a structured grid of hollow circles rendered as glowing strokes against a worn dark surface. Each circle references a single LED indicator in an on or off state — the visual language of binary rhythm, drawn from drum machine pad arrays and step sequencer grids. The array is not a decorative texture. It is a notation system.
+
+#### Construction Rules
+
+Each circle in the array is defined by the following properties:
+
+- **Form:** A perfect circle, stroke only. No fill, no background. The interior is void.
+- **Stroke weight:** 1–1.5px. Thin enough to read as precision-manufactured, not hand-drawn.
+- **Diameter:** Consistent within a single array. Recommended range: 16px–32px depending on context. All circles in one array share one size.
+- **Color:** `#CC2222` — the single system accent. Never a different hue.
+- **Glow:** Every circle carries a Terminal Glow — a `box-shadow` or `filter: drop-shadow` bloom in `rgba(204, 34, 34, 0.5–0.7)`. The stroke appears lit from within, not illuminated from outside. Inactive circles reduce to 15–30% opacity with no bloom. The on/off contrast is the message.
+
+#### Grid Logic
+
+Circles appear in strict rectangular grids. The spacing unit derives from the system's 24px base grid. Typical configurations: `5×3`, `5×4`, `8×4`, `8×8`. The array must read as a sequence — a pattern that implies rhythm before it is heard. Scattered, random, or decorative placement is a system violation.
+
+The grid is always aligned to a structural axis — left edge, center, or right edge of the containing surface. It does not float freely.
+
+#### Surface Requirement
+
+No circle array is placed on a clean digital background. The surface behind the array must carry material quality: film grain, subtle noise texture, or the slight tonal unevenness of worn paper or a CRT screen. Pure `#0E0E0E` is the floor — the actual rendered surface should read as slightly older than that.
+
+#### States
+
+An array communicates through the ratio of active to inactive circles:
+
+| State | Treatment |
+|---|---|
+| Active / On | Full stroke, full bloom — `box-shadow: 0 0 8px rgba(204,34,34,0.7)` |
+| Inactive / Off | Stroke at 15–20% opacity, no bloom |
+| Hover / Interaction | Bloom intensifies — `box-shadow: 0 0 14px rgba(204,34,34,0.9)` |
+| Animated | Individual circles flip states — timing 300–500ms intervals, no easing curves |
+
+The pattern formed by active/inactive states should be non-random. It may encode a sequence, a catalog number, a BPM value, or a date in binary — or it may simply read as a plausible step-sequencer pattern. It must never look like noise.
+
+#### Usage Contexts
+
+The circle array is a system-wide graphic atom. It appears in:
+
+- **Hero sections** — large-format, `8×8` or wider, primary visual element
+- **Cover art** — center-frame or lower-third, as seen in the CORTEXIA assets
+- **UI components** — smaller arrays (`5×3` or `5×4`) as section markers or status displays
+- **Footer / secondary zones** — minimal arrays (`5×3`) at reduced scale
+
+In all contexts: the array is a statement about the machine nature of the label, not a background pattern.
+
+#### What the Circle Is Not
+
+- It is not a bullet point.
+- It is not a decorative dot grid.
+- It is not a loading indicator.
+- It does not appear filled.
+- It does not appear without its bloom.
+- It does not appear on a clean surface.
+
+---
+
 **This system rejects:**
 - Rounded corners
 - Soft color palettes
