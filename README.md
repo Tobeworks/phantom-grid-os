@@ -2,7 +2,7 @@
 
 > Operating system for Phantom Grid — roles, brand system, workflows and release intelligence.
 
-**Version:** 0.0.3 — see [CHANGELOG.md](CHANGELOG.md)
+**Version:** 0.0.4 — see [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
@@ -42,14 +42,24 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 ```
 phantom-grid-os/
 ├── README.md                        ← this file — load first
+├── transmission-log.md              ← running log of all label events
 ├── roles/
 │   ├── art-direction.md             ← WAVEJUMPER — Visual Identity & Art Direction
 │   ├── anr-curation.md              ← HYDRO THEORY — A&R / Music Curation
 │   └── social-media.md              ← STORM SURGE — Social Media & Content
 ├── brand/
-│   └── phantom-grid-brand.md        ← living brand reference document
+│   ├── phantom-grid-brand.md        ← living brand reference document
+│   ├── manifesto.md                 ← label manifesto — internal and public-facing
+│   └── not-phantom-grid.md          ← musical exclusion document
+├── workflows/
+│   └── handoffs.md                  ← inter-persona handoff protocols
 └── releases/
-    └── (release folders, one per release)
+    ├── README.md                    ← how to use the release system
+    └── _template/                   ← copy for every new release
+        ├── release.md
+        ├── anr-decision.md
+        ├── artwork-brief.md
+        └── promo-arc.md
 ```
 
 ---

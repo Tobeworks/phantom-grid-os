@@ -6,6 +6,24 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.0.4] — 2026-03-26 — System operational
+
+### Added
+
+- `releases/README.md` — release system documentation
+- `releases/_template/` — release folder template with four files:
+  `release.md`, `anr-decision.md`, `artwork-brief.md`, `promo-arc.md`
+- `workflows/handoffs.md` — inter-persona handoff protocols for all directional pairs
+- `brand/manifesto.md` — label manifesto; internal and public-facing
+- `brand/not-phantom-grid.md` — musical exclusion document; maintained by HYDRO THEORY
+- `transmission-log.md` — running log of all label events, signings, and system decisions
+
+### Changed
+
+- `README.md`: repository structure updated to reflect new files and folders
+
+---
+
 ## [0.0.3] — 2026-03-26 — Frankfurt lineage + typography
 
 ### Changed
