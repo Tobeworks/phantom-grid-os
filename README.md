@@ -61,6 +61,7 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | File | Description |
 |---|---|
 | [README.md](README.md) | Entry point — load first |
+| [EXPLAINER.md](EXPLAINER.md) | What is Phantom Grid — three levels, for any audience |
 | [CHANGELOG.md](CHANGELOG.md) | Full version history |
 | [COORDINATES.md](COORDINATES.md) | Label location in cyberspace; platform URLs |
 | [transmission-log.md](transmission-log.md) | Running log of all label events |
