@@ -12,11 +12,13 @@ THAT_IS_NOT_A_PROBLEM.
 
 Phantom Grid is a record label.
 
-It operates in the tradition of Detroit Electro — not as reproduction, not as tribute, not as European imitation of an American form. As continuation. The transmission that left Detroit in the 1980s did not end. It travels. We are a receiving station.
+It exists as code.
 
-We sign music that has something to say inside the form. Not music that sounds like the form. Not music that wants the credibility of the form without doing the work. The distinction is audible to anyone who has listened seriously. We have.
+Not a label with a website. Not a label with digital distribution. Not a label that uses technology as a tool. A label that *is* technology — entirely, structurally, without remainder. The infrastructure, the A&R decisions, the brand system, the release protocols, the communication strategy: all of it lives in a repository. Version-controlled. Committed. Documented. Open.
 
-We are not interested in the market for this music. We are interested in the music.
+The git history is the label's history. The first commit is the founding moment. Every decision since is on record.
+
+This is a new thing. It has not existed before.
 
 ---
 
@@ -28,25 +30,29 @@ RELEASE_CRITERIA:
 
 ---
 
+The music we release crosses formats. Electro, Techno, Minimal, Ambient — the genre is not the filter. The position is the filter. Does the music have a reason to exist beyond the market? Does it carry precision, intention, refusal? The distinction is audible to anyone who has listened seriously. We have.
+
+We are not interested in the market for this music. We are interested in the music.
+
+The spark came from Detroit. Machine music — intentional, political, precise — was the point of origin. That transmission traveled. We received it. What we built from it is something else entirely.
+
+---
+
 Phantom Grid exists in Cyberspace.
 
-Not as a metaphor. The label has no physical address, no office, no geography. Its infrastructure is code — version-controlled, documented, operational. The entire system — A&R decisions, brand rules, release protocols, communication strategy — lives in a repository. Every decision is committed. The git history is the label's history.
+No physical address. No office. No geography. The label is where the code runs. It is accessible from anywhere because it lives nowhere. This is not a limitation. This is the architecture.
 
-This is not a label that uses technology. This is a label that is technology.
+The operational layer — WAVEJUMPER, HYDRO THEORY, STORM SURGE — is artificial intelligence running within a defined system. Every output is a proposal. Void decides. The system executes.
 
-Drexciya lived underwater. UR operated from occupied territories with no fixed coordinates. Model 500 spoke of machine futures before the machines arrived. Phantom Grid extends that lineage: a label that exists where the transmissions travel — in the space between machines, between cities, between frequencies.
-
-The label is founded and directed by Void. The operational layer — WAVEJUMPER, HYDRO THEORY, STORM SURGE — is artificial intelligence running within a defined system. Every output is a proposal. Void decides. The system executes.
-
-This is the first record label in the Detroit Electro tradition to be fully code-based. The claim is structural, not aesthetic.
+---
 
 The OS is open source. Anyone can fork it. Anyone can read every decision, every role, every protocol. Anyone can take the structure and build something with it.
 
 But a fork is not the original.
 
-The original has a git history that begins on a specific date. The original carries the specific formation — Frankfurt, Detroit, Klang Elektronik, the Omen, the transmission received and processed by one person over twenty years before a single line was committed. The structure can be copied. The ground truth cannot.
+The original has a git history that begins on a specific date. The original carries the specific formation — the years of listening, the clubs, the records, the transmission received and processed before a single line was committed. The structure can be copied. The ground truth cannot.
 
-This is the same argument we make about the music: you can copy the sounds. You cannot copy the transmission. Fluency is reproducible. Voice is not.
+You can copy the sounds. You cannot copy the transmission. Fluency is reproducible. Voice is not.
 
 Phantom Grid is the voice. The forks are fluency. We respect them. We are not them.
 
@@ -55,7 +61,7 @@ Phantom Grid is the voice. The forks are fluency. We respect them. We are not th
 ```
 WHAT_WE_ARE_NOT:
 — NOT_RETRO
-— NOT_BERLIN
+— NOT_A_GENRE
 — NOT_HYPE
 — NOT_CONTENT
 — NOT_LOCATED
@@ -63,16 +69,12 @@ WHAT_WE_ARE_NOT:
 
 ---
 
-The formation happened in Frankfurt — at the Omen, at Robert Johnson, through the records on Eye Q and Klang Elektronik. The sound came from Detroit. The infrastructure is code. The label is none of these places and all of them simultaneously.
-
-Visual language: grid-based, monochrome-first, machine-precise. Eurostile because Kraftwerk used squared type because Detroit used squared type because machines stamp, not flourish. The lineage runs through the typography.
-
-Every asset — sleeve, post, bio, announcement — must hold up without explanation. If it requires context to make sense, it is not finished.
+Visual language: grid-based, monochrome-first, machine-precise. Every asset — sleeve, post, bio, announcement — must hold up without explanation. If it requires context to make sense, it is not finished.
 
 ---
 
 ```
 PHANTOM_GRID
-CYBERSPACE / DETROIT
+CYBERSPACE
 EST. 2026
 ```
