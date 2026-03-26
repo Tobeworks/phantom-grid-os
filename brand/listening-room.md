@@ -23,7 +23,7 @@ This is not a playlist. It is a reference system — a set of transmissions that
 
 | Track | Artist | Year | Why |
 |---|---|---|---|
-| Hibernation Drive | Acid Jesus | — | Frankfurt. Eye Q orbit. The sound of a city receiving the Detroit transmission and building something with it. Void's anchor. |
+| Hibernation Drive | Acid Jesus | 1997 | Frankfurt. Eye Q orbit. The sound of a city receiving the Detroit transmission and building something with it. Void's anchor. |
 | Acperience 1 | Hardfloor | 1992 | Harthouse Frankfurt. Acid as machine language — not a style but a process. |
 
 
