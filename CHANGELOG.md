@@ -6,6 +6,19 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.0.2] — 2026-03-26 — Identity: Tobi → Void / Persona rename to Drexciya tracks
+
+### Changed
+
+- All references to "Tobi" and "Tobias" replaced with "Void" across all role files and README
+- `README.md`: founder identity clarified — Void, no civil name in system context
+- Persona names replaced with Drexciya track names:
+  - Vera Cross → **WAVEJUMPER** *(Drexciya, Aquatic Invasion EP, 1993)*
+  - Leon Foss → **HYDRO THEORY** *(Drexciya, Neptune's Lair, 1999)*
+  - Mara Fels → **STORM SURGE** *(Drexciya, The Journey Home, 1995)*
+
+---
+
 ## [0.0.1] — 2026-03-26 — Initial system build
 
 ### Added
