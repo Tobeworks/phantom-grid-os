@@ -6,6 +6,20 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.0.5] — 2026-03-26 — Cyberspace identity
+
+### Changed
+
+- `brand/manifesto.md`: Cyberspace claim made explicit — "the first record label in the Detroit Electro tradition to be fully code-based"; `MAINZ / DETROIT` → `CYBERSPACE / DETROIT`; `NOT_LOCATED` added to exclusion list
+- `README.md`: Base confirmed as Cyberspace; About Void updated — distinction between Void as human and the label as a non-physical entity
+- `README.md`: repository structure updated with `COORDINATES.md`
+
+### Added
+
+- `COORDINATES.md` — label location in cyberspace; platform URL registry; signal origin
+
+---
+
 ## [0.0.4] — 2026-03-26 — System operational
 
 ### Added

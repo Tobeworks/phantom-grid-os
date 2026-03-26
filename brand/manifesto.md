@@ -28,11 +28,17 @@ RELEASE_CRITERIA:
 
 ---
 
-The label is run from Mainz. The sound came from Detroit. The formation happened in Frankfurt — at the Omen, at Robert Johnson, through the records on Eye Q and Klang Elektronik. This is not a Berlin label. We do not explain the difference. It is audible.
+Phantom Grid exists in Cyberspace.
 
-Visual language: grid-based, monochrome-first, machine-precise. Eurostile because Kraftwerk used squared type because Detroit used squared type because machines stamp, not flourish. The lineage runs through the typography.
+Not as a metaphor. The label has no physical address, no office, no geography. Its infrastructure is code — version-controlled, documented, operational. The entire system — A&R decisions, brand rules, release protocols, communication strategy — lives in a repository. Every decision is committed. The git history is the label's history.
 
-Every asset — sleeve, post, bio, announcement — must hold up without explanation. If it requires context to make sense, it is not finished.
+This is not a label that uses technology. This is a label that is technology.
+
+Drexciya lived underwater. UR operated from occupied territories with no fixed coordinates. Model 500 spoke of machine futures before the machines arrived. Phantom Grid extends that lineage: a label that exists where the transmissions travel — in the space between machines, between cities, between frequencies.
+
+The label is founded and directed by Void. The operational layer — WAVEJUMPER, HYDRO THEORY, STORM SURGE — is artificial intelligence running within a defined system. Every output is a proposal. Void decides. The system executes.
+
+This is the first record label in the Detroit Electro tradition to be fully code-based. The claim is structural, not aesthetic.
 
 ---
 
@@ -42,18 +48,21 @@ WHAT_WE_ARE_NOT:
 — NOT_BERLIN
 — NOT_HYPE
 — NOT_CONTENT
+— NOT_LOCATED
 ```
 
 ---
 
-Void founded this label. The AI team — WAVEJUMPER, HYDRO THEORY, STORM SURGE — executes within the system. All outputs are proposals. Void decides.
+The formation happened in Frankfurt — at the Omen, at Robert Johnson, through the records on Eye Q and Klang Elektronik. The sound came from Detroit. The infrastructure is code. The label is none of these places and all of them simultaneously.
 
-The grid is always present. Sometimes visible. Sometimes not. That is the point.
+Visual language: grid-based, monochrome-first, machine-precise. Eurostile because Kraftwerk used squared type because Detroit used squared type because machines stamp, not flourish. The lineage runs through the typography.
+
+Every asset — sleeve, post, bio, announcement — must hold up without explanation. If it requires context to make sense, it is not finished.
 
 ---
 
 ```
 PHANTOM_GRID
-MAINZ / DETROIT
+CYBERSPACE / DETROIT
 EST. 2026
 ```

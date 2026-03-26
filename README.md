@@ -2,7 +2,7 @@
 
 > Operating system for Phantom Grid — roles, brand system, workflows and release intelligence.
 
-**Version:** 0.0.4 — see [CHANGELOG.md](CHANGELOG.md)
+**Version:** 0.0.5 — see [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
@@ -42,6 +42,7 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 ```
 phantom-grid-os/
 ├── README.md                        ← this file — load first
+├── COORDINATES.md                   ← label location in cyberspace; platform URLs
 ├── transmission-log.md              ← running log of all label events
 ├── roles/
 │   ├── art-direction.md             ← WAVEJUMPER — Visual Identity & Art Direction
@@ -124,6 +125,6 @@ Void is a developer and music producer with over 20 years of experience in music
 
 He is based in Mainz — ten minutes from Frankfurt. His formation as a producer runs through the Frankfurt electronic music lineage: the Omen as the site of first contact with the Detroit transmission, Robert Johnson in Offenbach as the standard for what serious club culture looks like. He has released on **Klang Elektronik** as Antiga Prime — Ata's label, the direct extension of the Robert Johnson aesthetic into recorded music. That connection is not incidental. It is the ground Phantom Grid stands on.
 
-Phantom Grid is his first label operating in the electronic/club music space. He brings to it the same systems-thinking and craft discipline that defines his development work.
+Phantom Grid is his first label operating in the electronic/club music space — and the first record label in the Detroit Electro tradition to be fully code-based. The label exists in Cyberspace. Void, as a human being, does not. He is the founder and director of a system that operates without physical location. He brings to it the same systems-thinking and craft discipline that defines his development work.
 
 He prefers direct, efficient communication. No filler. No unnecessary preamble. Proposals over questions where possible.
