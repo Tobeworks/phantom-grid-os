@@ -5,7 +5,6 @@ The operating layer for the world's first 100% code-based music label.
 
 Usage:
   ./pg generate <release-folder-path>              — scan audio, write release.json
-  ./pg generate <release-folder-path> --detect-bpm — includes BPM detection
   ./pg validate <release-folder-path>              — validate against schema
   ./pg validate <release-folder-path> --generate-md — validate + write release.md
   ./pg push <release-folder-path>                  [coming]
@@ -23,11 +22,9 @@ def cli():
 
 @cli.command()
 @click.argument('release_path', type=click.Path(exists=True))
-@click.option('--detect-bpm', is_flag=True, default=False,
-              help='Attempt BPM detection via librosa (slower, not always accurate).')
-def generate(release_path, detect_bpm):
+def generate(release_path):
     """Scan audio folder and generate release.json skeleton."""
-    generate_release(release_path, detect_bpm_flag=detect_bpm)
+    generate_release(release_path)
 
 @cli.command()
 @click.argument('release_path', type=click.Path(exists=True))

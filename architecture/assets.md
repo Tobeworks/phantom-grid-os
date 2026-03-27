@@ -97,8 +97,6 @@ Examples:
       "number": 1,
       "title": "Track Title",
       "file": "01_track_title.wav",
-      "bpm": 128,
-      "key": "A minor",
       "duration": "6:42"
     }
   ],

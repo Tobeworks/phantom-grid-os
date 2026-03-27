@@ -17,7 +17,7 @@ init(autoreset=True)
 REQUIRED_FIELDS = ['release_id', 'artist', 'title', 'format', 'label',
                    'catalog', 'release_date', 'tracks', 'artwork']
 
-TRACK_REQUIRED = ['number', 'title', 'file', 'bpm', 'key', 'duration']
+TRACK_REQUIRED = ['number', 'title', 'file', 'duration']
 
 WAV_NAMING_RE = re.compile(r'^\d{2}_[a-z0-9_]+\.wav$')
 
@@ -151,8 +151,7 @@ def _generate_release_md(data: dict, asset_path: Path):
     """Generate a release.md draft from validated release.json."""
 
     tracks_md = '\n'.join([
-        f"| {t['number']} | {t.get('title','—')} | {t.get('bpm','—')} | "
-        f"{t.get('key','—')} | {t.get('duration','—')} |"
+        f"| {t['number']} | {t.get('title','—')} | {t.get('duration','—')} |"
         for t in data.get('tracks', [])
     ])
 
@@ -169,8 +168,8 @@ def _generate_release_md(data: dict, asset_path: Path):
 
 ## Tracklist
 
-| # | Title | BPM | Key | Duration |
-|---|-------|-----|-----|----------|
+| # | Title | Duration |
+|---|-------|----------|
 {tracks_md}
 
 ---

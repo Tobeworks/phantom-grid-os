@@ -98,7 +98,7 @@ LATEST_SIGNALS                    STREAM_BUFFER: ACTIVE
 │  ARTIST: INPUT_NULL    │  ← 10px, Eurostile, Dirty Red, tracking 0.5em
 │  VECTOR_FIELD_SIGNALS  │  ← Eurostile Bold, 20px
 │                        │
-│  BPM: —    KEY: —      │  ← 10px, opacity 50%
+│  DURATION: —           │  ← 10px, opacity 50%
 └────────────────────────┘
 ```
 

@@ -1,7 +1,6 @@
 """
 generate.py — Phantom Grid release.json generator
 Scans audio/ folder for WAV/AIFF files and generates a pre-filled release.json.
-BPM detection is optional (--detect-bpm flag).
 """
 
 import json
@@ -50,22 +49,7 @@ def format_duration(seconds: float) -> str:
     return f"{m}:{s:02d}"
 
 
-def detect_bpm(file_path: Path) -> float | None:
-    """Attempt BPM detection via librosa. Returns None on failure."""
-    try:
-        import librosa
-        y, sr = librosa.load(str(file_path), sr=None, mono=True, duration=60)
-        tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
-        # librosa returns array in newer versions
-        if hasattr(tempo, '__len__'):
-            tempo = float(tempo[0])
-        return round(float(tempo), 1)
-    except Exception as e:
-        warn(f"BPM detection failed for {file_path.name}: {e}")
-        return None
-
-
-def generate_release(release_path: str, detect_bpm_flag: bool = False):
+def generate_release(release_path: str):
     path = Path(release_path)
     audio_path = path / 'audio'
 
@@ -105,17 +89,10 @@ def generate_release(release_path: str, detect_bpm_flag: bool = False):
             bit_depth_match = re.search(r'(\d+)', subtype)
             bit_depth = int(bit_depth_match.group(1)) if bit_depth_match else None
 
-            bpm = None
-            if detect_bpm_flag:
-                info(f"Detecting BPM for {f.name}...")
-                bpm = detect_bpm(f)
-
             track = {
                 "number": i,
                 "title": slugify(f.stem),
                 "file": f.name,
-                "bpm": bpm,
-                "key": "",
                 "duration": duration,
                 "_meta": {
                     "sample_rate": sample_rate,
@@ -125,8 +102,7 @@ def generate_release(release_path: str, detect_bpm_flag: bool = False):
             }
             tracks.append(track)
 
-            bpm_str = f" | BPM: ~{bpm}" if bpm else ""
-            ok(f"Track {i}: {f.name} | {duration} | {sample_rate}Hz | {bit_depth}bit{bpm_str}")
+            ok(f"Track {i}: {f.name} | {duration} | {sample_rate}Hz | {bit_depth}bit")
 
         except Exception as e:
             fail(f"Could not read {f.name}: {e}")
@@ -189,11 +165,6 @@ def generate_release(release_path: str, detect_bpm_flag: bool = False):
         manual_fields.append('title')
     if release['release_date'] == 'YYYY-MM-DD':
         manual_fields.append('release_date')
-    for t in tracks:
-        if not t.get('key'):
-            manual_fields.append(f"track {t['number']} key")
-        if not t.get('bpm'):
-            manual_fields.append(f"track {t['number']} bpm")
 
     for f in manual_fields:
         warn(f)
