@@ -3,13 +3,12 @@
 # Activates venv and dispatches to phantom-grid.py
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
 
-if [ ! -d "venv" ]; then
+if [ ! -d "$SCRIPT_DIR/venv" ]; then
   echo "✗ venv not found. Run: bash tools/setup.sh"
   exit 1
 fi
 
-source venv/bin/activate
-python phantom-grid.py "$@"
+source "$SCRIPT_DIR/venv/bin/activate"
+python "$SCRIPT_DIR/phantom-grid.py" "$@"
 deactivate
