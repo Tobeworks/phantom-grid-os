@@ -114,12 +114,15 @@ def validate_release(release_path: str, generate_md: bool = False):
     # ── 4. Artwork ────────────────────────────────────────────────────────────
     header("4. ARTWORK")
 
-    artwork_path = path / 'artwork' / 'cover.png'
-    if not artwork_path.exists():
-        fail("artwork/cover.png not found")
+    artwork_dir = path / 'artwork'
+    pngs = sorted(artwork_dir.glob('*.png')) if artwork_dir.exists() else []
+    artwork_path = pngs[0] if pngs else None
+
+    if not artwork_path:
+        fail("No PNG found in artwork/")
         errors.append('cover')
     else:
-        ok("artwork/cover.png found")
+        ok(f"artwork/{artwork_path.name} found")
         try:
             with Image.open(artwork_path) as img:
                 w, h = img.size
