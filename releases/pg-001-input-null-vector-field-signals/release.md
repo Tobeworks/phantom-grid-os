@@ -10,7 +10,7 @@
 |---|---|
 | Release ID | PG-001 |
 | Artist | Input Null |
-| Members | Void + Paradroid |
+| Members | Cortexia + Paradroid |
 | Title | Vector Field Signals |
 | Format | EP |
 | Track count | — |
@@ -30,7 +30,7 @@
 
 ## LINEAGE
 
-Detroit Electro — machine-driven, aquatic undertone. Input Null operates in the UR / Drexciya tradition without reproduction. Two producers, one transmission.
+Modern Electro — machine-driven, aquatic undertone. Input Null operates in tradition without reproduction, with a modern accent. Two producers, one transmission.
 
 ## KEY_DATES
 

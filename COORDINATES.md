@@ -28,17 +28,6 @@ Open source — MIT License. Fork it. Build your own.
 
 ---
 
-## SIGNAL_ORIGIN
-
-```
-FORMATION:  Frankfurt — Omen / Robert Johnson / Klang Elektronik
-LINEAGE:    Detroit — UR / Drexciya / Model 500
-FOUNDER:    Void
-ESTABLISHED: 2026
-```
-
----
-
 ## NOTE_ON_GEOGRAPHY
 
 Phantom Grid has no physical address. The label's location is this repository. Releases exist on platforms. The music travels through networks. The label is where the transmissions are.
