@@ -88,6 +88,15 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | [architecture/cpu-unit.md](architecture/cpu-unit.md) | CPU Unit vision; pipeline architecture; roles as agents |
 | [architecture/assets.md](architecture/assets.md) | Asset convention; release.json schema; validation rules |
 
+**Tools**
+| File | Description |
+|---|---|
+| [tools/pg](tools/pg) | CLI bootstrapper — entry point for all toolchain commands |
+| [tools/phantom-grid.py](tools/phantom-grid.py) | Main CLI — command registry |
+| [tools/commands/generate.py](tools/commands/generate.py) | `generate` — scan audio folder, write release.json |
+| [tools/commands/validate.py](tools/commands/validate.py) | `validate` — check release folder against schema |
+| [tools/setup.sh](tools/setup.sh) | One-time setup — creates venv, installs deps |
+
 **Workflows**
 | File | Description |
 |---|---|

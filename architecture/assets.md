@@ -121,10 +121,27 @@ All fields except `notes` and `distribution` URLs are required before validation
 
 ---
 
-## VALIDATION
+## TOOLCHAIN
 
-The script `tools/validate-release.py` in the OS repo reads a release folder and checks:
+All toolchain commands run via the `pg` CLI bootstrapper. First-time setup:
 
+```bash
+bash tools/setup.sh
+```
+
+### `generate` — scan audio, write release.json
+
+Scans `audio/` for WAV/AIFF files. Reads duration, sample rate, bit depth. Merges with any existing `release.json`, preserving manually entered fields.
+
+```bash
+./tools/pg generate ~/Sites/Phantom\ Grid/phantom-grid-assets/pg-001-input-null-vector-field-signals/
+```
+
+Output: pre-filled `release.json` with all detectable data. Manual fields flagged.
+
+### `validate` — check release folder against schema
+
+Checks:
 1. `release.json` exists and is valid JSON
 2. All required fields are non-null
 3. Every `file` listed in `tracks[]` exists in `audio/`
@@ -132,9 +149,12 @@ The script `tools/validate-release.py` in the OS repo reads a release folder and
 5. `cover.png` exists in `artwork/`
 6. Cover resolution meets 3000×3000px minimum
 
-Run:
 ```bash
-python tools/validate-release.py ~/Sites/Phantom\ Grid/phantom-grid-assets/pg-001-input-null-vector-field-signals/
+./tools/pg validate ~/Sites/Phantom\ Grid/phantom-grid-assets/pg-001-input-null-vector-field-signals/
 ```
 
-Output: validation report + auto-generated `release.md` draft if all checks pass.
+Add `--generate-md` to output a `release_draft.md` if all checks pass:
+
+```bash
+./tools/pg validate /path/to/release/ --generate-md
+```
