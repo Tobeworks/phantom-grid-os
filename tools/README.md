@@ -1,205 +1,162 @@
-# Phantom Grid Tools
+# Phantom Grid Toolchain
 
-The `tools/` folder is the operational layer of the Phantom Grid OS.
-A CLI that takes a release asset folder from raw audio to validated release data and social media exports.
+Command-line interface for the world's first 100% code-based music label.
 
 ---
 
 ## Setup
 
-Run once after cloning:
+One-time setup — creates a Python virtual environment and installs all dependencies:
 
 ```bash
 bash tools/setup.sh
 ```
 
-Creates a Python venv in `tools/venv/` and installs all dependencies.
+**System requirements:**
+- Python 3.10+
+- ffmpeg (for audio conversion and video encoding)
 
 ---
 
 ## Usage
 
+All commands run through the `pg` bootstrapper from the repo root:
+
 ```bash
-./tools/pg <command> <release-folder-path> [options]
+./tools/pg <command> <release-path> [options]
 ```
 
-All commands take an absolute or relative path to a release asset folder.
-Release asset folders live in `phantom-grid-assets/` — outside this repo.
+The `release-path` is the asset folder in `phantom-grid-assets/`, e.g.:
+
+```
+../phantom-grid-assets/pg-001-input-null-vector-field-signals
+```
 
 ---
 
 ## Commands
 
 ### `generate`
-
-Scans `audio/` for WAV/AIFF files and writes a pre-filled `release.json`.
-Preserves existing manual fields if `release.json` already exists.
+Scans the `audio/` folder for WAV or AIFF files and writes a pre-filled `release.json`.
 
 ```bash
-./tools/pg generate ../phantom-grid-assets/pg-001-input-null-vector-field-signals
+./tools/pg generate <release-path>
 ```
 
-**What it detects automatically:**
-- Track filenames → title slugs
-- Duration, sample rate, bit depth per file
-- Track numbering from filename prefix
+- Reads filenames, duration, sample rate, bit depth
+- Preserves existing manual values in `release.json` if the file already exists
+- Flags all fields that still require manual input after generation
 
-**What requires manual input after generation:**
-- `artist`, `title`, `release_date`
-- Per-track: `title` (human-readable), `duration` (confirm)
+**After running:** Open `release.json` and fill in: `artist`, `title`, `release_date`, track titles.
 
 ---
 
 ### `validate`
-
 Validates a release asset folder against the Phantom Grid schema.
 
 ```bash
-./tools/pg validate ../phantom-grid-assets/pg-001-input-null-vector-field-signals
-./tools/pg validate ../phantom-grid-assets/pg-001-... --generate-md
+./tools/pg validate <release-path>
+./tools/pg validate <release-path> --generate-md
 ```
 
 **Checks:**
-- `release.json` is valid and all required fields are populated
-- Each track's audio file exists in `audio/`
+- `release.json` exists and is valid JSON
+- All required fields are non-empty
+- All track audio files exist in `audio/`
 - At least one PNG or JPG exists in `artwork/`
-- Cover resolution ≥ 3000×3000px
+- Cover image resolution ≥ 3000×3000px
 
-**`--generate-md`** writes a `release_draft.md` to the asset folder on success.
+`--generate-md` — if all checks pass, writes a `release_draft.md` into the asset folder.
 
 ---
 
 ### `convert`
-
-Converts all audio files in `audio/` from WAV/AIFF to MP3 320kbps CBR.
-Embeds full ID3 tags and cover art from `artwork/` into every MP3.
+Converts WAV/AIFF source files to MP3 320kbps CBR with full ID3 tagging and embedded cover art.
 
 ```bash
-./tools/pg convert ../phantom-grid-assets/pg-001-input-null-vector-field-signals
-./tools/pg convert ../phantom-grid-assets/pg-001-... --force   # overwrite existing
+./tools/pg convert <release-path>
+./tools/pg convert <release-path> --force
 ```
 
-**Tags written automatically from `release.json`:**
+**Tags written:** Artist, Title, Album, Track number, Year, Label, Catalog number, Cover art (APIC).
 
-| ID3 Tag | Source |
-|---|---|
-| Artist | `artist` |
-| Title | `track.title` |
-| Album | `title` |
-| Track # | `track.number / total` |
-| Year | `release_date` (first 4 chars) |
-| Label | `label` |
-| Catalog | `catalog` (TXXX frame) |
-| Cover | First PNG/JPG in `artwork/` |
+**Output:** `<release-path>/export/mp3/`
 
-**Output:**
-```
-phantom-grid-assets/pg-001-.../
-└── export/
-    └── mp3/
-        ├── 01_track_title.mp3
-        └── ...
-```
-
-MP3s are Bandcamp-ready: tagged, cover embedded, 320kbps.
+`--force` — overwrites existing MP3 files.
 
 ---
 
 ### `social`
-
-Renders social media video assets (MP4) from release audio and cover art.
-Native implementation — no external tool dependencies.
-
-**Step 1 — Initialize config (run once per release):**
+Renders social media video assets from release audio and artwork.
 
 ```bash
-./tools/pg social ../phantom-grid-assets/pg-001-... --init
+# Initialise social.json config (run once, then edit)
+./tools/pg social <release-path> --init
+
+# Render all tracks, square format
+./tools/pg social <release-path> --format square
+
+# Render all tracks, all formats
+./tools/pg social <release-path> --format all
+
+# Render a single track
+./tools/pg social <release-path> --format square --track 1
+
+# Custom duration
+./tools/pg social <release-path> --format reel --duration 45
 ```
 
-Writes `social.json` to the asset folder with defaults and one entry per track.
+**Formats:** `square` (1080×1080), `reel` (1080×1920), `all`
 
-**Step 2 — Edit `social.json`:**
+**Output:** `<release-path>/export/social/<format>/`
 
-```json
-{
-  "defaults": {
-    "duration": 30,
-    "accent_color": "#CC2222",
-    "bg_color": "#0E0E0E",
-    "font_color": "#DCDCDC",
-    "n_bars": 40,
-    "fade_secs": 1.5,
-    "show_progress_bar": false
-  },
-  "tracks": [
-    {
-      "number": 1,
-      "title_override": null,
-      "start": null,
-      "duration": null,
-      "skip": false
-    }
-  ]
-}
-```
+**Brand defaults:** `#CC2222` accent, `#0E0E0E` background, Eurostile font, Terminal Glow waveform.
 
-| Field | Description |
-|---|---|
-| `duration` | Clip length in seconds (default: 30) |
-| `accent_color` | Waveform bar color (default: `#CC2222`) |
-| `n_bars` | Number of waveform bars (default: 40) |
-| `fade_secs` | Audio fade in/out duration |
-| `title_override` | Replace track title in video text |
-| `start` | Start position in seconds (`null` = auto center) |
-| `skip` | Set `true` to exclude a track from rendering |
-
-**Step 3 — Render:**
-
-```bash
-./tools/pg social ../phantom-grid-assets/pg-001-... --format square
-./tools/pg social ../phantom-grid-assets/pg-001-... --format reel
-./tools/pg social ../phantom-grid-assets/pg-001-... --format all
-./tools/pg social ../phantom-grid-assets/pg-001-... --duration 45
-```
-
-**Output:**
-```
-phantom-grid-assets/pg-001-.../
-└── export/
-    └── social/
-        ├── square/    ← 1080×1080 MP4 (feed)
-        └── reel/      ← 1080×1920 MP4 (stories/reels)
-```
+**`social.json`** — generated by `--init`, controls per-track start times, duration overrides, title overrides, and skip flags. Edit before rendering.
 
 ---
 
-## Asset Folder Structure
+## Release Asset Structure
 
 ```
 phantom-grid-assets/
 └── pg-001-input-null-vector-field-signals/
     ├── audio/
-    │   ├── 01_track_title.wav        (preferred naming)
-    │   └── Artist - Title.wav        (also accepted)
+    │   └── 01_track-title.wav        ← source files
     ├── artwork/
-    │   └── cover.png                 (min. 3000×3000px)
+    │   └── cover.png                 ← min 3000×3000px
     ├── export/
-    │   ├── mp3/                      ← pg convert output
-    │   │   ├── 01_track_title.mp3
-    │   │   └── ...
-    │   └── social/                   ← pg social output
+    │   ├── mp3/                      ← convert output
+    │   └── social/                   ← social output
     │       ├── square/
     │       └── reel/
     ├── release.json                  ← source of truth
-    └── social.json                   ← social render config
+    └── social.json                   ← social render config (optional)
 ```
 
 ---
 
-## Coming
+## Workflow
 
-| Command | Description |
-|---|---|
-| `push` | Push release to Bandcamp via API |
-| `promo` | Generate promo text from release.json via Claude |
+```
+generate → validate → convert → social → push (coming)
+```
 
+1. `generate` — build release.json from audio files
+2. Edit `release.json` — fill in artist, title, track titles, release date
+3. Place cover in `artwork/`
+4. `validate` — confirm everything is correct
+5. `validate --generate-md` — generate release draft
+6. `convert` — export tagged MP3s
+7. `social --init` — generate social.json, edit start times
+8. `social --format all` — render video assets
+
+---
+
+## Adding Commands
+
+New commands go in `tools/commands/`. Register them in `tools/phantom-grid.py` following the existing pattern.
+
+---
+
+*Part of phantom-grid-os — github.com/Tobeworks/phantom-grid-os*

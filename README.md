@@ -71,6 +71,13 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 |---|---|---|
 | [roles/art-direction.md](roles/art-direction.md) | WAVEJUMPER | Visual Identity & Art Direction |
 | [roles/anr-curation.md](roles/anr-curation.md) | HYDRO THEORY | A&R / Music Curation |
+
+**Soul**
+| File | Persona |
+|---|---|
+| [soul/wavejumper.md](soul/wavejumper.md) | WAVEJUMPER |
+| [soul/hydro-theory.md](soul/hydro-theory.md) | HYDRO THEORY |
+| [soul/storm-surge.md](soul/storm-surge.md) | STORM SURGE |
 | [roles/social-media.md](roles/social-media.md) | STORM SURGE | Social Media & Content |
 
 **Brand**
@@ -104,6 +111,8 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | File | Description |
 |---|---|
 | [workflows/handoffs.md](workflows/handoffs.md) | Inter-persona handoff protocols |
+| [workflows/platform-texts.md](workflows/platform-texts.md) | Platform texts — Bandcamp, RA, Instagram, SoundCloud |
+| [workflows/session-init.md](workflows/session-init.md) | Session init templates — standardized prompts per persona |
 
 **Releases**
 | File | Description |
