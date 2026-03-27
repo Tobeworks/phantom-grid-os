@@ -94,6 +94,7 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 |---|---|
 | [architecture/cpu-unit.md](architecture/cpu-unit.md) | CPU Unit vision; pipeline architecture; roles as agents |
 | [architecture/assets.md](architecture/assets.md) | Asset convention; release.json schema; validation rules |
+| [architecture/web.md](architecture/web.md) | Web architecture; repo structure, data flow OS→Web, routing, deployment |
 
 **Tools**
 | File | Description |
