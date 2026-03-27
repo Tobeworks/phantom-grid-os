@@ -8,7 +8,7 @@ Phantom Grid is a record label. It exists as code.
 
 Not a label with a website. Not a label that uses apps and tools. A label whose entire brain — the rules, the decisions, the aesthetic system, the release process — lives in a public code repository. Version-controlled. Permanent. Open for anyone to read.
 
-The team that operates this infrastructure is artificial intelligence. The founder is human. The label is not located anywhere.
+The team that operates this infrastructure is artificial intelligence. The founder is human. The label is not located anywhere, it`s a part of cyberspace.
 
 ---
 
@@ -48,7 +48,7 @@ Phantom Grid is a record label whose operational layer is a public GitHub reposi
 
 The stack:
 - **OS:** this repo — markdown files, version-controlled, MIT licensed
-- **Agents:** Claude (Anthropic) — role files as system prompts, dispatched via Claude Agent SDK
+- **Agents:** role files as system prompts, dispatched via AI SDKs
 - **Pipeline:** in development — release commit triggers Bandcamp upload, social posts, RA submission
 - **Website:** Astro — separate repo, consumes OS data
 
