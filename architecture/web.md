@@ -108,10 +108,8 @@ Same pattern as all apps in the netcup cluster:
 ```
 phantom-grid-web/
 ├── Dockerfile
-├── apps/phantom-grid-web/
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── ingress.yaml        ← phantom-grid.de (replaces coming soon)
+├── nginx/nginx.conf
+├── .github/workflows/build.yaml
 ```
 
 ArgoCD Application manifest in `netcup/cluster/argocd-apps/phantom-grid-web.yaml`.
@@ -122,6 +120,49 @@ git push → GitHub Actions → docker build → ghcr.io push → ArgoCD auto-sy
 ```
 
 The coming soon page (`phantom-grid.de`) is replaced by this deployment when the first version is ready.
+
+### Dockerfile
+
+Two-stage build:
+
+1. `node:20-alpine` — installs dependencies via pnpm, runs `pnpm build`, produces `dist/`
+2. `nginx:alpine` — copies `dist/` and `nginx/nginx.conf`, serves on port 8080
+
+```dockerfile
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable && pnpm install --frozen-lockfile
+COPY . .
+RUN pnpm build
+
+FROM nginx:alpine
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 8080
+```
+
+### GitHub Actions — build.yaml
+
+Trigger: push to `main`.
+
+**Critical:** `submodules: recursive` in the checkout step is required. Without it, the `phantom-grid-os` submodule is not checked out and the Astro build fails — content files are missing.
+
+```yaml
+- uses: actions/checkout@v4
+  with:
+    submodules: recursive
+```
+
+Image pushed to `ghcr.io/tobeworks/phantom-grid-web:latest`. ArgoCD Image Updater detects the new digest and redeploys automatically.
+
+### nginx
+
+Port 8080 (cluster standard). Features:
+- `/healthz` endpoint for liveness/readiness probes
+- Aggressive caching for static assets (1y, immutable)
+- gzip compression for all text-based formats
+- SPA fallback: `try_files $uri $uri/ /index.html`
 
 ---
 
