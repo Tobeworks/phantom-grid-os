@@ -4,19 +4,30 @@ Phantom Grid CLI
 The operating layer for the world's first 100% code-based music label.
 
 Usage:
-  ./pg validate <release-folder-path>
-  ./pg generate <release-folder-path>   [coming]
-  ./pg push <release-folder-path>       [coming]
+  ./pg generate <release-folder-path>              — scan audio, write release.json
+  ./pg generate <release-folder-path> --detect-bpm — includes BPM detection
+  ./pg validate <release-folder-path>              — validate against schema
+  ./pg validate <release-folder-path> --generate-md — validate + write release.md
+  ./pg push <release-folder-path>                  [coming]
 """
 
 import click
 from commands.validate import validate_release
+from commands.generate import generate_release
 
 @click.group()
-@click.version_option(version='0.1.0', prog_name='phantom-grid')
+@click.version_option(version='0.2.0', prog_name='phantom-grid')
 def cli():
     """Phantom Grid OS — label toolchain."""
     pass
+
+@cli.command()
+@click.argument('release_path', type=click.Path(exists=True))
+@click.option('--detect-bpm', is_flag=True, default=False,
+              help='Attempt BPM detection via librosa (slower, not always accurate).')
+def generate(release_path, detect_bpm):
+    """Scan audio folder and generate release.json skeleton."""
+    generate_release(release_path, detect_bpm_flag=detect_bpm)
 
 @cli.command()
 @click.argument('release_path', type=click.Path(exists=True))
@@ -26,10 +37,7 @@ def validate(release_path, generate_md):
     """Validate a release asset folder against the Phantom Grid schema."""
     validate_release(release_path, generate_md=generate_md)
 
-# Future commands registered here:
-# @cli.command()
-# def generate(): ...
-#
+# Future commands:
 # @cli.command()
 # def push(): ...
 
