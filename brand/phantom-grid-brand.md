@@ -476,6 +476,22 @@ Raw SVG lines (0.1rem stroke width) connecting related information elements. Mim
 
 ---
 
+### Post-Production — Video
+
+The visual effect system is not limited to the web. The same atmospheric stack — scanlines, vignette, film grain, color grade — is available as a post-production filter for video assets.
+
+**Tool:** `tools/phantom-grid-vhs.sh`
+
+```bash
+./tools/phantom-grid-vhs.sh input.mp4
+```
+
+Applies to any MP4: release teasers, social clips, live recordings, behind-the-scenes material. The output carries the same terminal glow signature as the web interface.
+
+**Conceptual rule:** any video that represents Phantom Grid in public should pass through this filter. The aesthetic is not optional. It is the medium.
+
+---
+
 ## 6. Component Rules
 
 ### Roundedness: Zero

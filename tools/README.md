@@ -153,6 +153,34 @@ generate → validate → convert → social → push (coming)
 
 ---
 
+## Standalone Tools
+
+### `phantom-grid-vhs.sh`
+
+Applies the Phantom Grid terminal glow effect stack to any MP4 file via FFmpeg. Standalone — does not require the Python environment.
+
+**Requirements:** `ffmpeg` (system install)
+
+```bash
+# Basic usage
+./tools/phantom-grid-vhs.sh input.mp4
+
+# Custom output path
+./tools/phantom-grid-vhs.sh input.mp4 output_pg.mp4
+```
+
+**Effects applied:**
+- Scanlines — horizontal 4px grid at 20% opacity
+- Film grain — temporal noise, intensity 14
+- Vignette — `PI/4.5`, dark edges / luminous center
+- Color grade — red channel +5%, green/blue slightly reduced
+
+**Output:** `input_pg.mp4` alongside the source file (or custom path if specified).
+
+Use this on any video — release teasers, social clips, behind-the-scenes footage — to apply the label aesthetic in post-production.
+
+---
+
 ## Adding Commands
 
 New commands go in `tools/commands/`. Register them in `tools/phantom-grid.py` following the existing pattern.
