@@ -39,17 +39,17 @@ def validate(release_path, generate_md):
 
 @cli.command()
 @click.argument('release_path', type=click.Path(exists=True))
-@click.option('--format', 'output_format', default='all',
-              type=click.Choice(['square', 'reel', 'carousel', 'all']),
-              help='Output format. Default: all.')
+@click.option('--format', 'output_format', default='square',
+              type=click.Choice(['square', 'reel', 'all']),
+              help='Output format. Default: square.')
 @click.option('--duration', default=30, show_default=True,
               help='Clip length in seconds.')
-@click.option('--force', is_flag=True, default=False,
-              help='Overwrite existing exports.')
-def social(release_path, output_format, duration, force):
-    """Render social media assets (MP4 + carousel PNGs) for a release."""
-    generate_social(release_path, output_format=output_format,
-                    clip_duration=duration, force=force)
+@click.option('--init', is_flag=True, default=False,
+              help='Write social.json config skeleton and exit.')
+def social(release_path, output_format, duration, init):
+    """Render social media assets for a release. Use --init to configure first."""
+    generate_social(release_path, fmt=output_format,
+                    duration=duration, init=init)
 
 # Future commands:
 # @cli.command()
