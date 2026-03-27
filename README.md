@@ -91,10 +91,12 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 **Tools**
 | File | Description |
 |---|---|
+| [tools/README.md](tools/README.md) | Full toolchain documentation — setup, commands, asset structure |
 | [tools/pg](tools/pg) | CLI bootstrapper — entry point for all toolchain commands |
 | [tools/phantom-grid.py](tools/phantom-grid.py) | Main CLI — command registry |
 | [tools/commands/generate.py](tools/commands/generate.py) | `generate` — scan audio folder, write release.json |
 | [tools/commands/validate.py](tools/commands/validate.py) | `validate` — check release folder against schema |
+| [tools/commands/social.py](tools/commands/social.py) | `social` — render social media MP4s from release assets |
 | [tools/setup.sh](tools/setup.sh) | One-time setup — creates venv, installs deps |
 
 **Workflows**
