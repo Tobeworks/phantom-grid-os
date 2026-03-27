@@ -161,7 +161,6 @@ def _generate_release_md(data: dict, asset_path: Path):
     md = f"""# {data['catalog']} — {data['artist']} — {data['title']}
 
 **Artist:** {data['artist']}
-**Members:** {', '.join(data.get('members', []))}
 **Format:** {data['format']}
 **Label:** {data['label']}
 **Catalog:** {data['catalog']}

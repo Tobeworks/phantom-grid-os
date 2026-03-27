@@ -130,7 +130,6 @@ def generate_release(release_path: str):
     release = {
         "release_id":   existing.get('release_id') or catalog,
         "artist":       existing.get('artist') or "FILL_IN",
-        "members":      existing.get('members') or [],
         "title":        existing.get('title') or "FILL_IN",
         "format":       existing.get('format') or "EP",
         "label":        existing.get('label') or "Phantom Grid",
