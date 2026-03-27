@@ -7,6 +7,7 @@ Output: export/social/square/, export/social/reel/
 
 import json
 import os
+import subprocess
 import sys
 import re
 from pathlib import Path
@@ -198,6 +199,31 @@ def add_grain(img: Image.Image, intensity: float = 0.03) -> Image.Image:
     return Image.fromarray(arr)
 
 
+# ── VHS post-processing ────────────────────────────────────────────────────────
+def apply_vhs_effect(mp4_path: Path) -> Path:
+    """Apply Phantom Grid terminal glow effect stack via FFmpeg. Replaces input."""
+    tmp_path = mp4_path.with_suffix('.vhs_tmp.mp4')
+    cmd = [
+        'ffmpeg', '-i', str(mp4_path),
+        '-vf',
+        'drawgrid=x=0:y=0:width=0:height=4:color=black@0.2:thickness=2,'
+        'noise=alls=14:allf=t+u,'
+        'vignette=PI/4.5,'
+        'colorchannelmixer=rr=1.05:gg=0.97:bb=0.95',
+        '-c:v', 'libx264', '-crf', '18', '-preset', 'slow',
+        '-c:a', 'copy',
+        str(tmp_path), '-y'
+    ]
+    result = subprocess.run(cmd, capture_output=True)
+    if result.returncode != 0:
+        warn(f"VHS effect failed: {result.stderr.decode()[-200:]}")
+        tmp_path.unlink(missing_ok=True)
+        return mp4_path
+    tmp_path.replace(mp4_path)
+    ok(f"VHS effect applied → {mp4_path.name}")
+    return mp4_path
+
+
 # ── Main render ────────────────────────────────────────────────────────────────
 DEFAULT_SOCIAL_CONFIG = {
     "defaults": {
@@ -207,7 +233,8 @@ DEFAULT_SOCIAL_CONFIG = {
         "font_color":        "#DCDCDC",
         "n_bars":            40,
         "fade_secs":         1.5,
-        "show_progress_bar": False
+        "show_progress_bar": False,
+        "vhs_effect":        True
     },
     "tracks": []
 }
@@ -365,10 +392,11 @@ def generate_social(release_path: str, fmt: str = "square",
 
     # ── Render ─────────────────────────────────────────────────────────────────
     header("4. RENDERING")
-    formats   = list(FORMATS.keys()) if fmt == "all" else [fmt]
-    fade_secs = float(defaults.get("fade_secs", 1.5))
-    n_bars    = int(defaults.get("n_bars", 40))
-    audio_dir = path / 'audio'
+    formats    = list(FORMATS.keys()) if fmt == "all" else [fmt]
+    fade_secs  = float(defaults.get("fade_secs", 1.5))
+    n_bars     = int(defaults.get("n_bars", 40))
+    vhs_effect = bool(defaults.get("vhs_effect", True))
+    audio_dir  = path / 'audio'
 
     for t in tracks:
         num      = t.get("number")
@@ -395,7 +423,7 @@ def generate_social(release_path: str, fmt: str = "square",
 
         for f in formats:
             out_dir = path / 'export' / 'social' / f
-            render_track(
+            out_path = render_track(
                 audio_path, cover_path, artist, track_title,
                 f, out_dir,
                 duration=track_duration,
@@ -403,6 +431,8 @@ def generate_social(release_path: str, fmt: str = "square",
                 n_bars=n_bars,
                 fade_secs=fade_secs
             )
+            if vhs_effect:
+                apply_vhs_effect(out_path)
 
     header("5. DONE")
     ok(f"Output: {path / 'export' / 'social'}")
