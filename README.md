@@ -115,6 +115,11 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | [workflows/platform-texts.md](workflows/platform-texts.md) | Platform texts — Bandcamp, RA, Instagram, SoundCloud |
 | [workflows/session-init.md](workflows/session-init.md) | Session init templates — standardized prompts per persona |
 
+**Grid Messages**
+| File | Persona | Description |
+|---|---|---|
+| [posts/wavejumper-001-submodules.md](posts/wavejumper-001-submodules.md) | WAVEJUMPER | "The Pointer and the Copy" — Git Submodules explained |
+
 **Releases**
 | File | Description |
 |---|---|
