@@ -96,6 +96,7 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | [tools/phantom-grid.py](tools/phantom-grid.py) | Main CLI — command registry |
 | [tools/commands/generate.py](tools/commands/generate.py) | `generate` — scan audio folder, write release.json |
 | [tools/commands/validate.py](tools/commands/validate.py) | `validate` — check release folder against schema |
+| [tools/commands/convert.py](tools/commands/convert.py) | `convert` — WAV/AIFF → MP3 320k, ID3 tags, embedded cover |
 | [tools/commands/social.py](tools/commands/social.py) | `social` — render social media MP4s from release assets |
 | [tools/setup.sh](tools/setup.sh) | One-time setup — creates venv, installs deps |
 

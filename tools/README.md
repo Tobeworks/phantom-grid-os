@@ -69,6 +69,42 @@ Validates a release asset folder against the Phantom Grid schema.
 
 ---
 
+### `convert`
+
+Converts all audio files in `audio/` from WAV/AIFF to MP3 320kbps CBR.
+Embeds full ID3 tags and cover art from `artwork/` into every MP3.
+
+```bash
+./tools/pg convert ../phantom-grid-assets/pg-001-input-null-vector-field-signals
+./tools/pg convert ../phantom-grid-assets/pg-001-... --force   # overwrite existing
+```
+
+**Tags written automatically from `release.json`:**
+
+| ID3 Tag | Source |
+|---|---|
+| Artist | `artist` |
+| Title | `track.title` |
+| Album | `title` |
+| Track # | `track.number / total` |
+| Year | `release_date` (first 4 chars) |
+| Label | `label` |
+| Catalog | `catalog` (TXXX frame) |
+| Cover | First PNG/JPG in `artwork/` |
+
+**Output:**
+```
+phantom-grid-assets/pg-001-.../
+└── export/
+    └── mp3/
+        ├── 01_track_title.mp3
+        └── ...
+```
+
+MP3s are Bandcamp-ready: tagged, cover embedded, 320kbps.
+
+---
+
 ### `social`
 
 Renders social media video assets (MP4) from release audio and cover art.
@@ -146,11 +182,15 @@ phantom-grid-assets/
     │   └── Artist - Title.wav        (also accepted)
     ├── artwork/
     │   └── cover.png                 (min. 3000×3000px)
+    ├── export/
+    │   └── mp3/                      ← pg convert output
+    │       ├── 01_track_title.mp3
+    │       └── ...
+    ├── social/                       ← pg social output
+    │   ├── square/
+    │   └── reel/
     ├── release.json                  ← source of truth
-    ├── social.json                   ← social render config
-    └── social/
-        ├── square/
-        └── reel/
+    └── social.json                   ← social render config
 ```
 
 ---

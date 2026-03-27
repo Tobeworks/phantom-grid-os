@@ -69,7 +69,7 @@ def tag_mp3(mp3_path: Path, track: dict, release: dict,
     tags['TALB'] = TALB(encoding=3, text=release.get('title', ''))
     tags['TRCK'] = TRCK(encoding=3,
                         text=f"{track.get('number', 1)}/{len(release.get('tracks', []))}")
-    tags['TCON'] = TCON(encoding=3, text=release.get('genre', 'Electronic'))
+    tags['TCON'] = TCON(encoding=3, text='Electronic')
     tags['TPUB'] = TPUB(encoding=3, text=release.get('label', 'Phantom Grid'))
 
     if year:
