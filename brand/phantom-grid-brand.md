@@ -343,6 +343,66 @@ background-size: 24px 24px;
 
 The grid is always present — sometimes visible, sometimes not.
 
+### VHS Glitch — Signal Corruption Effect
+
+Applied to primary typographic elements (wordmark, section headers) to simulate analog tape dropout and signal interference.
+
+Two components:
+
+**1. Chromatic aberration** — constant, subtle. Red/cyan channel separation on the text.
+
+**2. Glitch pulse** — occasional, rhythmic. Horizontal displacement + opacity drop, simulating a frame tear or head clog on a VHS tape.
+
+```css
+.wordmark {
+  animation: vhs-flicker 6s step-end infinite;
+}
+
+@keyframes vhs-flicker {
+  0%, 100% {
+    text-shadow: 2px 0 rgba(204, 34, 34, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
+    opacity: 1;
+    transform: none;
+  }
+  88% {
+    text-shadow: 2px 0 rgba(204, 34, 34, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
+    opacity: 1;
+    transform: none;
+  }
+  89% {
+    text-shadow: 5px 0 rgba(204, 34, 34, 0.9), -5px 0 rgba(0, 200, 255, 0.5);
+    opacity: 0.75;
+    transform: translateX(4px);
+  }
+  90% {
+    text-shadow: -4px 0 rgba(204, 34, 34, 0.8), 4px 0 rgba(0, 200, 255, 0.4);
+    opacity: 0.85;
+    transform: translateX(-3px);
+  }
+  91% {
+    text-shadow: 2px 0 rgba(204, 34, 34, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
+    opacity: 1;
+    transform: none;
+  }
+  96%, 97.5% {
+    opacity: 1;
+    transform: none;
+  }
+  97% {
+    opacity: 0.6;
+    transform: translateX(2px);
+  }
+}
+```
+
+**Usage rules:**
+- Applied to wordmarks and primary display type only — never to body copy or UI labels
+- The animation cycle is 6s — long enough that the glitch reads as an event, not a loop
+- Chromatic aberration (the constant `text-shadow`) is always present at low intensity; the displacement is occasional
+- Do not apply to the LED array or cursor elements — those have their own animation logic
+
+**Conceptual framing:** the glitch is not damage. It is evidence of transmission. The signal arrived. Something resisted it briefly. The text survived.
+
 ### Vector Accents
 
 Raw SVG lines (0.1rem stroke width) connecting related information elements. Mimics circuit board trace routing or audio signal chains. Used deliberately, not decoratively.
