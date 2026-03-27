@@ -314,6 +314,73 @@ pointer-events: none;
 
 Simulates a cathode-ray tube display. Applied as a fixed overlay above all content.
 
+### Vignette
+
+Applied as a fixed overlay — dark edges, luminous center. Creates the impression of a screen with a physical boundary. The eye is drawn inward.
+
+```css
+.vignette {
+  position: fixed; inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 98;
+}
+```
+
+Always present on full-screen interfaces. Intensity (`0.55`) can be reduced for editorial layouts where content extends to the edges.
+
+---
+
+### CRT Sweep
+
+A single translucent horizontal band that travels from top to bottom of the viewport, simulating the refresh line of a cathode-ray tube. Subtle — it reads as atmosphere, not animation.
+
+```css
+.crt-sweep {
+  position: fixed;
+  left: 0; right: 0;
+  top: -10%;
+  height: 8%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(220, 220, 220, 0.025) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: crt-sweep 8s linear infinite;
+}
+
+@keyframes crt-sweep {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+```
+
+Cycle time is 8s — slow enough that it reads as a technical phenomenon, not a decorative loop. Do not speed up.
+
+---
+
+### Phosphor Glow (White Text)
+
+Large display type carries a warm white glow — the phosphor persistence of a CRT screen. Combined with the chromatic aberration from the VHS Glitch effect, this creates the full terminal light signature.
+
+```css
+text-shadow:
+  2px 0 rgba(204, 34, 34, 0.6),       /* chromatic — red channel */
+  -2px 0 rgba(0, 200, 255, 0.25),     /* chromatic — cyan channel */
+  0 0 20px rgba(220, 220, 220, 0.12), /* phosphor — inner glow */
+  0 0 60px rgba(220, 220, 220, 0.04); /* phosphor — outer bloom */
+```
+
+Applied to wordmarks and primary display type. The inner glow (`20px`) creates warmth. The outer bloom (`60px`) creates the sense that the light is bleeding into the surrounding dark.
+
+---
+
 ### Neon Bloom (Red Elements)
 
 Every red icon, line, or typographic element carries a bloom:
