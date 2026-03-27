@@ -177,15 +177,8 @@ def convert_release(release_path: str, force: bool = False):
             else:
                 audio = AudioSegment.from_file(str(src_path))
 
-            # Export MP3 at 320kbps
-            audio.export(str(out_path), format='mp3',
-                         bitrate=BITRATE,
-                         tags={
-                             'artist': artist,
-                             'title': track.get('title', ''),
-                             'album': title,
-                             'tracknumber': str(track.get('number', 1)),
-                         })
+            # Export MP3 at 320kbps — no tags here, mutagen handles all tagging
+            audio.export(str(out_path), format='mp3', bitrate=BITRATE)
 
             # Re-tag with full ID3 data + cover
             tag_mp3(out_path, track, release, cover_bytes, cover_mime)

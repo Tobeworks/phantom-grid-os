@@ -165,9 +165,10 @@ Writes `social.json` to the asset folder with defaults and one entry per track.
 **Output:**
 ```
 phantom-grid-assets/pg-001-.../
-└── social/
-    ├── square/    ← 1080×1080 MP4 (feed)
-    └── reel/      ← 1080×1920 MP4 (stories/reels)
+└── export/
+    └── social/
+        ├── square/    ← 1080×1080 MP4 (feed)
+        └── reel/      ← 1080×1920 MP4 (stories/reels)
 ```
 
 ---
@@ -183,12 +184,12 @@ phantom-grid-assets/
     ├── artwork/
     │   └── cover.png                 (min. 3000×3000px)
     ├── export/
-    │   └── mp3/                      ← pg convert output
-    │       ├── 01_track_title.mp3
-    │       └── ...
-    ├── social/                       ← pg social output
-    │   ├── square/
-    │   └── reel/
+    │   ├── mp3/                      ← pg convert output
+    │   │   ├── 01_track_title.mp3
+    │   │   └── ...
+    │   └── social/                   ← pg social output
+    │       ├── square/
+    │       └── reel/
     ├── release.json                  ← source of truth
     └── social.json                   ← social render config
 ```

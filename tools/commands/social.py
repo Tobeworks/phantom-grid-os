@@ -2,7 +2,7 @@
 social.py — Phantom Grid social media asset generator
 Native implementation: no external tool dependencies.
 Input:  release.json + audio/ + artwork/
-Output: social/square/, social/reel/, social/carousel/
+Output: export/social/square/, export/social/reel/
 """
 
 import json
@@ -394,7 +394,7 @@ def generate_social(release_path: str, fmt: str = "square",
         track_start    = tcfg.get("start")  # None = auto center
 
         for f in formats:
-            out_dir = path / 'social' / f
+            out_dir = path / 'export' / 'social' / f
             render_track(
                 audio_path, cover_path, artist, track_title,
                 f, out_dir,
@@ -405,5 +405,5 @@ def generate_social(release_path: str, fmt: str = "square",
             )
 
     header("5. DONE")
-    ok(f"Output: {path / 'social'}")
+    ok(f"Output: {path / 'export' / 'social'}")
     print()
