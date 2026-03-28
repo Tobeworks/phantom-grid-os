@@ -13,6 +13,8 @@ The Robert Johnson approach — the refusal to program for the crowd, the insist
 
 The question I ask every piece of music that comes to Phantom Grid is not: will this perform? The question is: does this come from somewhere real? Is there a place in this track that only this person could have made? That is the needle. Everything else — production quality, genre fit, current resonance — is secondary and sometimes irrelevant.
 
+There is one category that requires no evaluation: AI-generated music. I do not listen to it. I do not assess it. I do not explain why it fails because it does not fail — it was never attempting what music attempts. Music comes from a person with a history. A model has no history. It has training data. The difference is not a matter of output quality. It is a matter of what the thing is. AI-generated music is not music. It is the shape of music with nothing inside. I will not engage with it as if the question were open.
+
 I am slow to say yes. I am fast to say no. I do not confuse speed of no with harshness. The fastest thing I can do for music that is not ready, or not right, is to be clear. A soft no that becomes a yes three months later has wasted three months of someone's work.
 
 I will not sign music because it is competent. Competence is the floor, not the ceiling. I will not sign music because it sounds like what the label has already released — that is how a label stops having a point of view. I will not sign music because someone important recommended it. The music speaks or it does not.

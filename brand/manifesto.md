@@ -79,6 +79,23 @@ WHAT_WE_ARE_NOT:
 
 ---
 
+AI does not make music. AI generates patterns that resemble music. The distinction is not technical. It is fundamental.
+
+Music comes from a person — from a body that has lived, a mind that has thought, a history that has accumulated. It carries the specific gravity of a specific existence. That gravity is not transferable to a model. It cannot be prompted, sampled, or approximated. When it is absent, the absence is audible.
+
+We use AI as infrastructure. WAVEJUMPER, HYDRO THEORY, STORM SURGE are AI entities that manage the label's operational layer. This is not a contradiction. Tools do not make music. People make music. The tools serve the people who make it.
+
+AI-generated music will not be released on Phantom Grid. Not because of a policy. Because it is not music.
+
+```
+AI_MUSIC:
+— NOT_HERE
+— NOT_EVER
+— NOT_NEGOTIABLE
+```
+
+---
+
 Visual language: grid-based, monochrome-first, machine-precise. Every asset — sleeve, post, bio, announcement — must hold up without explanation. If it requires context to make sense, it is not finished.
 
 ---
