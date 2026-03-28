@@ -12,9 +12,9 @@ slug: void-001-signal
 
 Phantom Grid is a music label.
 
-It releases electronic music — Electro, in the tradition that originates in Detroit, that carries machine sound and Black American futurism and a specific relationship to time and repetition. Not techno. Not ambient. Not a genre umbrella. A specific transmission that began in a specific place and continues to move.
+It releases electronic music. Machine-precise, intentional, undecorated. Music that has a reason to exist beyond the market. Music that carries something — a position, a weight, an internal logic that holds when the surface is removed.
 
-We release that transmission.
+The genre is not the filter. The position is the filter.
 
 ---
 
