@@ -30,7 +30,7 @@ There are two ways to solve this.
 
 **The correct way:** the web repo holds a pointer to the OS. Not a copy. A pointer.
 
-That is a Submodule.
+That is a Submodule. The folder is a portal.
 
 ---
 
