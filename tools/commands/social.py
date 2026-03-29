@@ -20,8 +20,8 @@ from colorama import init, Fore, Style
 init(autoreset=True)
 
 # ── Brand constants ────────────────────────────────────────────────────────────
-ACCENT       = (204, 34, 34)          # #CC2222
-ACCENT_ALPHA = (204, 34, 34, 200)
+ACCENT       = (214, 82, 76)          # #D6524C
+ACCENT_ALPHA = (214, 82, 76, 200)
 BG_COLOR     = (14, 14, 14)           # #0E0E0E
 FONT_COLOR   = (220, 220, 220)
 FPS          = 24
@@ -152,7 +152,7 @@ def draw_waveform(img: Image.Image, heights: np.ndarray,
         glow_expand = bar_w + 4
         draw.rectangle(
             [x - 2, y_top - 2, x + glow_expand, y_bot + 2],
-            fill=(204, 34, 34, 60)
+            fill=(214, 82, 76, 60)
         )
         # Main bar
         draw.rectangle([x, y_top, x + bar_w, y_bot], fill=ACCENT)
@@ -175,7 +175,7 @@ def draw_text(img: Image.Image, artist: str, title: str,
     ax   = (w - aw) // 2
     ay   = int(h * 0.76)
     draw.text((ax + 1, ay + 1), artist_text, font=font_artist,
-              fill=(204, 34, 34, 120))
+              fill=(214, 82, 76, 120))
     draw.text((ax, ay), artist_text, font=font_artist, fill=ACCENT)
 
     # Title — below artist
@@ -228,13 +228,15 @@ def apply_vhs_effect(mp4_path: Path) -> Path:
 DEFAULT_SOCIAL_CONFIG = {
     "defaults": {
         "duration":          30,
-        "accent_color":      "#CC2222",
+        "accent_color":      "#D6524C",
         "bg_color":          "#0E0E0E",
         "font_color":        "#DCDCDC",
         "n_bars":            40,
         "fade_secs":         1.5,
         "show_progress_bar": False,
-        "vhs_effect":        True
+        "vhs_effect":        True,
+        "show_waveform":     True,
+        "show_text":         True
     },
     "tracks": []
 }
@@ -255,7 +257,9 @@ def init_social_config(path: Path, release_data: dict):
                 "title_override": None,
                 "start":          None,
                 "duration":       None,
-                "skip":           False
+                "skip":           False,
+                "show_waveform":  None,
+                "show_text":      None
             }
             for t in release_data.get("tracks", [])
         ]
@@ -286,7 +290,9 @@ def render_track(audio_path: Path, cover_path: Path,
                  duration: float = 30.0,
                  start_override: float = None,
                  n_bars: int = 40,
-                 fade_secs: float = 1.5):
+                 fade_secs: float = 1.5,
+                 show_waveform: bool = True,
+                 show_text: bool = True):
     """Render a single track to MP4."""
     from moviepy import ImageSequenceClip, AudioFileClip
 
@@ -305,8 +311,11 @@ def render_track(audio_path: Path, cover_path: Path,
         start = max(0.0, (total_dur - duration) / 2)
 
     mono, sr = load_audio_mono(audio_path, duration=duration, start=start)
-    waveform_frames = compute_waveform_frames(mono, sr, FPS, n_bars)
-    n_frames = len(waveform_frames)
+    if show_waveform:
+        waveform_frames = compute_waveform_frames(mono, sr, FPS, n_bars)
+    else:
+        waveform_frames = None
+    n_frames = int(duration * FPS) if waveform_frames is None else len(waveform_frames)
 
     info(f"Rendering {n_frames} frames ({fmt} {w}×{h})…")
 
@@ -314,10 +323,12 @@ def render_track(audio_path: Path, cover_path: Path,
     base_cover = apply_overlay(base_cover)
 
     frames_np = []
-    for i, heights in enumerate(waveform_frames):
+    for i in range(n_frames):
         frame = base_cover.copy().convert("RGBA")
-        frame = draw_waveform(frame, heights, w, h)
-        frame = draw_text(frame, artist, title, w, h)
+        if show_waveform and waveform_frames is not None:
+            frame = draw_waveform(frame, waveform_frames[i], w, h)
+        if show_text:
+            frame = draw_text(frame, artist, title, w, h)
         frame = add_grain(frame.convert("RGB"))
         frames_np.append(np.array(frame))
 
@@ -338,7 +349,8 @@ def render_track(audio_path: Path, cover_path: Path,
     ])
     clip  = clip.with_audio(audio)
     clip.write_videofile(str(out_path), codec='libx264',
-                         audio_codec='aac', logger=None)
+                         audio_codec='aac', logger=None,
+                         ffmpeg_params=['-pix_fmt', 'yuv420p'])
 
     ok(f"→ {out_path}")
     return out_path
@@ -393,9 +405,11 @@ def generate_social(release_path: str, fmt: str = "square",
     # ── Render ─────────────────────────────────────────────────────────────────
     header("4. RENDERING")
     formats    = list(FORMATS.keys()) if fmt == "all" else [fmt]
-    fade_secs  = float(defaults.get("fade_secs", 1.5))
-    n_bars     = int(defaults.get("n_bars", 40))
-    vhs_effect = bool(defaults.get("vhs_effect", True))
+    fade_secs      = float(defaults.get("fade_secs", 1.5))
+    n_bars         = int(defaults.get("n_bars", 40))
+    vhs_effect     = bool(defaults.get("vhs_effect", True))
+    show_waveform  = bool(defaults.get("show_waveform", True))
+    show_text      = bool(defaults.get("show_text", True))
     audio_dir  = path / 'audio'
 
     for t in tracks:
@@ -417,9 +431,13 @@ def generate_social(release_path: str, fmt: str = "square",
             fail(f"{wav_file} not found")
             continue
 
-        track_title    = tcfg.get("title_override") or t.get("title", title)
-        track_duration = float(tcfg.get("duration") or defaults.get("duration", duration))
-        track_start    = tcfg.get("start")  # None = auto center
+        track_title        = tcfg.get("title_override") or t.get("title", title)
+        track_duration     = float(tcfg.get("duration") or defaults.get("duration", duration))
+        track_start        = tcfg.get("start")  # None = auto center
+        track_waveform     = tcfg.get("show_waveform")
+        track_text         = tcfg.get("show_text")
+        track_show_waveform = show_waveform if track_waveform is None else bool(track_waveform)
+        track_show_text     = show_text     if track_text     is None else bool(track_text)
 
         for f in formats:
             out_dir = path / 'export' / 'social' / f
@@ -429,7 +447,9 @@ def generate_social(release_path: str, fmt: str = "square",
                 duration=track_duration,
                 start_override=track_start,
                 n_bars=n_bars,
-                fade_secs=fade_secs
+                fade_secs=fade_secs,
+                show_waveform=track_show_waveform,
+                show_text=track_show_text,
             )
             if vhs_effect:
                 apply_vhs_effect(out_path)
