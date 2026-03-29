@@ -55,7 +55,7 @@ No content is duplicated into the web repo. When a release is committed to the O
 |---|---|---|
 | Framework | Astro | Static-first, island architecture, no JS overhead on static pages |
 | Styling | Tailwind CSS | Already in the HTML prototype; utility-first fits the system |
-| Typography | Eurostile via Adobe Fonts | As defined in brand doc |
+| Typography | Barlow Condensed via Adobe Fonts | As defined in brand doc |
 | Deployment | Docker → k3s via ArgoCD | Same pattern as all other apps in the netcup cluster |
 | Container | nginx:alpine | Static file serving for Astro build output |
 

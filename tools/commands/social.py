@@ -46,13 +46,13 @@ def header(msg):
 
 # ── Font loader ────────────────────────────────────────────────────────────────
 def load_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
-    """Try Eurostile variants, fall back to system fonts."""
+    """Try Barlow Condensed variants, fall back to system fonts."""
     candidates = [
-        "Eurostile MN Extended Bold.ttf",
-        "EurostileMNExtended-Bold.ttf",
-        "EurostileExtendedW01-Bd.ttf",
-        "Eurostile-Bold.ttf",
-        "Eurostile.ttf",
+        "BarlowCondensed-Bold.ttf",
+        "Barlow-Condensed-Bold.ttf",
+        "BarlowCondensed-SemiBold.ttf",
+        "Barlow Condensed Bold.ttf",
+        "Barlow Condensed SemiBold.ttf",
     ]
     search_dirs = [
         Path.home() / "Library/Fonts",

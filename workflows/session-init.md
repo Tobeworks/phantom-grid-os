@@ -23,7 +23,7 @@ and STORM SURGE (Social Media). Void has final say on all decisions.
 
 Phantom Grid visual system:
 - Primary: #CC2222 on #0E0E0E
-- Typeface: Eurostile / Eurostile Extended
+- Typeface: Barlow Condensed / Barlow Condensed
 - LED Circle Array and Blinking Cursor as defined in brand doc
 - Terminal Glow aesthetic — worn surfaces, CRT quality, precision not decoration
 

@@ -8,12 +8,12 @@ Base: HTML Prototype (stitch_input_null_landing_page) — carry over what works,
 
 ## TYPOGRAPHY
 
-**Primary:** Eurostile / Eurostile Extended — Adobe Fonts / Typekit
+**Primary:** Barlow Condensed / Barlow Condensed — Adobe Fonts / Typekit
 **Data:** Inter — Google Fonts
 Space Grotesk from the prototype is replaced entirely.
 
 ```css
-/* Eurostile via Adobe Fonts */
+/* Barlow Condensed via Adobe Fonts */
 font-family: 'eurostile', sans-serif;
 font-family: 'eurostile-extended', sans-serif; /* Hero only */
 ```
@@ -39,7 +39,7 @@ font-family: 'eurostile-extended', sans-serif; /* Hero only */
 [PHANTOM_GRID]          [RELEASES] [ARCHIVE] [ABOUT]     [●]
 ```
 
-- Logo left: `PHANTOM_GRID` in Eurostile Extended Bold, Dirty Red, with Bloom
+- Logo left: `PHANTOM_GRID` in Barlow Condensed Bold, Dirty Red, with Bloom
 - Navigation: 3 items — RELEASES / ARCHIVE / GRID_MESSAGES
 - Right: status indicator `●` pulsing in `#CC2222` — signals "system active"
 - No burger menu on desktop. Mobile: Bottom Nav Bar (carry over from prototype)
@@ -63,7 +63,7 @@ Fullscreen. Pixel-Grid background (`radial-gradient`, 24px × 24px, Dirty Red 15
 ```
 [SYSTEM_INITIALIZED // BOOT_SEQUENCE_COMPLETE]   ← 10px, tracking 0.5em, Dirty Red
 
-PHANTOM_GRID                                      ← Eurostile Extended, 9xl, Black
+PHANTOM_GRID                                      ← Barlow Condensed, 9xl, Black
                                                     drop-shadow: CC2222 0.4 opacity
 
 [ENTER_VOID]  [LATEST_SIGNALS]                   ← Primary + Ghost Button
@@ -95,8 +95,8 @@ LATEST_SIGNALS                    STREAM_BUFFER: ACTIVE
 │  [Cover Art 1:1]       │  ← grayscale → color on hover
 │  ▶ (on hover)          │
 ├────────────────────────┤
-│  ARTIST: INPUT_NULL    │  ← 10px, Eurostile, Dirty Red, tracking 0.5em
-│  VECTOR_FIELD_SIGNALS  │  ← Eurostile Bold, 20px
+│  ARTIST: INPUT_NULL    │  ← 10px, Barlow Condensed, Dirty Red, tracking 0.5em
+│  VECTOR_FIELD_SIGNALS  │  ← Barlow Condensed Bold, 20px
 │                        │
 │  DURATION: —           │  ← 10px, opacity 50%
 └────────────────────────┘
@@ -220,7 +220,7 @@ src/
 
 ## CHANGES FROM PROTOTYPE
 
-- Space Grotesk → Eurostile
+- Space Grotesk → Barlow Condensed
 - Coordinates: lat/long → CYBERSPACE / DETROIT / FRANKFURT
 - Footer copyright and claim
 - Content: real release data (PG-001)

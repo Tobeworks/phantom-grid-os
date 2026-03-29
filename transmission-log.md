@@ -43,4 +43,8 @@ Types: `SYSTEM` / `SIGNING` / `RELEASE` / `BRAND` / `SIGNAL`
 
 ---
 
+2026-03-29 — BRAND   — Typography changed: Eurostile → Barlow Condensed.
+             Free, open source, condensed grotesque. No historical debt.
+             Label's own visual language, not a lineage reference.
+
 *New entries appended below as events occur.*
