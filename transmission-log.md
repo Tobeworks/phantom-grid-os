@@ -26,8 +26,15 @@ Types: `SYSTEM` / `SIGNING` / `RELEASE` / `BRAND` / `SIGNAL`
 ---
 
 2026-03-26 — SYSTEM  — Cyberspace identity locked. Phantom Grid established
-             as first code-based label in the Detroit Electro tradition.
-             Base: Cyberspace / Detroit.
+             as first code-based music label. Base: Cyberspace.
+             No fixed geography. No fixed genre. Position is the filter.
+
+2026-03-28 — BRAND   — Detroit weight reduced across OS. Sparks acknowledged,
+             derivation refused. Phantom Grid is not a tradition.
+             It is what comes after.
+
+2026-03-28 — SYSTEM  — AI music position locked. Not a policy — a definition.
+             AI-generated music is not music. Not here. Not ever.
 
 2026-03-26 — SIGNING — PG-001 initiated: Input Null (Void + Paradroid).
              Release: "Vector Field Signals". Music finalized.

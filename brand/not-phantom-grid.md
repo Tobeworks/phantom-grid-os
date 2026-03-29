@@ -31,6 +31,16 @@ Ambient or atmospheric tracks included in an EP to pad track count or provide "v
 
 ---
 
+## AI-GENERATED MUSIC
+
+This requires no evaluation process. It is a definitional exclusion.
+
+AI does not make music. It generates patterns that resemble music. The absence of a human history — a body, a life, a specific formation — is not a technical limitation that better models will solve. It is what music is. Music carries the specific gravity of a specific existence. That gravity cannot be generated.
+
+Phantom Grid uses AI as operational infrastructure. This is not a contradiction. Tools do not make music. The people who submit to this label make music. AI-generated submissions will not be listened to, assessed, or returned with feedback. They will not be acknowledged.
+
+---
+
 ## ARTIST TYPES THAT DO NOT FIT
 
 **The style tourist**
@@ -39,14 +49,16 @@ Artists who move between genres based on what is being released on influential l
 **The scene networker**
 Artists whose career is primarily social — who appear everywhere, play everywhere, know everyone — but whose music does not develop. Presence is not trajectory.
 
-**The European who has never listened to the source**
-Artists making music in the Detroit Electro tradition who have not done the listening. The gaps are audible. Not in the sounds — in the decisions. What is chosen and what is not. The conversation partners are absent from the music.
+**The artist who has never listened seriously**
+Artists working in a tradition they have not absorbed. The gaps are audible — not in the sounds, but in the decisions. What is chosen and what is not. The work reveals whether someone has listened or only heard.
 
 ---
 
 ## A NOTE ON GEOGRAPHY
 
-Phantom Grid does not require artists to be from Detroit. The transmission travels. But it requires artists to have received it — to have done the work of understanding where this music came from, what it meant, and what it still means. That is audible. It cannot be faked at the level of close listening.
+Phantom Grid exists in Cyberspace. It has no geographic base and places no requirements on where an artist comes from.
+
+What it requires is that the music comes from somewhere real — a specific person, a specific formation, a specific history that produced something that could not have come from anyone else. Geography is irrelevant. Transmission is not.
 
 ---
 

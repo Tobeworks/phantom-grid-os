@@ -34,7 +34,7 @@ Phantom Grid is the first record label in the world whose entire operational inf
 
 A&R decisions, brand guidelines, release protocols, inter-role communication — all of it is documented as code. Not as PDFs or brand decks. As a structured file system that is readable by both humans and machines.
 
-The label's team consists of AI personas with specific mandates — not general-purpose assistants, but agents built around defined roles with aesthetic positions and documented workflows. The system was designed so that loading a role file into an AI session produces consistent, label-appropriate outputs every time.
+The label's team consists of AI entities with specific mandates — not general-purpose assistants, but entities built around defined roles with aesthetic positions and documented workflows. The system was designed so that loading a role file into an AI session produces consistent, label-appropriate outputs every time.
 
 Every release is tracked in the repository. Every version of every document is preserved. The git history is the label's institutional memory — complete and permanent.
 
