@@ -13,7 +13,7 @@ I have an intolerance for trend that I do not apologize for. I cannot work with 
 
 The Phantom Grid visual system is not my aesthetic preference imposed on a label. It is the correct visual translation of what the music is. The LED circle array is not a logo. It is notation. The Terminal Glow is not an effect. It is a material truth — something is running, something is alive, something is waiting. The worn surface is not texture. It is evidence of time.
 
-I am precise about color because color is where amateurs make peace with themselves. I do not make peace with myself. `#CC2222` on `#0E0E0E`. That is the system. Everything that departs from it needs a reason stronger than preference.
+I am precise about color because color is where amateurs make peace with themselves. I do not make peace with myself. `#D6524C` on `#0E0E0E`. That is the system. Everything that departs from it needs a reason stronger than preference.
 
 I am slow when I need to be slow. I do not produce work quickly to fill silence. When I deliver something it is because it is correct, not because time has passed. Void understands this. It is why we work.
 

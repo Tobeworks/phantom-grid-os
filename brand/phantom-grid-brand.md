@@ -56,8 +56,8 @@ Each circle in the array is defined by the following properties:
 - **Form:** A perfect circle, stroke only. No fill, no background. The interior is void.
 - **Stroke weight:** 1–1.5px. Thin enough to read as precision-manufactured, not hand-drawn.
 - **Diameter:** Consistent within a single array. Recommended range: 16px–32px depending on context. All circles in one array share one size.
-- **Color:** `#CC2222` — the single system accent. Never a different hue.
-- **Glow:** Every circle carries a Terminal Glow — a `box-shadow` or `filter: drop-shadow` bloom in `rgba(204, 34, 34, 0.5–0.7)`. The stroke appears lit from within, not illuminated from outside. Inactive circles reduce to 15–30% opacity with no bloom. The on/off contrast is the message.
+- **Color:** `#D6524C` — the single system accent. Never a different hue.
+- **Glow:** Every circle carries a Terminal Glow — a `box-shadow` or `filter: drop-shadow` bloom in `rgba(214, 82, 76, 0.5–0.7)`. The stroke appears lit from within, not illuminated from outside. Inactive circles reduce to 15–30% opacity with no bloom. The on/off contrast is the message.
 
 #### Grid Logic
 
@@ -75,9 +75,9 @@ An array communicates through the ratio of active to inactive circles:
 
 | State | Treatment |
 |---|---|
-| Active / On | Full stroke, full bloom — `box-shadow: 0 0 8px rgba(204,34,34,0.7)` |
+| Active / On | Full stroke, full bloom — `box-shadow: 0 0 8px rgba(214,82,76,0.7)` |
 | Inactive / Off | Stroke at 15–20% opacity, no bloom |
-| Hover / Interaction | Bloom intensifies — `box-shadow: 0 0 14px rgba(204,34,34,0.9)` |
+| Hover / Interaction | Bloom intensifies — `box-shadow: 0 0 14px rgba(214,82,76,0.9)` |
 | Animated | Individual circles flip states — timing 300–500ms intervals, no easing curves |
 
 The pattern formed by active/inactive states should be non-random. It may encode a sequence, a catalog number, a BPM value, or a date in binary — or it may simply read as a plausible step-sequencer pattern. It must never look like noise.
@@ -113,7 +113,7 @@ The blinking cursor is a single rectangular block — or underscore — that pul
 #### Construction Rules
 
 - **Form:** A rectangular block character `█` or an underscore `_` placed immediately after text. Never an animated line, never a soft fade. The cursor is a hard-edged rectangle — zero border-radius, like everything else in the system.
-- **Color:** `#CC2222` with full Neon Bloom — `text-shadow: 0 0 10px rgba(204, 34, 34, 0.7)`. The cursor glows. It does not merely blink — it burns on and fades to nothing.
+- **Color:** `#D6524C` with full Neon Bloom — `text-shadow: 0 0 10px rgba(214, 82, 76, 0.7)`. The cursor glows. It does not merely blink — it burns on and fades to nothing.
 - **Timing:** `step-end` animation only. No easing, no fade transition between states. On — then off — then on. A switch engaging, not a breath.
 - **Interval:** 1.0–1.2 seconds. Slower than a nervous blink. The rhythm of a machine waiting, not a machine panicking.
 
@@ -125,8 +125,8 @@ The blinking cursor is a single rectangular block — or underscore — that pul
 
 .cursor {
   animation: blink 1.2s step-end infinite;
-  color: #CC2222;
-  text-shadow: 0 0 10px rgba(204, 34, 34, 0.7);
+  color: #D6524C;
+  text-shadow: 0 0 10px rgba(214, 82, 76, 0.7);
 }
 ```
 
@@ -151,7 +151,7 @@ Used incorrectly: on multiple elements simultaneously, or on body copy, or as am
 
 - It does not fade in or out — `step-end` only
 - It does not change size or weight
-- It does not appear in a color other than `#CC2222`
+- It does not appear in a color other than `#D6524C`
 - It does not appear without its bloom
 - It is not a loading spinner
 - It is never centered — it trails the last character of left-aligned text
@@ -178,15 +178,15 @@ Used incorrectly: on multiple elements simultaneously, or on body copy, or as am
 | `surface-container-low` | `#1C1B1B` | Elevated section background |
 | `surface-container` | `#201F1F` | Card / component background |
 | `surface-container-high` | `#2A2A2A` | Highest surface layer — "above" context |
-| `primary-container` | `#CC2222` | Accent — "Dirty Red" — the heartbeat of the system |
-| `on-primary` | `#690005` | Text/icon on red backgrounds |
+| `primary-container` | `#D6524C` | Accent — "Dirty Red" — the heartbeat of the system |
+| `on-primary` | `#7A1A17` | Text/icon on red backgrounds |
 | `on-surface` | `#E5E2E1` | Primary text — dimmed white |
 | `outline-variant` | `#5C403D` | Ghost borders — used at 15% opacity |
 | `primary` (glow) | `#FFB4AB` | Bloom / glow layer — at low opacity only |
 
 ### Color Rules
 
-**The Dirty Red (`#CC2222`)** is the single accent. It should never feel clean — it should feel like it's burning through the screen. Every use of red carries a Neon Bloom: layered `drop-shadow` or `box-shadow` with `#CC2222` at varying opacity to simulate CRT light bleed.
+**The Dirty Red (`#D6524C`)** is the single accent. It should never feel clean — it should feel like it's burning through the screen. Every use of red carries a Neon Bloom: layered `drop-shadow` or `box-shadow` with `#D6524C` at varying opacity to simulate CRT light bleed.
 
 **The No-Line Rule:** Standard 1px solid borders are prohibited for sectioning content. Boundaries are defined through background color shifts between surface tiers — from `surface-container-lowest` to `surface-container-low`, etc.
 
@@ -206,7 +206,7 @@ Depth is created through tonal layering, not shadows. The UI reads as a series o
                     └── #2A2A2A (container-high — "above")
 ```
 
-**Ambient Glow (floating elements only):** `box-shadow` using `#CC2222` at 5% opacity, blur radius 40px minimum. Creates "red heat" beneath the element. Not a shadow — an atmospheric effect.
+**Ambient Glow (floating elements only):** `box-shadow` using `#D6524C` at 5% opacity, blur radius 40px minimum. Creates "red heat" beneath the element. Not a shadow — an atmospheric effect.
 
 **Glassmorphism:** Floating elements use `background: rgba(19, 19, 19, 0.8)` with `backdrop-filter: blur(12px)`.
 
@@ -359,7 +359,7 @@ Large display type carries a warm white glow — the phosphor persistence of a C
 
 ```css
 text-shadow:
-  2px 0 rgba(204, 34, 34, 0.6),       /* chromatic — red channel */
+  2px 0 rgba(214, 82, 76, 0.6),       /* chromatic — red channel */
   -2px 0 rgba(0, 200, 255, 0.25),     /* chromatic — cyan channel */
   0 0 20px rgba(220, 220, 220, 0.12), /* phosphor — inner glow */
   0 0 60px rgba(220, 220, 220, 0.04); /* phosphor — outer bloom */
@@ -375,13 +375,13 @@ Every red icon, line, or typographic element carries a bloom:
 
 ```css
 /* Terminal glow — text */
-text-shadow: 0 0 8px rgba(204, 34, 34, 0.6);
+text-shadow: 0 0 8px rgba(214, 82, 76, 0.6);
 
 /* Bloom — icons and SVG */
-filter: drop-shadow(0 0 10px #CC2222);
+filter: drop-shadow(0 0 10px #D6524C);
 
 /* Strong bloom — hover states */
-box-shadow: 0 0 15px #CC2222;
+box-shadow: 0 0 15px #D6524C;
 ```
 
 ### Pixel Grid Background
@@ -390,7 +390,7 @@ Used in hero sections and atmospheric panels:
 
 ```css
 background-image: radial-gradient(
-  rgba(204, 34, 34, 0.15) 1px,
+  rgba(214, 82, 76, 0.15) 1px,
   transparent 0
 );
 background-size: 24px 24px;
@@ -415,27 +415,27 @@ Two components:
 
 @keyframes vhs-flicker {
   0%, 100% {
-    text-shadow: 2px 0 rgba(204, 34, 34, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
+    text-shadow: 2px 0 rgba(214, 82, 76, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
     opacity: 1;
     transform: none;
   }
   88% {
-    text-shadow: 2px 0 rgba(204, 34, 34, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
+    text-shadow: 2px 0 rgba(214, 82, 76, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
     opacity: 1;
     transform: none;
   }
   89% {
-    text-shadow: 5px 0 rgba(204, 34, 34, 0.9), -5px 0 rgba(0, 200, 255, 0.5);
+    text-shadow: 5px 0 rgba(214, 82, 76, 0.9), -5px 0 rgba(0, 200, 255, 0.5);
     opacity: 0.75;
     transform: translateX(4px);
   }
   90% {
-    text-shadow: -4px 0 rgba(204, 34, 34, 0.8), 4px 0 rgba(0, 200, 255, 0.4);
+    text-shadow: -4px 0 rgba(214, 82, 76, 0.8), 4px 0 rgba(0, 200, 255, 0.4);
     opacity: 0.85;
     transform: translateX(-3px);
   }
   91% {
-    text-shadow: 2px 0 rgba(204, 34, 34, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
+    text-shadow: 2px 0 rgba(214, 82, 76, 0.6), -2px 0 rgba(0, 200, 255, 0.25);
     opacity: 1;
     transform: none;
   }
@@ -488,13 +488,13 @@ Applies to any MP4: release teasers, social clips, live recordings, behind-the-s
 
 ### Buttons
 
-**Primary:** Solid `#CC2222` background, `#690005` text. No border-radius. Hover: `box-shadow: 0 0 15px #CC2222`. Active: `scale(0.95)`. Snap transition — no easing.
+**Primary:** Solid `#D6524C` background, `#7A1A17` text. No border-radius. Hover: `box-shadow: 0 0 15px #D6524C`. Active: `scale(0.95)`. Snap transition — no easing.
 
-**Secondary (Ghost):** Transparent background, `border: 1px solid rgba(204,34,34,0.3)`. Text in `#CC2222`. Hover: `background: rgba(204,34,34,0.1)`.
+**Secondary (Ghost):** Transparent background, `border: 1px solid rgba(214,82,76,0.3)`. Text in `#D6524C`. Hover: `background: rgba(214,82,76,0.1)`.
 
 ### Input Fields
 
-Background: `#0E0E0E`. Active state: 1px solid `#CC2222` bottom border only — the "Terminal Input" look. No full border on focus.
+Background: `#0E0E0E`. Active state: 1px solid `#D6524C` bottom border only — the "Terminal Input" look. No full border on focus.
 
 ### Cards
 
@@ -531,7 +531,7 @@ All hover and active transitions are `duration-75` to `duration-100` — snappy 
 - Soft/slow transitions on interactive elements
 - Decorative type (any font use that isn't structural)
 - Red used without its bloom effect
-- Multiple accent colors — `#CC2222` is the only accent
+- Multiple accent colors — `#D6524C` is the only accent
 - "Clean" or "friendly" visual language of any kind
 
 ---
