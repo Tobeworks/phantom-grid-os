@@ -1,8 +1,10 @@
 """
 convert.py — Phantom Grid MP3 converter
-WAV/AIFF → MP3 320kbps CBR with full ID3 tagging + embedded cover art.
+WAV/AIFF → MP3 320kbps + 128kbps CBR with full ID3 tagging + embedded cover art.
+Also processes artwork into multi-size JPG + WebP exports.
+
 Input:  release.json + audio/ + artwork/
-Output: export/mp3/
+Output: export/mp3/320/, export/mp3/128/, export/artwork/
 """
 
 import json
@@ -22,7 +24,13 @@ from mutagen.mp3 import MP3
 init(autoreset=True)
 
 AUDIO_EXTENSIONS = {'.wav', '.aif', '.aiff'}
-BITRATE         = '320k'
+BITRATES = {
+    '320': '320k',   # full quality — archive / Bandcamp
+    '128': '128k',   # web quality  — CDN player
+}
+ARTWORK_SIZES   = [3000, 1500, 600, 300]   # square px
+ARTWORK_JPG_Q   = 92    # JPEG quality 0–95
+ARTWORK_WEBP_Q  = 88    # WebP quality 0–100
 
 
 def ok(msg):    print(f"  {Fore.GREEN}✓{Style.RESET_ALL}  {msg}")
@@ -75,24 +83,75 @@ def tag_mp3(mp3_path: Path, track: dict, release: dict,
     if year:
         tags['TDRC'] = TDRC(encoding=3, text=year)
 
-    # Catalog number as custom TXXX frame
     catalog = release.get('catalog', '')
     if catalog:
         tags['TXXX:CATALOGNUMBER'] = TXXX(encoding=3,
                                            desc='CATALOGNUMBER',
                                            text=catalog)
 
-    # Embedded cover art
     if cover_bytes:
         tags['APIC'] = APIC(
             encoding=0,
             mime=cover_mime,
-            type=3,          # Cover (front)
+            type=3,
             desc='Cover',
             data=cover_bytes
         )
 
     tags.save(str(mp3_path), v2_version=3)
+
+
+def process_artwork(artwork_dir: Path, export_dir: Path, force: bool = False) -> list[dict]:
+    """
+    Resize + compress artwork into multiple sizes (JPG + WebP).
+    Returns list of {size, jpg, webp} dicts for each exported size.
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        fail("Pillow not installed — run: pip install Pillow")
+        sys.exit(1)
+
+    # Find source image
+    source = None
+    for ext in ('*.png', '*.jpg', '*.jpeg', '*.tif', '*.tiff'):
+        found = sorted(artwork_dir.glob(ext))
+        if found:
+            source = found[0]
+            break
+
+    if not source:
+        warn("No artwork found — skipping image export")
+        return []
+
+    export_dir.mkdir(parents=True, exist_ok=True)
+    info(f"Source: {source.name} ({source.stat().st_size // 1024} KB)")
+
+    img = Image.open(source).convert('RGB')
+    w, h = img.size
+    ok(f"Loaded {w}×{h}px")
+
+    results = []
+    for size in ARTWORK_SIZES:
+        jpg_path  = export_dir / f"cover_{size}.jpg"
+        webp_path = export_dir / f"cover_{size}.webp"
+
+        if not force and jpg_path.exists() and webp_path.exists():
+            warn(f"{size}px — exists, skipping (--force to overwrite)")
+            results.append({'size': size, 'jpg': jpg_path.name, 'webp': webp_path.name})
+            continue
+
+        resized = img.resize((size, size), Image.LANCZOS)
+
+        resized.save(str(jpg_path),  format='JPEG', quality=ARTWORK_JPG_Q,  optimize=True)
+        resized.save(str(webp_path), format='WebP', quality=ARTWORK_WEBP_Q, method=6)
+
+        jpg_kb  = jpg_path.stat().st_size  // 1024
+        webp_kb = webp_path.stat().st_size // 1024
+        ok(f"{size}px — JPG {jpg_kb} KB  |  WebP {webp_kb} KB")
+        results.append({'size': size, 'jpg': jpg_path.name, 'webp': webp_path.name})
+
+    return results
 
 
 def convert_release(release_path: str, force: bool = False):
@@ -120,84 +179,94 @@ def convert_release(release_path: str, force: bool = False):
     ok(f"{catalog} — {artist} — {title}")
     ok(f"{len(tracks)} track(s)")
 
-    # ── Cover ──────────────────────────────────────────────────────────────────
-    header("2. COVER ART")
+    # ── Artwork ────────────────────────────────────────────────────────────────
+    header("2. ARTWORK")
 
-    artwork_dir = path / 'artwork'
+    artwork_dir      = path / 'artwork'
+    artwork_export   = path / 'export' / 'artwork'
     cover_bytes, cover_mime = load_cover_bytes(artwork_dir)
 
     if cover_bytes:
-        ok(f"Cover loaded ({len(cover_bytes) // 1024} KB, {cover_mime})")
+        ok(f"Cover for ID3 tags: {len(cover_bytes) // 1024} KB, {cover_mime}")
     else:
         warn("No cover found — MP3s will have no embedded artwork")
+
+    process_artwork(artwork_dir, artwork_export, force=force)
 
     # ── Convert ────────────────────────────────────────────────────────────────
     header("3. CONVERTING")
 
-    audio_dir  = path / 'audio'
-    output_dir = path / 'export' / 'mp3'
-    output_dir.mkdir(parents=True, exist_ok=True)
+    audio_dir = path / 'audio'
 
-    converted = 0
-    skipped   = 0
-    errors    = 0
+    total_converted = 0
+    total_skipped   = 0
+    total_errors    = 0
 
-    for track in tracks:
-        src_file = track.get('file')
-        if not src_file:
-            warn(f"Track {track.get('number')} — no file defined, skipping")
-            continue
+    for bitrate_label, bitrate_value in BITRATES.items():
+        info(f"Bitrate: {bitrate_value}")
+        output_dir = path / 'export' / 'mp3' / bitrate_label
+        output_dir.mkdir(parents=True, exist_ok=True)
 
-        src_path = audio_dir / src_file
-        if not src_path.exists():
-            fail(f"Track {track.get('number')} — {src_file} not found")
-            errors += 1
-            continue
+        converted = 0
+        skipped   = 0
+        errors    = 0
 
-        # Output filename: 01_track-title.mp3
-        num   = str(track.get('number', 0)).zfill(2)
-        slug  = slugify(track.get('title', src_path.stem))
-        out_name = f"{num}_{slug}.mp3"
-        out_path = output_dir / out_name
+        for track in tracks:
+            src_file = track.get('file')
+            if not src_file:
+                warn(f"  Track {track.get('number')} — no file defined, skipping")
+                continue
 
-        if out_path.exists() and not force:
-            warn(f"Track {track.get('number')} — {out_name} exists, skipping (--force to overwrite)")
-            skipped += 1
-            continue
+            src_path = audio_dir / src_file
+            if not src_path.exists():
+                fail(f"  Track {track.get('number')} — {src_file} not found")
+                errors += 1
+                continue
 
-        info(f"Track {track.get('number')} — converting {src_file} → {out_name}")
+            num      = str(track.get('number', 0)).zfill(2)
+            slug     = slugify(track.get('title', src_path.stem))
+            out_name = f"{num}_{slug}.mp3"
+            out_path = output_dir / out_name
 
-        try:
-            # Load source audio
-            suffix = src_path.suffix.lower()
-            if suffix == '.wav':
-                audio = AudioSegment.from_wav(str(src_path))
-            elif suffix in ('.aif', '.aiff'):
-                audio = AudioSegment.from_aiff(str(src_path))
-            else:
-                audio = AudioSegment.from_file(str(src_path))
+            if out_path.exists() and not force:
+                warn(f"  Track {track.get('number')} [{bitrate_label}] — {out_name} exists, skipping")
+                skipped += 1
+                continue
 
-            # Export MP3 at 320kbps — no tags here, mutagen handles all tagging
-            audio.export(str(out_path), format='mp3', bitrate=BITRATE)
+            info(f"  Track {track.get('number')} [{bitrate_label}] — {src_file} → {out_name}")
 
-            # Re-tag with full ID3 data + cover
-            tag_mp3(out_path, track, release, cover_bytes, cover_mime)
+            try:
+                suffix = src_path.suffix.lower()
+                if suffix == '.wav':
+                    audio = AudioSegment.from_wav(str(src_path))
+                elif suffix in ('.aif', '.aiff'):
+                    audio = AudioSegment.from_aiff(str(src_path))
+                else:
+                    audio = AudioSegment.from_file(str(src_path))
 
-            size_mb = out_path.stat().st_size / (1024 * 1024)
-            ok(f"Track {track.get('number')} — {out_name} ({size_mb:.1f} MB)")
-            converted += 1
+                audio.export(str(out_path), format='mp3', bitrate=bitrate_value)
+                tag_mp3(out_path, track, release, cover_bytes, cover_mime)
 
-        except Exception as e:
-            fail(f"Track {track.get('number')} — conversion failed: {e}")
-            errors += 1
+                size_mb = out_path.stat().st_size / (1024 * 1024)
+                ok(f"  Track {track.get('number')} [{bitrate_label}] — {out_name} ({size_mb:.1f} MB)")
+                converted += 1
+
+            except Exception as e:
+                fail(f"  Track {track.get('number')} [{bitrate_label}] — failed: {e}")
+                errors += 1
+
+        total_converted += converted
+        total_skipped   += skipped
+        total_errors    += errors
 
     # ── Summary ────────────────────────────────────────────────────────────────
     header("4. SUMMARY")
 
-    ok(f"{converted} track(s) converted → {output_dir}")
-    if skipped:
-        warn(f"{skipped} skipped (already exist)")
-    if errors:
-        fail(f"{errors} error(s)")
+    ok(f"{total_converted} MP3(s) converted ({', '.join(BITRATES.keys())}kbps)")
+    ok(f"Artwork variants → {artwork_export}")
+    if total_skipped:
+        warn(f"{total_skipped} skipped (already exist)")
+    if total_errors:
+        fail(f"{total_errors} error(s)")
 
     print()

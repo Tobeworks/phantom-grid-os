@@ -1,9 +1,9 @@
 """
 push.py — Phantom Grid CDN uploader
-Uploads MP3 previews + artwork to cdn.phantom-grid.de via SFTP.
+Uploads MP3s (128k + 320k) + processed artwork to cdn.phantom-grid.de via FTP/SFTP.
 Updates data/releases.json in the OS repo.
 
-Input:  release.json + export/mp3/ + artwork/
+Input:  release.json + export/mp3/128/ + export/mp3/320/ + export/artwork/
 Output: CDN upload + data/releases.json updated
 """
 
@@ -65,7 +65,7 @@ def ftp_connect(env: dict):
     ftp.login(user, password)
 
     if protocol == 'ftps':
-        ftp.prot_p()  # switch to encrypted data channel
+        ftp.prot_p()
 
     return ftp
 
@@ -134,9 +134,15 @@ def sftp_makedirs(sftp, remote_path: str):
             sftp.mkdir(current)
 
 
+def makedirs(client, remote_path: str, client_type: str):
+    if client_type == 'sftp':
+        sftp_makedirs(client, remote_path)
+    else:
+        ftp_makedirs(client, remote_path)
+
+
 def upload_file(client, local: Path, remote: str, client_type: str):
     """Upload a single file via FTP or SFTP."""
-    import io
     size_kb = local.stat().st_size // 1024
     info(f"  {local.name} ({size_kb} KB) → {remote}")
     if client_type == 'sftp':
@@ -252,32 +258,67 @@ def push_release(release_path: str, preview_only: bool = False):
     title   = data.get('title', '')
     ok(f"{catalog} — {artist} — {title}")
 
-    # ── Resolve files to upload ────────────────────────────────────────────────
+    # ── Resolve audio files ────────────────────────────────────────────────────
     header("3. ASSETS")
+    slug = path.name
 
-    mp3_dir     = path / 'export' / 'mp3'
+    # Audio — prefer preview if --preview-only, else use 128k + 320k
     preview_dir = path / 'export' / 'preview'
-    artwork_dir = path / 'artwork'
+    mp3_128_dir = path / 'export' / 'mp3' / '128'
+    mp3_320_dir = path / 'export' / 'mp3' / '320'
+    # Legacy fallback: export/mp3/ (flat, old convert output)
+    mp3_legacy_dir = path / 'export' / 'mp3'
 
-    mp3_files     = sorted(mp3_dir.glob('*.mp3'))     if mp3_dir.exists()     else []
-    preview_files = sorted(preview_dir.glob('*.mp3')) if preview_dir.exists() else []
-    cover_files   = (sorted(artwork_dir.glob('*.jpg')) +
-                     sorted(artwork_dir.glob('*.png'))) if artwork_dir.exists() else []
+    if preview_only:
+        preview_files = sorted(preview_dir.glob('*.mp3')) if preview_dir.exists() else []
+        if not preview_files:
+            fail("No preview clips found — run ./pg convert --preview first")
+            sys.exit(1)
+        audio_plan = [('preview', preview_dir, preview_files)]
+        info(f"Mode: preview-only ({len(preview_files)} clip(s))")
+    else:
+        audio_plan = []
+        for label, d in [('128', mp3_128_dir), ('320', mp3_320_dir)]:
+            files = sorted(d.glob('*.mp3')) if d.exists() else []
+            # fallback: legacy flat mp3 dir
+            if not files and label == '320' and mp3_legacy_dir.exists():
+                legacy_files = [f for f in sorted(mp3_legacy_dir.glob('*.mp3'))
+                                if f.parent == mp3_legacy_dir]
+                if legacy_files:
+                    warn(f"No export/mp3/320/ found — using legacy export/mp3/ for 320k")
+                    files = legacy_files
+            audio_plan.append((label, d, files))
 
-    if not mp3_files and not preview_files:
-        fail("No MP3s found — run ./pg convert first")
-        sys.exit(1)
+        total_audio = sum(len(f) for _, _, f in audio_plan)
+        if total_audio == 0:
+            fail("No MP3s found — run ./pg convert first")
+            sys.exit(1)
+        for label, _, files in audio_plan:
+            ok(f"{len(files)} audio file(s) [{label}kbps]")
 
-    audio_files = preview_files if (preview_only and preview_files) else mp3_files
-    audio_label = "preview" if (preview_only and preview_files) else "full"
+    # Artwork — processed variants preferred, fallback to raw artwork/
+    artwork_export_dir = path / 'export' / 'artwork'
+    raw_artwork_dir    = path / 'artwork'
 
-    ok(f"{len(audio_files)} audio file(s) [{audio_label}]")
-    ok(f"{len(cover_files)} artwork file(s)")
+    artwork_variants = []
+    if artwork_export_dir.exists():
+        artwork_variants = (sorted(artwork_export_dir.glob('*.jpg')) +
+                            sorted(artwork_export_dir.glob('*.webp')))
+        ok(f"{len(artwork_variants)} artwork variant(s) (processed)")
+    else:
+        # fallback: upload raw artwork
+        raw_covers = (sorted(raw_artwork_dir.glob('*.jpg')) +
+                      sorted(raw_artwork_dir.glob('*.png'))) if raw_artwork_dir.exists() else []
+        artwork_variants = raw_covers
+        if raw_covers:
+            warn(f"{len(raw_covers)} raw artwork file(s) — run ./pg convert first for optimised variants")
+        else:
+            warn("No artwork found")
 
     # ── Connect ────────────────────────────────────────────────────────────────
     header("4. CONNECTING")
     protocol    = get_protocol(env)
-    client_type = protocol if protocol in ('sftp',) else 'ftp'
+    client_type = 'sftp' if protocol == 'sftp' else 'ftp'
     ssh         = None
 
     try:
@@ -290,82 +331,124 @@ def push_release(release_path: str, preview_only: bool = False):
         fail(f"Connection failed: {e}")
         sys.exit(1)
 
-    # ── Upload ─────────────────────────────────────────────────────────────────
-    header("5. UPLOADING")
-    slug         = path.name
-    remote_base  = f"{cdn_base}/{slug}"
-    remote_audio = f"{remote_base}/audio"
-    remote_art   = f"{remote_base}/artwork"
+    # ── Upload audio ───────────────────────────────────────────────────────────
+    header("5. UPLOADING AUDIO")
+    remote_base = f"{cdn_base}/{slug}"
+
+    # Map: bitrate_label → {filename: remote_url}
+    cdn_audio_map = {}   # e.g. {'128': {'01_...mp3': 'https://...'}, '320': {...}}
+
+    for label, local_dir, files in audio_plan:
+        remote_dir = f"{remote_base}/audio/{label}"
+        makedirs(client, remote_dir, client_type)
+        cdn_audio_map[label] = {}
+        for mp3 in files:
+            remote_path = f"{remote_dir}/{mp3.name}"
+            upload_file(client, mp3, remote_path, client_type)
+            cdn_audio_map[label][mp3.name] = (
+                f"{cdn_public}/releases/{slug}/audio/{label}/{mp3.name}"
+            )
+            ok(f"✓ [{label}k] {mp3.name}")
+
+    # ── Upload artwork ─────────────────────────────────────────────────────────
+    header("6. UPLOADING ARTWORK")
+    remote_art = f"{remote_base}/artwork"
+    makedirs(client, remote_art, client_type)
+
+    for art in artwork_variants:
+        remote_path = f"{remote_art}/{art.name}"
+        upload_file(client, art, remote_path, client_type)
+        ok(f"✓ {art.name}")
 
     if client_type == 'sftp':
-        sftp_makedirs(client, remote_audio)
-        sftp_makedirs(client, remote_art)
-    else:
-        ftp_makedirs(client, remote_audio)
-        ftp_makedirs(client, remote_art)
-
-    cdn_tracks = []
-    for mp3 in audio_files:
-        remote_path = f"{remote_audio}/{mp3.name}"
-        upload_file(client, mp3, remote_path, client_type)
-        cdn_tracks.append({
-            "file": mp3.name,
-            "url":  f"{cdn_public}/releases/{slug}/audio/{mp3.name}",
-        })
-        ok(f"✓ {mp3.name}")
-
-    cdn_cover = None
-    for cover in cover_files[:1]:
-        remote_path = f"{remote_art}/{cover.name}"
-        upload_file(client, cover, remote_path, client_type)
-        cdn_cover = f"{cdn_public}/releases/{slug}/artwork/{cover.name}"
-        ok(f"✓ {cover.name}")
-
-    if client_type == 'sftp':
-        client.close()
-        ssh.close()
+        client.close(); ssh.close()
     else:
         client.quit()
 
+    # ── Build artwork index for releases.json ──────────────────────────────────
+    # cover = 600px JPG (primary for web)
+    art_base_url = f"{cdn_public}/releases/{slug}/artwork"
+    cdn_cover    = None
+    cdn_artwork  = {}   # e.g. {'600': {'jpg': '...', 'webp': '...'}}
+
+    for art in artwork_variants:
+        name = art.name   # e.g. cover_600.jpg
+        url  = f"{art_base_url}/{name}"
+        # Parse size from filename: cover_<size>.jpg / cover_<size>.webp
+        import re
+        m = re.match(r'cover_(\d+)\.(jpg|webp)', name)
+        if m:
+            sz, fmt = m.group(1), m.group(2)
+            if sz not in cdn_artwork:
+                cdn_artwork[sz] = {}
+            cdn_artwork[sz][fmt] = url
+            if sz == '600' and fmt == 'jpg':
+                cdn_cover = url
+        else:
+            # Raw artwork fallback (no size in name)
+            cdn_cover = url
+
     # ── Update data/releases.json ──────────────────────────────────────────────
-    header("6. UPDATING releases.json")
-    repo_root    = Path(__file__).parents[2]
+    header("7. UPDATING releases.json")
+    repo_root     = Path(__file__).parents[2]
     releases_path = repo_root / 'data' / 'releases.json'
 
     with open(releases_path) as f:
         releases_data = json.load(f)
 
-    # Build release entry
-    entry = {
-        "catalog":    catalog,
-        "artist":     artist,
-        "title":      title,
-        "format":     data.get('format', ''),
-        "year":       data.get('year', ''),
-        "genre":      data.get('genre', ''),
-        "cover":      cdn_cover,
-        "bandcamp":   data.get('bandcamp_url', ''),
-        "tracks":     [],
-        "pushed_at":  datetime.now(timezone.utc).isoformat(),
-    }
-
-    # Merge track metadata
+    # Build track list — merge release.json metadata with CDN URLs
     release_tracks = data.get('tracks', [])
+
+    # Determine track file list from 128k (primary for web) or preview
+    primary_label = 'preview' if preview_only else '128'
+    primary_audio = cdn_audio_map.get(primary_label, {})
+    secondary_audio = cdn_audio_map.get('320', {})
+
+    # Build filename→url maps
+    def build_filename_map(label_map: dict) -> dict:
+        """Return {track_number_prefix: url} for matching by track number."""
+        return {name: url for name, url in label_map.items()}
+
+    primary_by_name   = build_filename_map(primary_audio)
+    secondary_by_name = build_filename_map(secondary_audio)
+
+    def find_url(url_map: dict, track_num: int) -> str:
+        """Match by track number prefix (e.g. '01_')."""
+        prefix = str(track_num).zfill(2) + '_'
+        for name, url in url_map.items():
+            if name.startswith(prefix):
+                return url
+        return ''
+
+    tracks_out = []
     for i, t in enumerate(release_tracks):
-        cdn_t = cdn_tracks[i] if i < len(cdn_tracks) else {}
-        entry["tracks"].append({
-            "number":  t.get('number'),
+        num = t.get('number', i + 1)
+        tracks_out.append({
+            "number":  num,
             "title":   t.get('title', ''),
             "bpm":     t.get('bpm', ''),
             "key":     t.get('key', ''),
             "runtime": t.get('runtime', ''),
-            "file":    cdn_t.get('file', ''),
-            "url":     cdn_t.get('url', ''),
+            "url":     find_url(primary_audio,   num),   # 128k for web player
+            "url_320": find_url(secondary_audio, num),   # 320k for download
         })
 
-    # Update or insert
+    entry = {
+        "catalog":   catalog,
+        "artist":    artist,
+        "title":     title,
+        "format":    data.get('format', ''),
+        "year":      data.get('year', ''),
+        "genre":     data.get('genre', ''),
+        "cover":     cdn_cover,                 # 600px JPG
+        "artwork":   cdn_artwork,               # all size/format variants
+        "bandcamp":  data.get('bandcamp_url', ''),
+        "tracks":    tracks_out,
+        "pushed_at": datetime.now(timezone.utc).isoformat(),
+    }
+
     existing = [r for r in releases_data['releases'] if r['catalog'] != catalog]
-    releases_data['releases'] = [entry] + existing   # newest first
+    releases_data['releases'] = [entry] + existing
     releases_data['_meta']['generated'] = datetime.now(timezone.utc).isoformat()
 
     with open(releases_path, 'w') as f:
@@ -373,8 +456,7 @@ def push_release(release_path: str, preview_only: bool = False):
 
     ok(f"releases.json updated — {len(releases_data['releases'])} release(s)")
 
-    header("7. DONE")
+    header("8. DONE")
     ok(f"CDN: {cdn_public}/releases/{slug}/")
     info("Next: commit data/releases.json, then push OS repo")
-    info("  git add data/releases.json && git commit -m 'release(catalog): push to CDN'")
     print()
