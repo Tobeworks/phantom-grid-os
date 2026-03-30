@@ -19,6 +19,7 @@ from commands.validate import validate_release
 from commands.generate import generate_release
 from commands.social   import generate_social
 from commands.convert  import convert_release
+from commands.push     import push_release, test_connection
 
 @click.group()
 @click.version_option(version='0.3.0', prog_name='phantom-grid')
@@ -62,9 +63,18 @@ def convert(release_path, force):
     """Convert WAV/AIFF to MP3 320kbps with full ID3 tags and embedded cover."""
     convert_release(release_path, force=force)
 
-# Future commands:
-# @cli.command()
-# def push(): ...
+@cli.command()
+@click.argument('release_path', type=click.Path(exists=True))
+@click.option('--preview-only', is_flag=True, default=False,
+              help='Upload preview clips only (export/preview/), not full MP3s.')
+def push(release_path, preview_only):
+    """Upload release assets to CDN and update data/releases.json."""
+    push_release(release_path, preview_only=preview_only)
+
+@cli.command('sftp-test')
+def sftp_test():
+    """Test SFTP connection and write permissions — no upload."""
+    test_connection()
 
 if __name__ == '__main__':
     cli()

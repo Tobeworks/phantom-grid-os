@@ -1,3 +1,12 @@
+# Environment — NEVER commit
+.env
+
+# Python
+tools/venv/
+tools/__pycache__/
+tools/commands/__pycache__/
+*.pyc
+
 # General
 .DS_Store
 __MACOSX/
