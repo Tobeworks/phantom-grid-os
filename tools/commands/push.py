@@ -45,6 +45,31 @@ def load_env() -> dict:
     return env
 
 
+def ftp_connect(env: dict):
+    """Return an open FTP or FTPS client."""
+    import ftplib
+    host     = env['CDN_HOST']
+    port     = int(env.get('CDN_PORT', 21))
+    user     = env['CDN_USER']
+    password = env.get('CDN_PASSWORD', '')
+    protocol = env.get('CDN_PROTOCOL', 'ftp').lower()
+
+    if protocol == 'ftps':
+        ftp = ftplib.FTP_TLS()
+        info("Protocol: FTPS (explicit TLS)")
+    else:
+        ftp = ftplib.FTP()
+        info("Protocol: FTP")
+
+    ftp.connect(host, port, timeout=10)
+    ftp.login(user, password)
+
+    if protocol == 'ftps':
+        ftp.prot_p()  # switch to encrypted data channel
+
+    return ftp
+
+
 def sftp_connect(env: dict):
     """Return an open paramiko SFTP client. Supports key and password auth."""
     try:
@@ -54,7 +79,7 @@ def sftp_connect(env: dict):
         sys.exit(1)
 
     key_path = env.get('CDN_KEY_PATH', '')
-    password  = env.get('CDN_PASSWORD', '')
+    password = env.get('CDN_PASSWORD', '')
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -73,15 +98,30 @@ def sftp_connect(env: dict):
         connect_kwargs['password'] = password
         info("Auth: password")
     else:
-        # Let paramiko try the SSH agent and ~/.ssh/id_* automatically
         info("Auth: SSH agent / default keys")
 
     ssh.connect(**connect_kwargs)
     return ssh.open_sftp(), ssh
 
 
+def get_protocol(env: dict) -> str:
+    return env.get('CDN_PROTOCOL', 'sftp').lower()
+
+
+def ftp_makedirs(ftp, remote_path: str):
+    """Recursively create remote directories via FTP."""
+    parts = [p for p in remote_path.split('/') if p]
+    current = ''
+    for part in parts:
+        current = f"{current}/{part}"
+        try:
+            ftp.cwd(current)
+        except Exception:
+            ftp.mkd(current)
+
+
 def sftp_makedirs(sftp, remote_path: str):
-    """Recursively create remote directories."""
+    """Recursively create remote directories via SFTP."""
     parts = remote_path.split('/')
     current = ''
     for part in parts:
@@ -94,68 +134,93 @@ def sftp_makedirs(sftp, remote_path: str):
             sftp.mkdir(current)
 
 
-def upload_file(sftp, local: Path, remote: str):
-    """Upload a single file, show progress."""
+def upload_file(client, local: Path, remote: str, client_type: str):
+    """Upload a single file via FTP or SFTP."""
+    import io
     size_kb = local.stat().st_size // 1024
     info(f"  {local.name} ({size_kb} KB) → {remote}")
-    sftp.put(str(local), remote)
+    if client_type == 'sftp':
+        client.put(str(local), remote)
+    else:
+        with open(local, 'rb') as f:
+            client.storbinary(f"STOR {remote}", f)
 
 
 def test_connection():
-    """Test SFTP connection and permissions — no upload."""
-    print(f"\n{Fore.RED}{Style.BRIGHT}PHANTOM GRID — SFTP CONNECTION TEST{Style.RESET_ALL}\n")
+    """Test FTP/SFTP connection and permissions — no upload."""
+    print(f"\n{Fore.RED}{Style.BRIGHT}PHANTOM GRID — CONNECTION TEST{Style.RESET_ALL}\n")
 
     header("1. CREDENTIALS")
-    env = load_env()
-    ok(f"Host:    {env['CDN_HOST']}")
-    ok(f"Port:    {env.get('CDN_PORT', 22)}")
-    ok(f"User:    {env['CDN_USER']}")
-    ok(f"Base:    {env.get('CDN_BASE_PATH', '/releases')}")
+    env      = load_env()
+    protocol = get_protocol(env)
+    cdn_base = env.get('CDN_BASE_PATH', '/releases')
+    ok(f"Protocol: {protocol.upper()}")
+    ok(f"Host:     {env['CDN_HOST']}")
+    ok(f"Port:     {env.get('CDN_PORT', 21 if protocol != 'sftp' else 22)}")
+    ok(f"User:     {env['CDN_USER']}")
+    ok(f"Base:     {cdn_base}")
 
     header("2. CONNECTING")
     try:
-        sftp, ssh = sftp_connect(env)
-        ok("SSH handshake successful")
+        if protocol == 'sftp':
+            client, ssh = sftp_connect(env)
+            client_type = 'sftp'
+        else:
+            client = ftp_connect(env)
+            client_type = 'ftp'
+            ssh = None
+        ok("Connected successfully")
     except Exception as e:
         fail(f"Connection failed: {e}")
         sys.exit(1)
 
     header("3. PERMISSIONS")
-    cdn_base = env.get('CDN_BASE_PATH', '/releases')
-    try:
-        sftp.stat(cdn_base)
-        ok(f"Base path exists: {cdn_base}")
-    except FileNotFoundError:
-        warn(f"Base path does not exist: {cdn_base} — will be created on push")
-
-    # Write test
+    import io
     test_file = f"{cdn_base}/.pg-test"
-    try:
-        import io
-        sftp.putfo(io.BytesIO(b"phantom-grid-test"), test_file)
-        sftp.remove(test_file)
-        ok("Write + delete permissions OK")
-    except Exception as e:
-        fail(f"Write test failed: {e}")
-        sftp.close(); ssh.close()
-        sys.exit(1)
 
-    # List remote
     try:
-        entries = sftp.listdir(cdn_base)
-        ok(f"Directory listing OK — {len(entries)} item(s) in {cdn_base}")
+        if client_type == 'sftp':
+            try:
+                client.stat(cdn_base)
+                ok(f"Base path exists: {cdn_base}")
+            except FileNotFoundError:
+                warn(f"Base path not found: {cdn_base} — will be created on push")
+            client.putfo(io.BytesIO(b"phantom-grid-test"), test_file)
+            client.remove(test_file)
+            entries = client.listdir(cdn_base)
+        else:
+            try:
+                client.cwd(cdn_base)
+                ok(f"Base path exists: {cdn_base}")
+            except Exception:
+                warn(f"Base path not found: {cdn_base} — will be created on push")
+                client.cwd('/')
+            client.storbinary(f"STOR {test_file}", io.BytesIO(b"phantom-grid-test"))
+            client.delete(test_file)
+            entries = client.nlst(cdn_base)
+
+        ok("Write + delete permissions OK")
+        ok(f"Directory listing OK — {len(entries)} item(s)")
         for e in entries[:5]:
             info(f"  {e}")
         if len(entries) > 5:
             info(f"  ... and {len(entries) - 5} more")
-    except Exception as e:
-        warn(f"Could not list directory: {e}")
 
-    sftp.close()
-    ssh.close()
+    except Exception as e:
+        fail(f"Permission test failed: {e}")
+        if client_type == 'sftp':
+            client.close(); ssh.close()
+        else:
+            client.quit()
+        sys.exit(1)
+
+    if client_type == 'sftp':
+        client.close(); ssh.close()
+    else:
+        client.quit()
 
     header("RESULT")
-    ok("SFTP connection fully operational")
+    ok(f"{protocol.upper()} connection fully operational")
     print()
 
 
@@ -169,7 +234,7 @@ def push_release(release_path: str, preview_only: bool = False):
     header("1. CREDENTIALS")
     env = load_env()
     cdn_base   = env.get('CDN_BASE_PATH', '/releases')
-    cdn_public = env.get('CDN_PUBLIC_URL', 'https://cdn.phantom-grid.de')
+    cdn_public = env.get('CDN_PUBLIC_URL')
     ok(f"CDN: {env['CDN_HOST']}")
 
     # ── Load release.json ──────────────────────────────────────────────────────
@@ -209,40 +274,58 @@ def push_release(release_path: str, preview_only: bool = False):
     ok(f"{len(audio_files)} audio file(s) [{audio_label}]")
     ok(f"{len(cover_files)} artwork file(s)")
 
-    # ── SFTP connect ───────────────────────────────────────────────────────────
+    # ── Connect ────────────────────────────────────────────────────────────────
     header("4. CONNECTING")
-    sftp, ssh = sftp_connect(env)
-    ok(f"Connected to {env['CDN_HOST']}")
+    protocol    = get_protocol(env)
+    client_type = protocol if protocol in ('sftp',) else 'ftp'
+    ssh         = None
+
+    try:
+        if client_type == 'sftp':
+            client, ssh = sftp_connect(env)
+        else:
+            client = ftp_connect(env)
+        ok(f"Connected via {protocol.upper()} to {env['CDN_HOST']}")
+    except Exception as e:
+        fail(f"Connection failed: {e}")
+        sys.exit(1)
 
     # ── Upload ─────────────────────────────────────────────────────────────────
     header("5. UPLOADING")
-    slug         = path.name                          # e.g. pg-001-artist-title
+    slug         = path.name
     remote_base  = f"{cdn_base}/{slug}"
     remote_audio = f"{remote_base}/audio"
     remote_art   = f"{remote_base}/artwork"
 
-    sftp_makedirs(sftp, remote_audio)
-    sftp_makedirs(sftp, remote_art)
+    if client_type == 'sftp':
+        sftp_makedirs(client, remote_audio)
+        sftp_makedirs(client, remote_art)
+    else:
+        ftp_makedirs(client, remote_audio)
+        ftp_makedirs(client, remote_art)
 
     cdn_tracks = []
     for mp3 in audio_files:
         remote_path = f"{remote_audio}/{mp3.name}"
-        upload_file(sftp, mp3, remote_path)
+        upload_file(client, mp3, remote_path, client_type)
         cdn_tracks.append({
-            "file":     mp3.name,
-            "url":      f"{cdn_public}/releases/{slug}/audio/{mp3.name}",
+            "file": mp3.name,
+            "url":  f"{cdn_public}/releases/{slug}/audio/{mp3.name}",
         })
         ok(f"✓ {mp3.name}")
 
     cdn_cover = None
     for cover in cover_files[:1]:
         remote_path = f"{remote_art}/{cover.name}"
-        upload_file(sftp, cover, remote_path)
+        upload_file(client, cover, remote_path, client_type)
         cdn_cover = f"{cdn_public}/releases/{slug}/artwork/{cover.name}"
         ok(f"✓ {cover.name}")
 
-    sftp.close()
-    ssh.close()
+    if client_type == 'sftp':
+        client.close()
+        ssh.close()
+    else:
+        client.quit()
 
     # ── Update data/releases.json ──────────────────────────────────────────────
     header("6. UPDATING releases.json")
