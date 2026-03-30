@@ -1,8 +1,67 @@
 {
   "_meta": {
-    "generated": "",
+    "generated": "2026-03-30T10:17:41.505344+00:00",
     "label": "Phantom Grid",
     "version": "1"
   },
-  "releases": []
+  "releases": [
+    {
+      "catalog": "PG-001",
+      "artist": "Input Null",
+      "title": "Vector Field Signals",
+      "format": "EP",
+      "year": "",
+      "genre": "",
+      "cover": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/artwork/Input Null - Vectro Field Signals.png",
+      "bandcamp": "",
+      "tracks": [
+        {
+          "number": 1,
+          "title": "Input Null   Duality Shift Exchange",
+          "bpm": "",
+          "key": "",
+          "runtime": "",
+          "file": "01_input_null_duality_shift_exchange.mp3",
+          "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/01_input_null_duality_shift_exchange.mp3"
+        },
+        {
+          "number": 2,
+          "title": "Input Null   Photon Storm",
+          "bpm": "",
+          "key": "",
+          "runtime": "",
+          "file": "02_input_null_photon_storm.mp3",
+          "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/02_input_null_photon_storm.mp3"
+        },
+        {
+          "number": 3,
+          "title": "Input Null   Prism State Dancers",
+          "bpm": "",
+          "key": "",
+          "runtime": "",
+          "file": "03_input_null_prism_state_dancers.mp3",
+          "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/03_input_null_prism_state_dancers.mp3"
+        },
+        {
+          "number": 4,
+          "title": "Input Null   Radiant Funk",
+          "bpm": "",
+          "key": "",
+          "runtime": "",
+          "file": "04_input_null_radiant_funk.mp3",
+          "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/04_input_null_radiant_funk.mp3"
+        },
+        {
+          "number": 5,
+          "title": "Input Null   Vector Field Signals",
+          "bpm": "",
+          "key": "",
+          "runtime": "",
+          "file": "05_input_null_vector_field_signals.mp3",
+          "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/05_input_null_vector_field_signals.mp3"
+        }
+      ],
+      "pushed_at": "2026-03-30T10:17:41.504844+00:00"
+    }
+  ]
 }
