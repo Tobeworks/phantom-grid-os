@@ -1,6 +1,10 @@
 # Environment — NEVER commit
 .env
 
+# PocketBase runtime data + local binary
+pb_data/
+/pocketbase
+
 # Python
 tools/venv/
 tools/__pycache__/
