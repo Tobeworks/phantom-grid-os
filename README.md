@@ -100,6 +100,7 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | File | Description |
 |---|---|
 | [tools/README.md](tools/README.md) | Full toolchain documentation — setup, commands, asset structure |
+| [docs/promo-tool.md](docs/promo-tool.md) | Promo Tool — PocketBase admin, collections, DJ workflow, download endpoints |
 | [tools/pg](tools/pg) | CLI bootstrapper — entry point for all toolchain commands |
 | [tools/phantom-grid.py](tools/phantom-grid.py) | Main CLI — command registry |
 | [tools/commands/generate.py](tools/commands/generate.py) | `generate` — scan audio folder, write release.json |

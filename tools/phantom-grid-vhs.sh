@@ -6,10 +6,11 @@
 #   ./phantom-grid-vhs.sh input.mp4 [output.mp4]
 #
 # Effects applied:
-#   - Scanlines (drawgrid, 4px rhythm)
-#   - Film grain / noise
-#   - Vignette (dark edges, luminous center)
-#   - Color grade (red bias, slight desaturation)
+#   - Scanlines (drawgrid, 1px lines / 4px rhythm — CRT phosphor row spacing)
+#   - Chromatic aberration (rgbashift rh=2 bh=-2 — red right, cyan left, VHS signal bleed)
+#   - Film grain / noise (temporal+uniform — worn surface, material texture)
+#   - Vignette (dark edges, luminous center — screen boundary effect)
+#   - Color grade (red +10%, green/blue pull — Dirty Red bias)
 
 set -e
 
@@ -31,11 +32,13 @@ echo "→ Output: $OUTPUT"
 echo "→ Applying Phantom Grid effects..."
 
 ffmpeg -i "$INPUT" \
-  -vf "drawgrid=x=0:y=0:width=0:height=4:color=black@0.2:thickness=2,\
-noise=alls=14:allf=t+u,\
-vignette=PI/4.5,\
-colorchannelmixer=rr=1.05:gg=0.97:bb=0.95" \
+  -vf "drawgrid=x=0:y=0:width=iw:height=4:color=black@0.25:thickness=1,\
+rgbashift=rh=5:gh=-1:bh=-5:enable='between(mod(t\,6)\,5.3\,5.5)+between(mod(t\,6)\,5.76\,5.86)',\
+noise=alls=28:allf=t+u,\
+vignette=PI/3.5,\
+colorchannelmixer=rr=1.15:gg=0.94:bb=0.88" \
   -c:v libx264 -crf 18 -preset slow \
+  -pix_fmt yuv420p \
   -c:a copy \
   "$OUTPUT" -y
 

@@ -201,16 +201,26 @@ def add_grain(img: Image.Image, intensity: float = 0.03) -> Image.Image:
 
 # ── VHS post-processing ────────────────────────────────────────────────────────
 def apply_vhs_effect(mp4_path: Path) -> Path:
-    """Apply Phantom Grid terminal glow effect stack via FFmpeg. Replaces input."""
+    """Apply Phantom Grid terminal glow effect stack via FFmpeg. Replaces input.
+
+    Effect chain (brand-accurate):
+    1. Scanlines   — 1px lines every 4px; simulates CRT phosphor row spacing
+    2. Chromatic   — red channel +5px right, blue -5px left; VHS signal bleed
+    3. Film grain  — temporal+uniform noise; worn surface, material texture
+    4. Vignette    — dark edges draw eye inward; screen boundary effect
+    5. Color grade — red boost (+15%), green/blue pull; Dirty Red bias
+    """
     tmp_path = mp4_path.with_suffix('.vhs_tmp.mp4')
     cmd = [
         'ffmpeg', '-i', str(mp4_path),
         '-vf',
-        'drawgrid=x=0:y=0:width=0:height=4:color=black@0.2:thickness=2,'
-        'noise=alls=14:allf=t+u,'
-        'vignette=PI/4.5,'
-        'colorchannelmixer=rr=1.05:gg=0.97:bb=0.95',
+        'drawgrid=x=0:y=0:width=iw:height=4:color=black@0.25:thickness=1,'
+        'rgbashift=rh=5:gh=-1:bh=-5:enable=\'between(mod(t,6),5.3,5.5)+between(mod(t,6),5.76,5.86)\','
+        'noise=alls=28:allf=t+u,'
+        'vignette=PI/3.5,'
+        'colorchannelmixer=rr=1.15:gg=0.94:bb=0.88',
         '-c:v', 'libx264', '-crf', '18', '-preset', 'slow',
+        '-pix_fmt', 'yuv420p',
         '-c:a', 'copy',
         str(tmp_path), '-y'
     ]
