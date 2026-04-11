@@ -1,18 +1,18 @@
 # Promo Tool
 
-Token-geschützte Listening Pages für DJs und Journalisten.
-Kein Account, kein Login — nur ein Link mit Token.
+Token-protected listening pages for DJs and journalists.
+No account, no login — just a link with a token.
 
 ---
 
 ## Workflow
 
 ```
-Label legt Promo an (PocketBase Admin)
-  → generiert Link: phantom-grid.de/promo/pg-001?t=TOKEN
-  → schickt Link per Mail an DJ
-  → DJ öffnet Link: hört Release, lädt Tracks, gibt Feedback
-  → Label liest Feedback in PocketBase Admin
+Label creates promo (PocketBase Admin)
+  → generates link: phantom-grid.de/promo/pg-001?t=TOKEN
+  → sends link by email to DJ
+  → DJ opens link: listens to release, downloads tracks, leaves feedback
+  → Label reads feedback in PocketBase Admin
 ```
 
 ---
@@ -24,68 +24,68 @@ Label legt Promo an (PocketBase Admin)
 https://pb.phantom-grid.de/_/
 ```
 
-**Lokal:**
+**Local:**
 ```
 http://localhost:8090/_/
 ```
 
-Login mit dem Superuser-Account (beim ersten Start angelegt).
-Falls Passwort vergessen:
+Login with the superuser account (created on first start).
+If password is lost:
 
 ```bash
 kubectl exec -n phantom-grid-web deployment/pocketbase -- \
-  /pb/pocketbase superuser upsert admin@phantom-grid.de NeuesPasswort123!
+  /pb/pocketbase superuser upsert admin@phantom-grid.de NewPassword123!
 ```
 
 ---
 
-## Promo anlegen
+## Creating a promo
 
-1. PocketBase Admin öffnen → **Collections → promos → New record**
-2. Felder ausfüllen:
+1. Open PocketBase Admin → **Collections → promos → New record**
+2. Fill in the fields:
 
-| Feld | Pflicht | Beschreibung |
+| Field | Required | Description |
 |---|---|---|
-| `token` | ✅ | Einzigartiger Zugangscode, z.B. `PG001-DJ-KOOL-X7K` |
-| `release_slug` | ✅ | Catalog-ID lowercase, z.B. `pg-001` |
-| `recipient_name` | ✅ | Name des DJs — wird auf der Seite angezeigt |
-| `recipient_email` | — | Nur zur internen Referenz |
-| `notes` | — | Interne Notizen (nicht sichtbar für DJ) |
-| `expires_at` | — | Ablaufdatum — danach zeigt die Seite "EXPIRED" |
+| `token` | ✅ | Unique access code, e.g. `PG001-DJ-KOOL-X7K` |
+| `release_slug` | ✅ | Catalog ID lowercase, e.g. `pg-001` |
+| `recipient_name` | ✅ | DJ name — shown on the page |
+| `recipient_email` | — | Internal reference only |
+| `notes` | — | Internal notes (not visible to DJ) |
+| `expires_at` | — | Expiry date — page shows "EXPIRED" after this |
 
-3. Speichern → Link zusammenbauen:
+3. Save → build the link:
 
 ```
 https://phantom-grid.de/promo/[release_slug]?t=[token]
 ```
 
-**Beispiel:**
+**Example:**
 ```
 https://phantom-grid.de/promo/pg-001?t=PG001-DJ-KOOL-X7K
 ```
 
 ---
 
-## URL-Format
+## URL format
 
 ```
 /promo/[release-slug]?t=[TOKEN]
 ```
 
-- `release-slug` = `catalog`-Feld aus `releases.json`, lowercase (z.B. `pg-001`)
-- `t` = Token aus dem PocketBase Promo-Record
+- `release-slug` = `catalog` field from `releases.json`, lowercase (e.g. `pg-001`)
+- `t` = token from the PocketBase promo record
 
 ---
 
-## Was der DJ sieht
+## What the DJ sees
 
-- Release-Info (Cover, Titel, Artist, Format, Genre)
-- Empfängername: `FOR: DJ KOOL`
-- Ablaufdatum (falls gesetzt)
-- AudioPlayer mit 128k Streaming
-- Download-Buttons: Einzeltracks (128K / 320K) + ZIP aller Tracks
-- Feedback-Formular (Name, Email, Freitext)
-- Alle bisherigen Feedbacks zu diesem Release
+- Release info (cover, title, artist, format, genre)
+- Recipient name: `FOR: DJ KOOL`
+- Expiry date (if set)
+- Audio player with 128k streaming
+- Download buttons: individual tracks (128K / 320K) + ZIP of all tracks
+- Feedback form (name, email, free text)
+- All previous feedback for this release
 
 ---
 
@@ -93,24 +93,24 @@ https://phantom-grid.de/promo/pg-001?t=PG001-DJ-KOOL-X7K
 
 ### `promos`
 
-Jede Promo = ein DJ-Zugang für ein Release.
+One promo = one DJ access for one release.
 
-| Feld | Typ | Regel |
+| Field | Type | Rule |
 |---|---|---|
 | `token` | Text, Unique | — |
 | `release_slug` | Text | — |
 | `recipient_name` | Text | — |
 | `recipient_email` | Email | optional |
-| `notes` | Text | optional, intern |
+| `notes` | Text | optional, internal |
 | `expires_at` | Date | optional |
 
-**API Rules:** List/View öffentlich (leerer String) — Astro liest ohne Auth-Token.
+**API Rules:** List/View public (empty string) — Astro reads without auth token.
 
 ### `feedback`
 
-Ein Eintrag pro DJ-Feedback. Relation zu `promos`.
+One entry per DJ feedback. Relation to `promos`.
 
-| Feld | Typ |
+| Field | Type |
 |---|---|
 | `promo` | Relation → promos |
 | `name` | Text |
@@ -119,13 +119,13 @@ Ein Eintrag pro DJ-Feedback. Relation zu `promos`.
 | `user_agent` | Text (auto) |
 | `ip` | Text (auto) |
 
-**API Rules:** List/View/Create öffentlich — DJs schreiben direkt, Label liest in Admin.
+**API Rules:** List/View/Create public — DJs write directly, label reads in Admin.
 
 ### `download_events`
 
-Automatisch geloggt bei jedem Download. Nur in Admin sichtbar.
+Logged automatically on every download. Visible in Admin only.
 
-| Feld | Typ |
+| Field | Type |
 |---|---|
 | `promo` | Relation → promos |
 | `quality` | Select: `128` / `320` |
@@ -134,43 +134,43 @@ Automatisch geloggt bei jedem Download. Nur in Admin sichtbar.
 
 ---
 
-## Download-Endpoints
+## Download endpoints
 
-### Einzeltrack
+### Single track
 
 ```
 GET /api/promo/download?t=TOKEN&q=128&track=1
 ```
 
-Antwortet mit MP3-Datei direkt (Content-Disposition: attachment).
+Returns MP3 file directly (Content-Disposition: attachment).
 
-### ZIP alle Tracks
+### ZIP all tracks
 
 ```
 GET /api/promo/download?t=TOKEN&q=320
 ```
 
-Streamt ZIP-Archiv aller Tracks in der gewählten Qualität.
-Filename-Format: `pg-001_input_null_320k.zip`
+Streams ZIP archive of all tracks in the selected quality.
+Filename format: `pg-001_input_null_320k.zip`
 
 ---
 
-## Sicherheit
+## Security
 
-- Token wird serverseitig gegen PocketBase validiert (nie im Client)
-- `release_slug` im URL muss mit dem `release_slug` im Promo-Record übereinstimmen
-- Abgelaufene Promos zeigen 410-Fehlerseite
-- PocketBase ist intern (ClusterIP) — nur über Ingress `pb.phantom-grid.de` erreichbar
-- Download-Events werden geloggt (IP + User-Agent)
+- Token validated server-side against PocketBase (never in client)
+- `release_slug` in URL must match `release_slug` in promo record
+- Expired promos return a 410 error page
+- PocketBase is internal (ClusterIP) — only accessible via ingress `pb.phantom-grid.de`
+- Download events are logged (IP + User-Agent)
 
 ---
 
 ## Migrations
 
-Liegen in `tools/pocketbase/pb_migrations/` und werden beim PocketBase-Start automatisch angewendet:
+Located in `tools/pocketbase/pb_migrations/`, applied automatically on PocketBase start:
 
-| Datei | Beschreibung |
+| File | Description |
 |---|---|
-| `1_create_promos.js` | promos Collection |
-| `2_create_feedback.js` | feedback Collection |
-| `3_create_download_events.js` | download_events Collection |
+| `1_create_promos.js` | promos collection |
+| `2_create_feedback.js` | feedback collection |
+| `3_create_download_events.js` | download_events collection |
