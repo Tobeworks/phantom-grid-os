@@ -142,6 +142,7 @@ Void is a developer and music producer based in Mainz — ten minutes from Frank
 **Electronic music projects:**
 - **Input Null** (with Paradroid) — Electro. PG-001 "Vector Field Signals" is their first release.
 - **Cortexia** — solo Electro project.
+- **Paradroid** — solo Electronica project.
 - **Antiga Prime** — released on Klang Elektronik (Ata's label, Robert Johnson ecosystem, Frankfurt).
 - **Logic Moon** — dark cinematic ambient.
 - **Aethery Fields** — experimental lo-fi ambient.
