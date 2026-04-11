@@ -2,7 +2,7 @@
 
 > Operating system for the world's first 100% code-based music label.
 
-**Version:** 0.1.3 — see [CHANGELOG.md](CHANGELOG.md)
+**Version:** 0.2.0 — see [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
@@ -49,7 +49,7 @@ Phantom Grid lives in the Cyber Space and operates in the tradition of Detroit E
 
 ### Visual Identity
 
-The visual language of Phantom Grid was initiated by Void through a series of founding drafts. The aesthetic is grid-based, monochrome-first, typographically precise, with selective use of cold accent color. The name itself — Phantom Grid — is a design directive: the grid is always present, sometimes visible, sometimes not.
+The visual language of Phantom Grid was established through a series of founding drafts. The aesthetic is grid-based, monochrome-first, typographically precise, with selective use of cold accent color. The name itself — Phantom Grid — is a design directive: the grid is always present, sometimes visible, sometimes not.
 
 The visual system is documented and maintained in `/brand/phantom-grid-brand.md`.
 
@@ -66,20 +66,12 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | [COORDINATES.md](COORDINATES.md) | Label location in cyberspace; platform URLs |
 | [transmission-log.md](transmission-log.md) | Running log of all label events |
 
-**Roles**
-| File | Domain |
-|---|---|
-| [roles/art-direction.md](roles/art-direction.md) | Visual Identity & Art Direction |
-| [roles/anr-curation.md](roles/anr-curation.md) | A&R / Music Curation |
-| [roles/social-media.md](roles/social-media.md) | Social Media & Content |
-
 **Brand**
 | File | Description |
 |---|---|
 | [brand/manifesto.md](brand/manifesto.md) | Label manifesto — internal and public-facing |
 | [brand/phantom-grid-brand.md](brand/phantom-grid-brand.md) | Living brand reference; color, type, LED circle, cursor specs |
 | [brand/sonic-brief.md](brand/sonic-brief.md) | Positive sonic definition; genres, BPM, drum architecture |
-| [brand/listening-room.md](brand/listening-room.md) | Reference tracks; the label's sound in existing music |
 | [brand/not-phantom-grid.md](brand/not-phantom-grid.md) | Musical exclusion document |
 
 **Architecture**
@@ -105,14 +97,8 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 **Workflows**
 | File | Description |
 |---|---|
-| [workflows/handoffs.md](workflows/handoffs.md) | Inter-persona handoff protocols |
 | [workflows/platform-texts.md](workflows/platform-texts.md) | Platform texts — Bandcamp, RA, Instagram, SoundCloud |
-| [workflows/session-init.md](workflows/session-init.md) | Session init templates — standardized prompts per persona |
-
-**Grid Messages**
-| File | Description |
-|---|---|
-| [posts/wavejumper-001-submodules.md](posts/wavejumper-001-submodules.md) | "The Pointer and the Copy" — Git Submodules explained |
+| [workflows/release-workflow.md](workflows/release-workflow.md) | Step-by-step release process |
 
 **Releases**
 | File | Description |
@@ -130,25 +116,12 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 ### Starting a Session
 
 1. Load this `README.md` first — it provides the full label context
-2. Load the relevant role file for the task at hand
-3. Load `/brand/phantom-grid-brand.md` if the task has any visual component
-4. Address the persona directly and state the task
-
-### Example Session Prompt
-
-```
-Context loaded: README.md, roles/art-direction.md, brand/phantom-grid-brand.md
-
-New signing. Producer name: T_FORM, Detroit-based.
-First release is a 3-track EP, working title "Static Meridian".
-Mood: industrial, late-night, slight aquatic undertone.
-I need a cover concept and an Instagram announcement asset spec.
-```
+2. Load `/brand/phantom-grid-brand.md` if the task has any visual component
+3. Load the relevant workflow or release file for the task at hand
 
 ### Updating the System
 
 - When brand decisions are made, write them into `/brand/phantom-grid-brand.md`
-- When a new role is finalized, update the table above
 - When a release is initiated, create a folder under `/releases/[release-slug]/`
 
 ---

@@ -8,7 +8,7 @@ An idea here is not a decision. It is a signal worth keeping.
 ## CPU UNIT / AGENT ORCHESTRATION
 
 **OpenClaw as interface layer**
-OpenClaw (openclaw.ai) is a self-hosted, open-source agent framework with Conductor + Sub-Agent architecture (v2.0). Model-agnostic — supports Claude. UI via Telegram/Discord/WhatsApp. The `roles/*.md` files could become OpenClaw Skills.
+OpenClaw (openclaw.ai) is a self-hosted, open-source agent framework with Conductor + Sub-Agent architecture (v2.0). Model-agnostic — supports Claude. UI via Telegram/Discord/WhatsApp.
 
 Two possible roles:
 - Interactive sessions with entities (demo evaluation, artwork brief, post writing) via OpenClaw

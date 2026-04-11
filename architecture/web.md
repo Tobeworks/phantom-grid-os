@@ -40,7 +40,6 @@ During the Astro build, content is read directly from the submodule:
 | Source (OS) | Consumer (Web) |
 |---|---|
 | `releases/*/release.json` | Dynamic release pages |
-| `posts/*.md` | Grid Messages — per-persona blog posts |
 | `transmission-log.md` | Transmission feed section |
 | `brand/manifesto.md` | About page |
 | `COORDINATES.md` | Footer platform links |
@@ -72,7 +71,6 @@ No component library. No UI framework. Custom components only — the design sys
 /archive                   ← all releases, chronological
 /about                     ← label identity + OS link
 /grid-messages             ← transmission log (markdown rendered)
-/grid-messages/[slug]     ← individual posts by persona (from posts/ in OS)
 ```
 
 Dynamic routes (`/releases/[slug]`) are generated at build time from `release.json` files in the OS submodule.

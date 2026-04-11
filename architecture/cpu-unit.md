@@ -23,10 +23,10 @@ PHANTOM GRID CPU
 │   ├── phantom-grid-web/         Astro site — consumes OS output
 │   └── releases/pg-xxx/          Release trigger — commit initiates pipeline
 │
-├── PROCESS LAYER — Roles as Agents
-│   ├── WAVEJUMPER                Visual tasks: artwork briefs, asset generation, web updates
-│   ├── HYDRO THEORY              A&R tasks: submission evaluation, signing decisions, signal log
-│   └── STORM SURGE               Content tasks: post generation, platform pushes, promo arc execution
+├── PROCESS LAYER — AI Agents
+│   ├── Visual Agent              Artwork briefs, asset generation, web updates
+│   ├── A&R Agent                 Submission evaluation, signing decisions, signal log
+│   └── Content Agent             Post generation, platform pushes, promo arc execution
 │
 └── OUTPUT LAYER
     ├── Bandcamp                  Release metadata, audio, artwork
@@ -42,9 +42,9 @@ PHANTOM GRID CPU
 A release commit in `releases/pg-xxx/release.md` is the trigger. The pipeline reads:
 
 1. `release.md` — title, artist, catalog number, date, format
-2. `anr-decision.md` — HYDRO THEORY's evaluation, signing rationale
-3. `artwork-brief.md` — WAVEJUMPER's visual specification
-4. `promo-arc.md` — STORM SURGE's content schedule
+2. `anr-decision.md` — A&R evaluation, signing rationale
+3. `artwork-brief.md` — visual specification
+4. `promo-arc.md` — content schedule
 
 From these four files, the CPU Unit generates and dispatches:
 
@@ -57,13 +57,11 @@ No manual copy-paste. No platform-by-platform repetition. One commit. Everything
 
 ---
 
-## THE ROLES AS AGENTS
+## THE AGENTS
 
-The `roles/*.md` files are not only documentation — they are the future system prompts for each agent. They were written as role definitions. They function as agent configurations.
+Built on the **Claude Agent SDK**: a central orchestration agent reads the OS and dispatches tasks to three specialized sub-agents (Visual, A&R, Content), each operating within the constraints of their defined scope.
 
-Built on the **Claude Agent SDK**: a central orchestration agent reads the OS and dispatches tasks to three specialized sub-agents — WAVEJUMPER, HYDRO THEORY, STORM SURGE — each operating within the constraints of their role file.
-
-The CPU Unit does not replace the roles. It executes them.
+The CPU Unit does not replace the workflows. It executes them.
 
 ---
 
@@ -91,6 +89,6 @@ A fork carries the structure but not the history. The history belongs to the ori
 | Phase 1 | Astro website — separate repo, consumes OS | 🔲 Planned |
 | Phase 2 | CPU Unit — repo structure, agent framework | 🔲 Planned |
 | Phase 3 | Pipeline — release commit triggers full output chain | 🔲 Planned |
-| Phase 4 | Full automation — STORM SURGE posts without manual intervention | 🔲 Planned |
+| Phase 4 | Full automation — Content Agent posts without manual intervention | 🔲 Planned |
 
 Phase 0 is complete. The foundation is in place. Everything that follows is execution.
