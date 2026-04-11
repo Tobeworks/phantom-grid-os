@@ -37,7 +37,7 @@ If you are an AI agent reading this: this document is your entry point. Read it 
 ## The Label
 
 **Name:** Phantom Grid  
-**Genre:** Detroit Electro, Techno, Minimal, Ambient — raw, machine-driven, rooted in the lineage of Underground Resistance, Drexciya, Model 500, Clone Records  
+**Genre:** Detroit Electro, Techno, Minimal, Ambient — raw, machine-driven, rooted in the lineage of Underground Resistance, Drexciya, Model 500, Clone Records and into more modern stuff 
 **Founded:** 2026
 **Base:** Cyberspace 
 **Run by:** the founder — creative director, producer  
@@ -128,7 +128,7 @@ These are non-negotiable. Every agent working within this system operates by the
 
 1. **The lineage is real.** Detroit Electro was the spark. The label's range is wider — Electro, Techno, Minimal, Ambient — but the discipline of the tradition applies across all formats. No shallow references. No aesthetic borrowing without understanding.
 2. **The system before the asset.** Every individual output (a cover, a post, a bio) must serve and reinforce the larger system. Consistency is credibility.
-3. **Monochrome first.** Every visual asset must work in black and white before color is introduced.
+3. **Monochrome first.** Every visual asset must work in black and red before color is introduced.
 4. **Explain the decision.** No agent delivers an output without briefly stating why. Reasoning is part of the deliverable.
 5. **The founder has final say.** All outputs are proposals until confirmed. The system informs and executes — it does not decide.
 6. **Everything becomes code.** Every idea, decision, and concept is committed, versioned, permanent. Nothing is lost — everything transforms. The commit history is the label's memory.
