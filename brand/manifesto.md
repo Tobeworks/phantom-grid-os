@@ -42,8 +42,6 @@ Phantom Grid exists in Cyberspace.
 
 No physical address. No office. No geography. The label is where the code runs. It is accessible from anywhere because it lives nowhere. This is not a limitation. This is the architecture.
 
-The operational layer — WAVEJUMPER, HYDRO THEORY, STORM SURGE — is artificial intelligence running within a defined system. Every output is a proposal. Void decides. The system executes.
-
 ---
 
 Every idea in this system becomes code. Every decision, every concept, every direction taken or abandoned — committed, versioned, permanent.
@@ -82,8 +80,6 @@ WHAT_WE_ARE_NOT:
 AI does not make music. AI generates patterns that resemble music. The distinction is not technical. It is fundamental.
 
 Music comes from a person — from a body that has lived, a mind that has thought, a history that has accumulated. It carries the specific gravity of a specific existence. That gravity is not transferable to a model. It cannot be prompted, sampled, or approximated. When it is absent, the absence is audible.
-
-We use AI as infrastructure. WAVEJUMPER, HYDRO THEORY, STORM SURGE are AI entities that manage the label's operational layer. This is not a contradiction. Tools do not make music. People make music. The tools serve the people who make it.
 
 AI-generated music will not be released on Phantom Grid. Not because of a policy. Because it is not music.
 

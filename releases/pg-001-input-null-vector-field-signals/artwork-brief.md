@@ -1,5 +1,4 @@
 # ARTWORK BRIEF — PG-[NNN]
-## WAVEJUMPER
 
 **STATUS:** `DRAFT` | `APPROVED`
 **DATE:**
@@ -39,4 +38,4 @@
 
 ## NOTES
 
-*Anything WAVEJUMPER needs to know that doesn't fit the above.*
+*Additional notes.*

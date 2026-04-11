@@ -1,5 +1,5 @@
 # Phantom Grid — Brand Reference Document
-## Living Document — maintained by WAVEJUMPER
+## Living Document
 
 ---
 
@@ -39,7 +39,7 @@ Rules for the circle motif:
 - **Grid logic** — circles appear in structured arrays, not scattered. The pattern should be readable as a sequence.
 - **Worn surfaces** — the background behind any circle array should carry analog texture. Film grain, paper texture, subtle noise. Never clean.
 
-This motif is WAVEJUMPER's signature element. It can appear in cover art, web assets, and UI components — never as decoration, always as a statement about the machine nature of the label.
+This motif is a core signature element. It can appear in cover art, web assets, and UI components — never as decoration, always as a statement about the machine nature of the label.
 
 ---
 

@@ -1,6 +1,6 @@
 # NOT_PHANTOM_GRID — Musical Exclusion Document
 
-This document defines what Phantom Grid does not release. Maintained by HYDRO THEORY. As binding as the signing criteria.
+This document defines what Phantom Grid does not release. As binding as the signing criteria.
 
 The purpose of a negative definition is precision. Every label has a genre. Not every label knows what it is not.
 
@@ -44,7 +44,7 @@ Phantom Grid uses AI as operational infrastructure. This is not a contradiction.
 ## ARTIST TYPES THAT DO NOT FIT
 
 **The style tourist**
-Artists who move between genres based on what is being released on influential labels. Their Electro phase will end when the next thing arrives. HYDRO THEORY tracks development arcs specifically to identify this pattern.
+Artists who move between genres based on what is being released on influential labels. Their Electro phase will end when the next thing arrives. Development arcs are tracked specifically to identify this pattern.
 
 **The scene networker**
 Artists whose career is primarily social — who appear everywhere, play everywhere, know everyone — but whose music does not develop. Presence is not trajectory.

@@ -14,8 +14,8 @@ releases/
 
 1. Copy `_template/` — rename to `pg-[NNN]-[artist]-[title]`
 2. Fill in `release.md` first — this is the master record
-3. HYDRO THEORY owns `anr-decision.md`
-4. WAVEJUMPER owns `artwork-brief.md`
-5. STORM SURGE owns `promo-arc.md`
+3. Label uses `anr-decision.md` for the A&R evaluation
+4. Label uses `artwork-brief.md` for the visual brief
+5. Label uses `promo-arc.md` for the campaign
 
 Status moves: `DEVELOPMENT → APPROVED → IN_PRODUCTION → RELEASED`

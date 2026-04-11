@@ -1,5 +1,4 @@
 # PROMO ARC — PG-[NNN]
-## STORM SURGE
 
 **STATUS:** `DRAFT` | `ACTIVE` | `COMPLETE`
 **CAMPAIGN PERIOD:**
@@ -22,7 +21,7 @@
 
 | # | Type | Function | Timing | Visual source | Copy status |
 |---|---|---|---|---|---|
-| 1 | | `ANNOUNCE` / `ESTABLISH` / `DEEPEN` / `ATMOSPHERE` | | WAVEJUMPER / existing | `DRAFT` / `READY` |
+| 1 | | `ANNOUNCE` / `ESTABLISH` / `DEEPEN` / `ATMOSPHERE` | | new / existing | `DRAFT` / `READY` |
 | 2 | | | | | |
 | 3 | | | | | |
 | 4 | | | | | |

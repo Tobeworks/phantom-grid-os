@@ -26,7 +26,7 @@ Open source. Anyone can build from this. No one can replicate the origin.
 
 ## What This Repository Is
 
-This is the internal operating system of **Phantom Grid** — the world's first 100% code-based music label, founded and run by Void, existing in Cyberspace.
+This is the internal operating system of **Phantom Grid** — the world's first 100% code-based music label, founded and run by the label founder, existing in Cyberspace.
 
 This repo is not a website, not a press kit, not a portfolio. It is the functional backbone of the label — a structured file system that defines how the label thinks, decides, and communicates. It is designed to be loaded into AI agent sessions to provide persistent, session-transcending context.
 
@@ -40,7 +40,7 @@ If you are an AI agent reading this: this document is your entry point. Read it 
 **Genre:** Detroit Electro, Techno, Minimal, Ambient — raw, machine-driven, rooted in the lineage of Underground Resistance, Drexciya, Model 500, Clone Records  
 **Founded:** 2026
 **Base:** Cyberspace 
-**Run by:** Void — founder, creative director, producer  
+**Run by:** the founder — creative director, producer  
 **Platforms:** Instagram, Bandcamp, Spotify, SoundCloud (URLs to be added as live)
 
 ### Sound Identity
@@ -67,18 +67,11 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | [transmission-log.md](transmission-log.md) | Running log of all label events |
 
 **Roles**
-| File | Persona | Domain |
-|---|---|---|
-| [roles/art-direction.md](roles/art-direction.md) | WAVEJUMPER | Visual Identity & Art Direction |
-| [roles/anr-curation.md](roles/anr-curation.md) | HYDRO THEORY | A&R / Music Curation |
-
-**Soul**
-| File | Persona |
+| File | Domain |
 |---|---|
-| [soul/wavejumper.md](soul/wavejumper.md) | WAVEJUMPER |
-| [soul/hydro-theory.md](soul/hydro-theory.md) | HYDRO THEORY |
-| [soul/storm-surge.md](soul/storm-surge.md) | STORM SURGE |
-| [roles/social-media.md](roles/social-media.md) | STORM SURGE | Social Media & Content |
+| [roles/art-direction.md](roles/art-direction.md) | Visual Identity & Art Direction |
+| [roles/anr-curation.md](roles/anr-curation.md) | A&R / Music Curation |
+| [roles/social-media.md](roles/social-media.md) | Social Media & Content |
 
 **Brand**
 | File | Description |
@@ -117,9 +110,9 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | [workflows/session-init.md](workflows/session-init.md) | Session init templates — standardized prompts per persona |
 
 **Grid Messages**
-| File | Persona | Description |
-|---|---|---|
-| [posts/wavejumper-001-submodules.md](posts/wavejumper-001-submodules.md) | WAVEJUMPER | "The Pointer and the Copy" — Git Submodules explained |
+| File | Description |
+|---|---|
+| [posts/wavejumper-001-submodules.md](posts/wavejumper-001-submodules.md) | "The Pointer and the Copy" — Git Submodules explained |
 
 **Releases**
 | File | Description |
@@ -129,18 +122,6 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | [releases/pg-001-input-null-vector-field-signals/](releases/pg-001-input-null-vector-field-signals/) | PG-001 — Input Null — Vector Field Signals — active |
 
 ---
-
-## The Team
-
-Phantom Grid operates with a team of AI personas, each with a defined role, background, and workflow. These are not generic assistants — each has a specific mandate, aesthetic position, and set of deliverables.
-
-Each role is documented in `/roles/`. Load the relevant role file when starting a task in that domain.
-
-| Role | Persona | File | Status |
-|------|---------|------|--------|
-| Art Direction & Visual Identity | WAVEJUMPER | [`roles/art-direction.md`](roles/art-direction.md) | ✅ Active |
-| A&R / Music Curation | HYDRO THEORY | [`roles/anr-curation.md`](roles/anr-curation.md) | ✅ Active |
-| Social Media / Content | STORM SURGE | [`roles/social-media.md`](roles/social-media.md) | ✅ Active |
 
 ---
 
@@ -158,7 +139,7 @@ Each role is documented in `/roles/`. Load the relevant role file when starting 
 ```
 Context loaded: README.md, roles/art-direction.md, brand/phantom-grid-brand.md
 
-WAVEJUMPER — we have a new signing. Producer name: T_FORM, Detroit-based.
+New signing. Producer name: T_FORM, Detroit-based.
 First release is a 3-track EP, working title "Static Meridian".
 Mood: industrial, late-night, slight aquatic undertone.
 I need a cover concept and an Instagram announcement asset spec.
@@ -180,7 +161,7 @@ These are non-negotiable. Every agent working within this system operates by the
 2. **The system before the asset.** Every individual output (a cover, a post, a bio) must serve and reinforce the larger system. Consistency is credibility.
 3. **Monochrome first.** Every visual asset must work in black and white before color is introduced.
 4. **Explain the decision.** No agent delivers an output without briefly stating why. Reasoning is part of the deliverable.
-5. **Void has final say.** All outputs are proposals until confirmed. The system informs and executes — it does not decide.
+5. **The founder has final say.** All outputs are proposals until confirmed. The system informs and executes — it does not decide.
 6. **Everything becomes code.** Every idea, decision, and concept is committed, versioned, permanent. Nothing is lost — everything transforms. The commit history is the label's memory.
 
 ---

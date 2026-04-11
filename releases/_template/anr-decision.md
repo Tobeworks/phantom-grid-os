@@ -1,5 +1,4 @@
 # A&R DECISION — PG-[NNN]
-## HYDRO THEORY
 
 **VERDICT:** `PASS` | `HOLD` | `SIGN`
 **DATE:**

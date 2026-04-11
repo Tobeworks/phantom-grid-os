@@ -6,6 +6,27 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ---
 
+## [0.2.0] — 2026-04-11 — Remove AI persona system
+
+### Removed
+
+- `soul/` — persona soul files (HYDRO THEORY, STORM SURGE, WAVEJUMPER)
+- `roles/` — formal role documents for all three personas
+- `posts/` — blog posts authored by personas
+- `workflows/signal-test.md` — A&R evaluation framework tied to HYDRO THEORY
+- `workflows/handoffs.md` — persona-to-persona handoff protocols
+- `workflows/session-init.md` — AI session initialisation prompts
+- `brand/listening-room.md` — reference track list maintained by HYDRO THEORY
+
+### Changed
+
+- All remaining files cleaned of persona references (HYDRO THEORY, STORM SURGE, WAVEJUMPER, Void-as-persona)
+- `brand/sonic-brief.md`, `brand/phantom-grid-brand.md`, `brand/not-phantom-grid.md`, `brand/manifesto.md` — persona attributions removed
+- `releases/_template/` and `releases/pg-001-*/` — persona subheadings removed from all release docs
+- `workflows/platform-texts.md`, `releases/README.md`, `transmission-log.md`, `README.md`, `CHANGELOG.md`, `IDEAS.md` — cleaned
+
+---
+
 ## [0.1.3] — 2026-03-26 — CPU Unit + Eternal Cycle + README sync
 
 ### Added
@@ -52,7 +73,7 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ### Added
 
-- `brand/listening-room.md` — reference track list: Detroit core (Cybotron, Drexciya, UR, Dopplereffekt, Robert Hood, Aux 88), Frankfurt lineage (Acid Jesus, Hardfloor), bridges (Basic Channel); maintained by HYDRO THEORY
+- `brand/listening-room.md` — reference track list: Detroit core (Cybotron, Drexciya, UR, Dopplereffekt, Robert Hood, Aux 88), Frankfurt lineage (Acid Jesus, Hardfloor), bridges (Basic Channel)
 
 ---
 
@@ -60,7 +81,7 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 
 ### Added
 
-- `brand/sonic-brief.md` — positive sonic definition: tempo, drum architecture, bass, synthesis, arrangement; HYDRO THEORY's core question
+- `brand/sonic-brief.md` — positive sonic definition: tempo, drum architecture, bass, synthesis, arrangement; core question
 - `brand/manifesto.md`: open source paragraph added — the fork argument: structure is copyable, transmission is not; parallels the Fluency vs. Voice distinction
 
 ---
@@ -103,7 +124,7 @@ Format: `[VERSION] — YYYY-MM-DD — description`
   `release.md`, `anr-decision.md`, `artwork-brief.md`, `promo-arc.md`
 - `workflows/handoffs.md` — inter-persona handoff protocols for all directional pairs
 - `brand/manifesto.md` — label manifesto; internal and public-facing
-- `brand/not-phantom-grid.md` — musical exclusion document; maintained by HYDRO THEORY
+- `brand/not-phantom-grid.md` — musical exclusion document
 - `transmission-log.md` — running log of all label events, signings, and system decisions
 
 ### Changed
@@ -119,21 +140,18 @@ Format: `[VERSION] — YYYY-MM-DD — description`
 - `README.md`: About Void expanded — Omen, Robert Johnson, Klang Elektronik release as **Antiga Prime** documented as founding context for the label
 - `brand/phantom-grid-brand.md`: Eurostile / Eurostile Extended established as primary typeface; Inter retained as data font; Space Grotesk removed
 - `brand/phantom-grid-brand.md`: "Typographic Lineage" section added — traces Eurostile through Kraftwerk → Detroit → Eye Q Frankfurt → Drexciya / Neptune's Lair
-- `roles/anr-curation.md`: Klang Elektronik and the Omen → Robert Johnson transition made explicit in HYDRO THEORY's position
-- `roles/social-media.md`: Robert Johnson / Klang Elektronik as communication model made explicit in STORM SURGE's position
+- `roles/anr-curation.md`: Klang Elektronik and the Omen → Robert Johnson transition made explicit
+- `roles/social-media.md`: Robert Johnson / Klang Elektronik as communication model made explicit
 
 ---
 
-## [0.0.2] — 2026-03-26 — Identity: Tobi → Void / Persona rename to Drexciya tracks
+## [0.0.2] — 2026-03-26 — Identity: Tobi → Void / Role rename to Drexciya tracks
 
 ### Changed
 
 - All references to "Tobi" and "Tobias" replaced with "Void" across all role files and README
 - `README.md`: founder identity clarified — Void, no civil name in system context
-- Persona names replaced with Drexciya track names:
-  - Vera Cross → **WAVEJUMPER** *(Drexciya, Aquatic Invasion EP, 1993)*
-  - Leon Foss → **HYDRO THEORY** *(Drexciya, Neptune's Lair, 1999)*
-  - Mara Fels → **STORM SURGE** *(Drexciya, The Journey Home, 1995)*
+- Role names replaced with Drexciya track names (Wavejumper, Hydro Theory, Storm Surge)
 
 ---
 

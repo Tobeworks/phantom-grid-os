@@ -1,4 +1,4 @@
-# Platform Texts — STORM SURGE
+# Platform Texts
 *Social Media & Content — Phantom Grid*
 
 All platform texts are maintained here as the single source of truth.
@@ -12,7 +12,7 @@ Phantom Grid is the world's first 100% code-based record label.
 
 It exists in cyberspace. Its operational system — roles, brand, workflows, release intelligence — is a public git repository. Every decision the label has ever made is version-controlled and permanently accessible. Nothing is lost. Everything is committed.
 
-The music ranges across Electro, Techno, Minimal, and Ambient. The lineage runs from Detroit to Frankfurt. The label is run by Void, with an AI team operating under defined mandates.
+The music ranges across Electro, Techno, Minimal, and Ambient. The lineage runs from Detroit to Frankfurt.
 
 PG-001: Input Null — Vector Field Signals.
 
@@ -22,7 +22,7 @@ PG-001: Input Null — Vector Field Signals.
 
 ## Resident Advisor — Label Profile
 
-Phantom Grid is a code-based electronic music label operating from cyberspace. Founded in 2026 by Void, the label's entire infrastructure — A&R process, visual system, release workflows, communication strategy — exists as a public, open-source git repository. A fork is possible. The original is not reproducible.
+Phantom Grid is a code-based electronic music label operating from cyberspace. Founded in 2026, the label's entire infrastructure — A&R process, visual system, release workflows, communication strategy — exists as a public, open-source git repository. A fork is possible. The original is not reproducible.
 
 Releases span Electro, Techno, Minimal, and Ambient. The label's founding reference points are Detroit and Frankfurt: two cities that understood the machine before the machine was understood everywhere else.
 
@@ -75,4 +75,3 @@ github.com/Tobeworks/phantom-grid-os
 
 ---
 
-*Maintained by STORM SURGE — last reviewed: 2026-03-26*

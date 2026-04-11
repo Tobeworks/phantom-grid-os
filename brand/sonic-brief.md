@@ -1,5 +1,5 @@
 # PHANTOM GRID — SONIC BRIEF
-## Positive Definition — maintained by HYDRO THEORY
+## Positive Definition
 
 This document defines what a Phantom Grid release sounds like. It is the counterpart to `not-phantom-grid.md`. Both documents are equally binding.
 
@@ -69,7 +69,7 @@ Typical EP track length: **6–9 minutes.** Long enough to establish something. 
 
 ---
 
-## THE QUESTION HYDRO THEORY ASKS
+## THE CORE QUESTION
 
 After three listens:
 
