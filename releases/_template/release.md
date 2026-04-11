@@ -10,21 +10,9 @@
 |---|---|
 | Release ID | PG-[NNN] |
 | Artist | |
+| Members | |
 | Title | |
 | Format | `SINGLE` / `EP` / `LP` |
-| Track count | |
-| BPM range | |
-| Key | |
-| Runtime | |
-
-## TRACKLIST
-
-```
-A1.
-A2.
-B1.
-B2.
-```
 
 ## SIGNAL
 
@@ -38,11 +26,8 @@ B2.
 
 | Event | Date |
 |---|---|
-| Demo received | |
 | A&R decision | |
-| Artwork brief issued | |
 | Artwork approved | |
-| Promo arc started | |
 | Distribution submitted | |
 | Release date | |
 
@@ -55,4 +40,3 @@ B2.
 | SoundCloud | | |
 
 ## NOTES
-

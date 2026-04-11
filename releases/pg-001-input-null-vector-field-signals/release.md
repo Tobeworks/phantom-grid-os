@@ -13,16 +13,6 @@
 | Members | Cortexia + Paradroid |
 | Title | Vector Field Signals |
 | Format | EP |
-| Track count | — |
-| BPM range | — |
-| Key | — |
-| Runtime | — |
-
-## TRACKLIST
-
-```
-— to be documented
-```
 
 ## SIGNAL
 
@@ -36,11 +26,8 @@ Modern Electro — machine-driven, aquatic undertone. Input Null operates in tra
 
 | Event | Date |
 |---|---|
-| Demo received | — |
 | A&R decision | — |
-| Artwork brief issued | — |
 | Artwork approved | — |
-| Promo arc started | — |
 | Distribution submitted | — |
 | Release date | — |
 
@@ -48,12 +35,11 @@ Modern Electro — machine-driven, aquatic undertone. Input Null operates in tra
 
 | Platform | Status | URL |
 |---|---|---|
-| Bandcamp | pending | — |
+| Bandcamp | online | https://phantomgrid.bandcamp.com/album/vector-field-signals |
 | Spotify | pending | — |
 | SoundCloud | pending | — |
 
 ## NOTES
 
-- Release is complete (music finalized)
-- Landing page visual prototype exists: `stitch_input_null_landing_page/` (Downloads)
+- Track data: `data/releases.json`
 - Paradroid is co-artist — label communication should include both members
