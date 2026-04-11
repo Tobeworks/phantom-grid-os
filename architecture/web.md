@@ -40,9 +40,7 @@ During the Astro build, content is read directly from the submodule:
 | Source (OS) | Consumer (Web) |
 |---|---|
 | `releases/*/release.json` | Dynamic release pages |
-| `transmission-log.md` | Transmission feed section |
 | `brand/manifesto.md` | About page |
-| `COORDINATES.md` | Footer platform links |
 
 No content is duplicated into the web repo. When a release is committed to the OS, the web repo updates the submodule reference and rebuilds.
 

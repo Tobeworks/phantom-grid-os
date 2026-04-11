@@ -34,8 +34,6 @@ releases/
 
 **2.1** `release.json` öffnen und alle Felder ausfüllen
 **2.2** Validate läuft grün durch → Status in `release.md` auf `IN_PRODUCTION` setzen
-**2.3** `anr-decision.md` ausfüllen (Signal, Begründung der Aufnahme)
-
 ---
 
 ## PHASE 3 — CONVERT (MP3 für Distribution)
@@ -102,8 +100,7 @@ releases/
 
 1. Assets aus `export/social/square/` → Instagram Post
 2. Assets aus `export/social/reel/` → Instagram Reel
-3. Caption aus `promo-arc.md` übernehmen
-4. Posting-Zeitplan aus `promo-arc.md` einhalten
+3. Caption aus `workflows/platform-texts.md` übernehmen
 
 ---
 
@@ -111,8 +108,7 @@ releases/
 
 **8.1** Status in `release.md` auf `RELEASED` setzen
 **8.2** Release-Datum und alle URLs in `release.md` → `DISTRIBUTION` eintragen
-**8.3** Eintrag in `transmission-log.md` anlegen
-**8.4** Commit: `release(PG-NNN): released`
+**8.3** Commit: `release(PG-NNN): released`
 
 ---
 
@@ -140,8 +136,5 @@ pg-NNN-artist-title/
 │       └── reel/           ← Instagram Reels
 ├── release.json            ← Machine-readable Metadaten
 ├── release.md              ← Master Record
-├── social.json             ← Social Asset Config
-├── anr-decision.md         ← A&R Begründung
-├── artwork-brief.md        ← Art Direction
-└── promo-arc.md            ← Promotion Plan
+└── social.json             ← Social Asset Config
 ```

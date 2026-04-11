@@ -61,10 +61,7 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 | File | Description |
 |---|---|
 | [README.md](README.md) | Entry point — load first |
-| [EXPLAINER.md](EXPLAINER.md) | What is Phantom Grid — three levels, for any audience |
 | [CHANGELOG.md](CHANGELOG.md) | Full version history |
-| [COORDINATES.md](COORDINATES.md) | Label location in cyberspace; platform URLs |
-| [transmission-log.md](transmission-log.md) | Running log of all label events |
 
 **Brand**
 | File | Description |
@@ -77,7 +74,6 @@ The visual system is documented and maintained in `/brand/phantom-grid-brand.md`
 **Architecture**
 | File | Description |
 |---|---|
-| [architecture/cpu-unit.md](architecture/cpu-unit.md) | CPU Unit vision; pipeline architecture; roles as agents |
 | [architecture/assets.md](architecture/assets.md) | Asset convention; release.json schema; validation rules |
 | [architecture/web.md](architecture/web.md) | Web architecture; repo structure, data flow OS→Web, routing, deployment |
 
