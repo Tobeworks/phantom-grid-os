@@ -2,7 +2,7 @@
 
 > Operating system for the world's first 100% code-based music label.
 
-**Version:** 0.2.0 — see [CHANGELOG.md](CHANGELOG.md)
+**Version:** 0.3.0 — see [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
