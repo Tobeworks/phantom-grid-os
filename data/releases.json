@@ -31,13 +31,16 @@
           "webp": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/artwork/cover_600.webp"
         }
       },
-      "bandcamp": "https://phantomgrid.bandcamp.com/",
+      "platforms": [
+        {
+          "name": "bandcamp",
+          "url": "https://phantomgrid.bandcamp.com/album/vector-field-signals"
+        }
+      ],
       "tracks": [
         {
           "number": 1,
           "title": "Input Null   Duality Shift Exchange",
-          "bpm": "",
-          "key": "",
           "runtime": "",
           "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/128/01_input_null_duality_shift_exchange.mp3",
           "url_320": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/320/01_input_null_duality_shift_exchange.mp3"
@@ -45,8 +48,6 @@
         {
           "number": 2,
           "title": "Input Null   Photon Storm",
-          "bpm": "",
-          "key": "",
           "runtime": "",
           "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/128/02_input_null_photon_storm.mp3",
           "url_320": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/320/02_input_null_photon_storm.mp3"
@@ -54,8 +55,6 @@
         {
           "number": 3,
           "title": "Input Null   Prism State Dancers",
-          "bpm": "",
-          "key": "",
           "runtime": "",
           "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/128/03_input_null_prism_state_dancers.mp3",
           "url_320": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/320/03_input_null_prism_state_dancers.mp3"
@@ -63,8 +62,6 @@
         {
           "number": 4,
           "title": "Input Null   Radiant Funk",
-          "bpm": "",
-          "key": "",
           "runtime": "",
           "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/128/04_input_null_radiant_funk.mp3",
           "url_320": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/320/04_input_null_radiant_funk.mp3"
@@ -72,8 +69,6 @@
         {
           "number": 5,
           "title": "Input Null   Vector Field Signals",
-          "bpm": "",
-          "key": "",
           "runtime": "",
           "url": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/128/05_input_null_vector_field_signals.mp3",
           "url_320": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/320/05_input_null_vector_field_signals.mp3"
