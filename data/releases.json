@@ -1,4 +1,5 @@
 {
+  "$schema": "./releases.schema.json",
   "_meta": {
     "generated": "2026-03-30T10:30:39.044231+00:00",
     "label": "Phantom Grid",
@@ -10,8 +11,7 @@
       "artist": "Input Null",
       "title": "Vector Field Signals",
       "format": "EP",
-      "year": "",
-      "genre": "",
+      "year": "2026",
       "cover": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/artwork/cover_600.jpg",
       "artwork": {
         "1500": {
@@ -74,7 +74,8 @@
           "url_320": "https://cdn.phantom-grid.de/releases/pg-001-input-null-vector-field-signals/audio/320/05_input_null_vector_field_signals.mp3"
         }
       ],
-      "pushed_at": "2026-03-30T10:30:39.042402+00:00"
+      "pushed_at": "2026-03-30T10:30:39.042402+00:00",
+      "release_date": "2026-04-09T10:30:39.042402+00:00"
     }
   ]
 }
