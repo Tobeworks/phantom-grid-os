@@ -28,10 +28,10 @@
 |---|---|
 | A&R decision | |
 | Artwork approved | |
-| Distribution submitted | |
+| Platforms submitted | |
 | Release date | |
 
-## DISTRIBUTION
+## PLATFORMS
 
 | Platform | Status | URL |
 |---|---|---|
